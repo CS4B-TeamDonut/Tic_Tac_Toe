@@ -1,3 +1,8 @@
+.root {
+    -fx-background-color: linear-gradient(from 100px 100px to 1280px 1280px, #dc143c, #32cd32, deepskyblue);
+}
+
 .label {
     -fx-text-fill: blue;
+    -fx-font-size: 30px;
 }

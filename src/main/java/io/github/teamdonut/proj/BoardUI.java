@@ -19,18 +19,21 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
 
     public BoardUI() {
         try {
-            xImage = new Image(getClass().getResourceAsStream(""));
-            yImage = new Image(getClass().getResourceAsStream(""));
-            backButton = new Image(getClass().getResourceAsStream(""));
-            emptyImage = new Image(getClass().getResourceAsStream(""));
+            xImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/X.png"));
+            yImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/O.png"));
+            backButton = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/theme_1/back_arrow.png"));
+            emptyImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/Empty.png"));
         } catch(Exception e) {
             e.printStackTrace();
         }
-        this.setCenter(boardConstruction());
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(10, 10, 10, 10));
         hbox.getChildren().add(new ImageView(backButton));
         this.setTop(hbox);
+        this.setCenter(boardConstruction());
+        this.setRight(new ImageView(emptyImage));
+        this.setLeft(new ImageView(emptyImage));
+        this.setBottom(new ImageView(emptyImage));
     }
 
     private GridPane boardConstruction() {
@@ -39,7 +42,9 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
                 Pane clickable = new Pane();
-                ImageView token = new ImageView(emptyImage);
+                ImageView token = new ImageView(xImage);
+                token.setPreserveRatio(true);
+                token.setFitHeight(500);
                 clickable.getChildren().add(token);
                 clickable.setOnMouseClicked(event -> {
                     // send something

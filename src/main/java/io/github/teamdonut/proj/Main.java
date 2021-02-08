@@ -19,6 +19,7 @@ public class Main extends Application {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/styles.css")).toExternalForm());
 
         stage.setTitle("JavaFX and Gradle");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

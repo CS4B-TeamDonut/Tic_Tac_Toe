@@ -4,6 +4,7 @@ import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,21 +20,21 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
 
     public BoardUI() {
         try {
-            xImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/X.png"));
-            yImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/O.png"));
-            backButton = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/theme_1/back_arrow.png"));
-            emptyImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/Empty.png"));
+            xImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/X_black.png"));
+            yImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/O_black.png"));
+            backButton = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/back_arrow.png"));
+            emptyImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/Empty.png"));
         } catch(Exception e) {
             e.printStackTrace();
         }
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(10, 10, 10, 10));
-        hbox.getChildren().add(new ImageView(backButton));
+        ImageView backbutton = new ImageView(backButton);
+        backbutton.setPreserveRatio(true);
+        backbutton.setFitHeight(100);
+        hbox.getChildren().add(backbutton);
         this.setTop(hbox);
         this.setCenter(boardConstruction());
-        this.setRight(new ImageView(emptyImage));
-        this.setLeft(new ImageView(emptyImage));
-        this.setBottom(new ImageView(emptyImage));
     }
 
     private GridPane boardConstruction() {
@@ -44,7 +45,7 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
                 Pane clickable = new Pane();
                 ImageView token = new ImageView(xImage);
                 token.setPreserveRatio(true);
-                token.setFitHeight(500);
+                token.setFitHeight(100);
                 clickable.getChildren().add(token);
                 clickable.setOnMouseClicked(event -> {
                     // send something
@@ -53,6 +54,7 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
             }
         }
         grid.setGridLinesVisible(true);
+        grid.setAlignment(Pos.CENTER);
         return grid;
     }
 

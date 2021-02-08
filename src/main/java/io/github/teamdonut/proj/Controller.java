@@ -5,13 +5,16 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
-    public Button gameButton;
+    @FXML
+    private Button gameButton;
+
     @FXML
     private Label label;
 
@@ -24,5 +27,14 @@ public class Controller implements Initializable {
 
 
     public void onGameButtonClick(ActionEvent actionEvent) {
+        BoardUI board = new BoardUI();
+
+        Stage window = (Stage) gameButton.getScene().getWindow();
+
+        window.setScene(new Scene(board));
+        window.setResizable(true);
+        window.setHeight(800);
+        window.setWidth(1280);
+        window.show();
     }
 }

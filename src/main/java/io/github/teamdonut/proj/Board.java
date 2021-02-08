@@ -16,7 +16,7 @@ public class Board {
 
     public char[][] getBoard() { return board; }
 
-    public void updatePos(int x, int y, char c) {
+    public void updateToken(int x, int y, char c) {
         if ((x > BOARD_WIDTH || y > BOARD_HEIGHT) || ( x < 0 || y < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
                     "valid bounds are (%d, %d]", x, y, 0, BOARD_HEIGHT));

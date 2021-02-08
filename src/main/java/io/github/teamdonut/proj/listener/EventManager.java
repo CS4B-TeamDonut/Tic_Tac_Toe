@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class EventManager implements ISubject {
-    private static HashMap<ISubject, Set<IObserver>> eventMap = new HashMap<>();
+public final class EventManager {
+    private static final HashMap<ISubject, Set<IObserver>> eventMap = new HashMap<>();
 
     private EventManager() {
         /*
@@ -42,7 +42,7 @@ public final class EventManager implements ISubject {
 
         Set<IObserver> observersReference = eventMap.get(subj);
         if (observersReference != null)
-            observersReference.forEach(k -> { k.update(obj); });
+            observersReference.forEach(k -> k.update(obj));
     }
 
     public static void removeAllObserver(ISubject subj) {

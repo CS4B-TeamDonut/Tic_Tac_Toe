@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj;
 
+import io.github.teamdonut.proj.listener.IObserver;
+import io.github.teamdonut.proj.listener.ISubject;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -7,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-public class BoardUI extends BorderPane {
+public class BoardUI extends BorderPane implements ISubject, IObserver {
     private final int GRID_SIZE = 3;
     private Image xImage;
     private Image yImage;
@@ -75,5 +77,10 @@ public class BoardUI extends BorderPane {
                 default -> throw new RuntimeException("Board contained an invalid value");
             }
         }
+    }
+
+    @Override
+    public void update(Object eventType) {
+        // update boardUI
     }
 }

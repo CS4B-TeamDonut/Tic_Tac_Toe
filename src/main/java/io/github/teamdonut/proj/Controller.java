@@ -32,11 +32,11 @@ public class Controller implements Initializable {
 
         Stage window = (Stage) gameButton.getScene().getWindow();
         Scene scene = new Scene(board);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/io/github/teamdonut/proj/styles.css")).toExternalForm());
         window.setScene(scene);
         window.setResizable(true);
-        window.setHeight(800);
-        window.setWidth(1280);
+        window.setHeight(1080);
+        window.setWidth(1920);
         window.show();
     }
 }

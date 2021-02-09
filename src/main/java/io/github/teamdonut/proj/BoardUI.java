@@ -11,11 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class BoardUI extends BorderPane implements ISubject, IObserver {
     private final int GRID_SIZE = 3;
@@ -28,36 +30,36 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
 
     public BoardUI() {
         try {
-            xImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/X_black.png"));
-            yImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/O_black.png"));
-            backButtonIdle = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/back_arrow.png"));
-            backButtonHover = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/back_arrow_hover_gray.png"));
-            emptyImage = new Image(getClass().getResourceAsStream("/io.github.teamdonut.proj/images/common/Empty.png"));
+            xImage = new Image(getClass().getResourceAsStream("images/common/X_black.png"));
+            yImage = new Image(getClass().getResourceAsStream("images/common/O_black.png"));
+            backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
+            backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
+            emptyImage = new Image(getClass().getResourceAsStream("images/common/Empty.png"));
         } catch(Exception e) {
             e.printStackTrace();
         }
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(10, 10, 10, 10));
-        ImageView backbutton = new ImageView(backButtonIdle);
-        backbutton.setPreserveRatio(true);
-        backbutton.setFitHeight(100);
-        hbox.getChildren().add(backbutton);
+        ImageView backButton = new ImageView(backButtonIdle);
+        backButton.setPreserveRatio(true);
+        backButton.setFitHeight(100);
+        hbox.getChildren().add(backButton);
         this.setTop(hbox);
         this.setCenter(boardConstruction());
         this.setId("gamePage");
 
-        backbutton.setOnMouseEntered(event -> {
-            backbutton.setImage(backButtonHover);
+        backButton.setOnMouseEntered(event -> {
+            backButton.setImage(backButtonHover);
         });
-        backbutton.setOnMouseExited(event -> {
-            backbutton.setImage(backButtonIdle);
+        backButton.setOnMouseExited(event -> {
+            backButton.setImage(backButtonIdle);
         });
-        backbutton.setOnMouseClicked(event -> {
-            Stage window = (Stage) backbutton.getScene().getWindow();
+        backButton.setOnMouseClicked(event -> {
+            Stage window = (Stage) backButton.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/scene.fxml")));
+                Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/styles.css")).toExternalForm());
+                scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
                 window.setTitle("JavaFX and Gradle");
                 window.setScene(scene);
                 window.setWidth(1920);
@@ -77,7 +79,7 @@ public class BoardUI extends BorderPane implements ISubject, IObserver {
                 Pane clickable = new Pane();
                 ImageView token = new ImageView(xImage);
                 token.setPreserveRatio(true);
-                token.setFitHeight(100);
+                token.setFitHeight(200);
                 clickable.getChildren().add(token);
                 clickable.setOnMouseClicked(event -> {
                     // send something

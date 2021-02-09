@@ -6,20 +6,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.Objects;
-
-
 public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/scene.fxml")));
+        Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/styles.css")).toExternalForm());
+        scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
 
         stage.setTitle("JavaFX and Gradle");
         stage.setScene(scene);
+        stage.setHeight(1080);
+        stage.setWidth(1920);
         stage.show();
     }
 

@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,8 +31,9 @@ public class Controller implements Initializable {
         BoardUI board = new BoardUI();
 
         Stage window = (Stage) gameButton.getScene().getWindow();
-
-        window.setScene(new Scene(board));
+        Scene scene = new Scene(board);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/io.github.teamdonut.proj/styles.css")).toExternalForm());
+        window.setScene(scene);
         window.setResizable(true);
         window.setHeight(800);
         window.setWidth(1280);

@@ -33,7 +33,7 @@ public class MainController implements Initializable {
         Scene scene = new Scene(root);
         scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
         window.setScene(scene);
-        window.setResizable(true);
+        window.setResizable(false);
         window.show();
     }
 }

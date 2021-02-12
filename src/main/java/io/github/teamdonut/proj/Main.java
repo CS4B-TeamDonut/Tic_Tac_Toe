@@ -11,12 +11,16 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        Board test = new Board();
 
-        Board test1 = new Board();
-        Board test2 = new Board();
-        test1.updatePosition(1, 0, 'X');
-        test1.updatePosition(1,0,'O');
-        System.out.println(test1);
+        test.updatePosition(0, 1, 'X');
+
+        System.out.println(test);
+
+        test.clearBoard();
+
+        System.out.println(test);
+
         launch(args);
     }
 }

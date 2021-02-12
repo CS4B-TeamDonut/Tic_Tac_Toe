@@ -30,6 +30,10 @@ public class Board {
         return board[x][y];
     }
 
+    public void clearBoard() {
+        for (char[] row: board) Arrays.fill(row, EMPTY);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

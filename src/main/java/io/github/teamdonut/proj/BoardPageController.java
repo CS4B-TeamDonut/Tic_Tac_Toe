@@ -1,10 +1,9 @@
 package io.github.teamdonut.proj;
 
+import io.github.teamdonut.proj.listener.EventManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,8 +17,25 @@ import java.util.ResourceBundle;
 
 public class BoardPageController implements Initializable {
 
-    Image backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
-    Image backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
+    private BoardUI boardUI;
+    private GameController game;
+    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
+    private final Image backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
+
+    private static BoardPageController instance;
+    public static BoardPageController getInstance() {
+        return instance;
+    }
+
+    public BoardPageController() {
+        instance = this;
+    }
+
+    public void setGameController(GameController game) {
+        this.game = game;
+        this.boardUI = game.boardUI;
+        EventManager.register(boardUI, this.game);
+    }
 
     @FXML
     private ImageView backButton;
@@ -29,15 +45,16 @@ public class BoardPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        BoardUI board = new BoardUI();
-        boardPage.setCenter(board);
+//        boardUI = new BoardUI();
+        boardPage.setCenter(this.boardUI);
     }
 
     public void onBackButtonClick(MouseEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
+        Scene scene = ((GameController) window.getUserData()).mainScene;
+//        Scene scene = new Scene(root);
+//        scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
         window.setTitle("JavaFX and Gradle");
         window.setScene(scene);
         window.setResizable(false);
@@ -51,4 +68,5 @@ public class BoardPageController implements Initializable {
     public void onBackButtonExit() {
         backButton.setImage(backButtonIdle);
     }
+
 }

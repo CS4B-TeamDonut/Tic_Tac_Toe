@@ -13,14 +13,26 @@ public class NPCEasyMode implements NPC{
     public NPCEasyMode() {
     }
 
+    /**
+     * This method will return the token of the NPC
+     * @return c : the token
+     */
     public char returnToken() {
         return c;
     }
 
+    /**
+     * This method will return the row of the placement in board
+     * @return x : the row
+     */
     public int returnX() {
         return x;
     }
 
+    /**
+     * This method will return the column of the placement
+     * @return
+     */
     public int returnY() {
         return y;
     }

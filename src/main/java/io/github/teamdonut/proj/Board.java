@@ -31,7 +31,7 @@ public class Board {
     }
 
     public void clearBoard() {
-        for (char[] row: board) Arrays.fill(row, EMPTY);
+        for (char[] row: board) Arrays.fill(row, EMPTY_VALUE);
     }
 
     @Override

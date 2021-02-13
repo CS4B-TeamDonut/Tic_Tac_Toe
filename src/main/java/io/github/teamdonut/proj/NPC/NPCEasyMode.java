@@ -2,29 +2,53 @@ package io.github.teamdonut.proj.NPC;
 
 import io.github.teamdonut.proj.Board;
 import io.github.teamdonut.proj.listener.EventManager;
+import io.github.teamdonut.proj.utils.DataValidation;
 
 import java.util.Random;
 
+/**
+ * @author utsavparajuli
+ * @version 3.0
+ *
+ * This class will implement the NPC interface as an easy difficulty. The logic in making the move for the NPC
+ * is based on just finding an empty spot.
+ */
 public class NPCEasyMode implements NPC{
 
-    //constructor
+    /**
+     * Constructor for the NPCEasyMode class. Does not initialize anything. Overrides the compiler generated
+     * constructor
+     */
     public NPCEasyMode() {
     }
 
+    /**
+     * This method will make a move for the NPC which is in easy difficulty mode. It will generate a x and y
+     * number which will be placed in the board. The method will iterate through the board until it finds
+     * any empty spaces. Once the spot is found it will exit the loop and update the call the notify method of
+     * the EventManager and pass the data.
+     * @param board : the tic tac toe board
+     * @param c : the token
+     */
     @Override
     public void makeMove(Board board, char c) {
-        int x;
-        int y;
-        char[][] boardAr = board.getBoard();
+        DataValidation.ensureObjectNotNull("Board", board);
 
+        int x;      //row
+        int y;      //col
+        char[][] boardAr = board.getBoard();    //tic tac toe board
+
+        //initialization for random class
         Random num = new Random();
 
         boolean valid = false;
 
+        //loops until the NPC finds an empty spot
         do{
             x = num.nextInt(3);
             y = num.nextInt(3);
 
+            //checks if the board is not empty
             if (boardAr[x][y] != ' ') {
                 System.out.println("That spot is taken already - try again!\n");
             }
@@ -34,14 +58,7 @@ public class NPCEasyMode implements NPC{
 
         }while(!valid);
 
+        //notify method called for the event manager
         EventManager.notify(this, new NPC.BoardMoveInfo(x, y, c));
-
-
-//        can do this when the observer class is implemented in NPC
-//         */
     }
-
-    //have the update method from the observer here
-    //the update should contain the current board. There should also be a way to get an X or O assigned
-    //as a token inside the NPC class during the update.
 }

@@ -16,9 +16,9 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
      * The class BoardMoveInfo contains the data that should be updated in the game class using IObserver.
      */
      class BoardMoveInfo {
-        private int  x;     //row in board
-        private int  y;     //column in board
-        private char c;     //token to be placed
+        private final int  x;     //row in board
+        private final int  y;     //column in board
+        private final char c;     //token to be placed
 
         /**
          * This constructor will initialize the BoardModeInfo class with the x, y, and c which are row-position
@@ -104,5 +104,5 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
      * @param board : the tic tac toe board
      * @param c : the token
      */
-    public void makeMove(Board board, char c);
+    void makeMove(Board board, char c);
 }

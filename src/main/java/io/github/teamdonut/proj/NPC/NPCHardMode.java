@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj.NPC;
 
+import io.github.teamdonut.proj.Board;
+
 public class NPCHardMode implements NPC{
 
     //constructor
@@ -7,7 +9,7 @@ public class NPCHardMode implements NPC{
     }
 
     @Override
-    public void makeMove(char[][] board, char c) {
+    public void makeMove(Board board, char c) {
 
     }
 }

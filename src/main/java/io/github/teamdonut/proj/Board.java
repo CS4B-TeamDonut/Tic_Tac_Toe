@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * Board is a data class that holds a 2-dimensional array representing the current
- * state of a tic tac toe match. It is a data-only class.
+ * Board is a data-only class that holds a 2-dimensional array representing the current
+ * state of a tic tac toe match.
  */
 public class Board {
     public final int BOARD_WIDTH = 3;
@@ -20,6 +20,10 @@ public class Board {
         Arrays.stream(board).forEach(str -> Arrays.fill(str, EMPTY_VALUE));
     }
 
+    /**
+     * Gets the current char[][] board of a Board object.
+     * @return the char[][] board of a Board object
+     */
     public char[][] getBoard() { return board; }
 
     /**
@@ -58,7 +62,7 @@ public class Board {
 
     /**
      * Checks whether or not a Board object has the same size and state as another Board object.
-     * @param o The board that is being checked for equality
+     * @param o The Board that is being checked for equality
      * @return A boolean representing the equality of two Board objects
      */
     @Override
@@ -85,7 +89,7 @@ public class Board {
     }
 
     /**
-     * Prints the status of a Board object to the console.
+     * Returns a string containing status of a Board object.
      * @return A string containing the status of a Board object
      */
     @Override

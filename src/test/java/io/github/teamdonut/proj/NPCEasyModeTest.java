@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 public class NPCEasyModeTest {
 
     /**
-     * Testing when the board is full and there aren't any spots for the token to be placed
+     * Testing when the board only has one spot left for the token to be placed
      */
     @Test
-    public void boardFullTest() {
+    public void boardLastSpotTest() {
         Board board = new Board();
 
         //filling up the board
@@ -18,6 +18,8 @@ public class NPCEasyModeTest {
                 board.updateToken(i,j,'X');
             }
         }
+
+        board.updateToken(2,2,' ');
 
         NPCEasyMode easyMode = new NPCEasyMode();
 

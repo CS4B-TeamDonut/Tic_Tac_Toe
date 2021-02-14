@@ -45,6 +45,10 @@ $ gradlew.bat run #on Windows
 ## Features
 1. TBA
 
+---
+
+## Documentation Page
+**[JavaDocs](https://kboniadi.github.io/Tic_Tac_Toe/)**
 
 ---
   

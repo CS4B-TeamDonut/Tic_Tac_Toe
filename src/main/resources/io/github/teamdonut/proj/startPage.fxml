@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teamdonut.proj.MainController">
-   <bottom>
+   <center>
       <Button fx:id="gameButton" mnemonicParsing="false" onAction="#onGameButtonClick" prefHeight="42.0" prefWidth="184.0" text="Start Game" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" />
@@ -15,5 +15,5 @@
             <Font size="18.0" />
          </font>
       </Button>
-   </bottom>
+   </center>
 </BorderPane>

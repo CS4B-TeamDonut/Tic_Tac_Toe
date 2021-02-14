@@ -47,7 +47,8 @@ public class GameController implements IObserver {
         mainScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
         mainStage.setUserData(this);
 
-        mainStage.setTitle("JavaFX and Gradle");
+        // set the title of the stage
+        mainStage.setTitle("Donut Tic Tac Toe");
         mainStage.setScene(mainScene);
         mainStage.setResizable(false);
         mainStage.show();

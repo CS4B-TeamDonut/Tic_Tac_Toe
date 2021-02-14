@@ -12,7 +12,9 @@
 }
 
 #borderPane {
-    -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_01.png");
+    -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_02.png");
+    -fx-background-size: 800 450;
+    -fx-background-position: center center;
 }
 
 #boardPage {

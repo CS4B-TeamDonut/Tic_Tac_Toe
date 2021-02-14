@@ -7,10 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Main Screen Controller class
+ * @author Kord Boniadi
+ */
 public class MainController implements Initializable, ISubject {
     @FXML
     private Label label;
@@ -23,15 +26,28 @@ public class MainController implements Initializable, ISubject {
      *  Controller myController = loader.getController();
      *********************************************************************/
     private static MainController instance;
+
+    /**
+     * @return instance of Main screen controller
+     */
     public static MainController getInstance() {
         return instance;
     }
 
+    /**
+     * Constructor
+     */
     public MainController() {
         instance = this;
     }
     /*end*****************************************************************/
 
+    /**
+     * Is implicitly called when the main screen is being shown
+     * @param url javafx specific
+     * @param rb javafx specific
+     * @author Kord Boniadi
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String javaVersion = System.getProperty("java.version");
@@ -40,7 +56,13 @@ public class MainController implements Initializable, ISubject {
     }
 
 
-    public void onGameButtonClick(ActionEvent actionEvent) throws IOException {
+    /**
+     * Event handler that's triggered on "start game" button click
+     * @param actionEvent javafx specific
+     * @see EventManager#notify(ISubject, Object)
+     * @author Kord Boniadi
+     */
+    public void onGameButtonClick(ActionEvent actionEvent) {
         Board board = new Board();
         EventManager.notify(this, board);
 

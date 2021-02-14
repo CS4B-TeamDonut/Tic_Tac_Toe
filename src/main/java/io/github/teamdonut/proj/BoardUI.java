@@ -28,23 +28,47 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         private int x;
         private int y;
 
+        /**
+         * Constructor
+         * @author Kord Boniadi
+         */
         public UserSelectionData() {
             this(0, 0);
         }
 
+        /**
+         * Constructor
+         * @param x value
+         * @param y value
+         * @author Kord Boniadi
+         */
         public UserSelectionData(int x, int y) {
             this.x = x;
             this.y = y;
         }
 
+        /**
+         * @return x coordinate
+         */
         public int getX() {
             return this.x;
         }
 
+        /**
+         * @return y coordinate
+         */
         public int getY() {
             return this.y;
         }
 
+
+        /**
+         * Indicates whether some other object is "equal to" this one.
+         *
+         * @param o the reference object with which to compare.
+         * @return {@code true} if this object is the same as the obj
+         * argument; {@code false} otherwise.
+         */
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -53,11 +77,20 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
             return getX() == that.getX() && getY() == that.getY();
         }
 
+        /**
+         * Returns a hash code value for the object. This method is
+         * supported for the benefit of hash tables such as those provided by
+         * @return a hash code value
+         */
         @Override
         public int hashCode() {
             return Objects.hash(getX(), getY());
         }
 
+
+        /**
+         * @return String representation of the object
+         */
         @Override
         public String toString() {
             return "UserSelectionData{" +

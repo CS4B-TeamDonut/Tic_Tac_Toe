@@ -25,5 +25,4 @@ public class NPCEasyModeTest {
 
         easyMode.makeMove(board, 'O');
     }
-
 }

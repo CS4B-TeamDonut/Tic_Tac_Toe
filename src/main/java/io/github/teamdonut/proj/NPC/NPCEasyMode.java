@@ -13,7 +13,7 @@ import java.util.Random;
  * This class will implement the NPC interface as an easy difficulty. The logic in making the move for the NPC
  * is based on just finding an empty spot.
  */
-public class NPCEasyMode implements NPC{
+public class NPCEasyMode implements NPC {
 
     /**
      * Constructor for the NPCEasyMode class. Does not initialize anything. Overrides the compiler generated

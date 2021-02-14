@@ -1,5 +1,5 @@
 # Tic_Tac_Toe
-[![CircleCI](https://circleci.com/gh/kboniadi/Tic_Tac_Toe.svg?style=svg&circle-token=<35d8e43f1e10672580ef6a0729da74d901e583be>)](https://circleci.com/gh/kboniadi/Tic_Tac_Toe)
+[![CircleCI](https://circleci.com/gh/kboniadi/Tic_Tac_Toe.svg?style=svg&circle-token=35d8e43f1e10672580ef6a0729da74d901e583be)](https://circleci.com/gh/kboniadi/Tic_Tac_Toe)
 
 This is a tic-tac-toe app developed in java using the javafx framework. Players will be able to play local multiplayer with there friends,
 as well as battle against a computer A.I. in two difficulty modes. This app is currently a work is progress and will continue to add new

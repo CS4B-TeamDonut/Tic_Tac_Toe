@@ -13,8 +13,17 @@ import javafx.scene.layout.Pane;
 
 import java.util.Objects;
 
+/**
+ * BoardUI class; handles drawing board to screen in javafx
+ * @author Kord Bonaidi
+ */
 public class BoardUI extends GridPane implements ISubject, IObserver {
 
+    /**
+     * Container for data to be sent out to IObservers subscribed to this class
+     * @see EventManager#notify(ISubject, Object)
+     * @author Kord Boniadi
+     */
     public static class UserSelectionData {
         private int x;
         private int y;
@@ -63,6 +72,11 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
     private Image yImage;
     private Image emptyImage;
 
+    /**
+     * Default GUI board constructor
+     * Constructs an empty board in javafx
+     * @author Kord Boniadi
+     */
     public BoardUI() {
         try {
             xImage = new Image(getClass().getResourceAsStream("images/common/X_black.png"));
@@ -74,6 +88,11 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         boardConstruction();
     }
 
+    /**
+     * helper class for BoardUI initialization
+     * @see #BoardUI()
+     * @author Kord Boniadi
+     */
     private void boardConstruction() {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
@@ -96,6 +115,10 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         this.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Clears Board view setting it to original starting state
+     * @author Kord Bonaidi
+     */
     public void clearBoard() {
         ObservableList<Node> nodes = this.getChildren();
         for (var n : nodes) {
@@ -105,6 +128,11 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         }
     }
 
+    /**
+     * Draws Board image based on Data level board class info
+     * @param currState data level board state
+     * @author Kord Boniadi
+     */
     public void drawBoard(Board currState) {
         ObservableList<Node> nodes = this.getChildren();
         ImageView image;
@@ -124,6 +152,11 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         }
     }
 
+    /**
+     * Receives data from a subscribed subject
+     * @param eventType object container
+     * @author Kord Boniadi
+     */
     @Override
     public void update(Object eventType) {
         // update boardUI

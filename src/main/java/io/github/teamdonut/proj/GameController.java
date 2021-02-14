@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Central Hub where all classes interact with
+ * @author Kord Boniadi
+ */
 public class GameController implements IObserver {
     private final Stage mainStage;
     public BoardUI boardUI;
@@ -20,10 +24,20 @@ public class GameController implements IObserver {
     public Scene mainScene;
     public Scene boardScene;
 
+    /**
+     * Constructor
+     * @param stage mainStage object received from javafx start() method
+     * @author Kord Boniadi
+     */
     public GameController(Stage stage) {
         this.mainStage = stage;
     }
 
+    /**
+     * Initializes starting page for app
+     * @throws IOException failure to initialize *.fxml loader files
+     * @author Kord Boniadi
+     */
     public void startGame() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
 
@@ -39,6 +53,11 @@ public class GameController implements IObserver {
         mainStage.show();
     }
 
+    /**
+     * Receives data from a subscribed subject
+     * @param eventType object container
+     * @author Kord Boniadi
+     */
     @Override
     public void update(Object eventType) {
         if (eventType instanceof Board) {

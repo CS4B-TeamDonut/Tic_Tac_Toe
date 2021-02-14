@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class should no longer be used
+ * @deprecated
+ */
+@Deprecated
 public class BoardPageController implements Initializable {
 
     private BoardUI boardUI;

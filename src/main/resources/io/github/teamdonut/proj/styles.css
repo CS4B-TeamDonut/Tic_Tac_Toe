@@ -1,16 +1,17 @@
-.root {
-    -fx-background-color: linear-gradient(from 100px 100px to 1280px 1280px, #dc143c, #32cd32, deepskyblue);
-}
-
 .label {
     -fx-text-fill: blue;
     -fx-font-size: 30px;
 }
 
-/*#gamePage {*/
-/*    -fx-background-image: url("/io/github/teamdonut/proj/images/theme_1/gradient_yelloworange.png");*/
-/*}*/
+#mainMenuPane {
+    -fx-background-image: url("/io/github/teamdonut/proj/images/theme_2/title_2.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
 
 #boardPage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/theme_1/gradient_yelloworange.png");
+    -fx-background-size: 800 450;
 }

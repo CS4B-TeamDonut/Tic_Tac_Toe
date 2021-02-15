@@ -11,12 +11,21 @@
     -fx-font-size: 30px;
 }
 
-#borderPane {
+#mainMenuPane {
     -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_02.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+#singlePlayerButton {
+    -fx-background-image: url("/io/github/teamdonut/proj/images/theme_1/single_player.png");
     -fx-background-size: 800 450;
     -fx-background-position: center center;
 }
 
+
 #boardPage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/theme_1/gradient_yelloworange.png");
+    -fx-background-size: 800 450;
 }

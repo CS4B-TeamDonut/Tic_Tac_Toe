@@ -3,12 +3,15 @@ package io.github.teamdonut.proj;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -62,6 +65,9 @@ public class GameController implements IObserver {
     @Override
     public void update(Object eventType) {
         if (eventType instanceof Board) {
+            Label score = new Label("test text");
+            score.setId("score");
+
             this.board = (Board) eventType;
             this.boardUI = new BoardUI();
             ImageView view = new ImageView(new Image(getClass().getResourceAsStream("images/common/back_arrow.png")));
@@ -82,8 +88,11 @@ public class GameController implements IObserver {
                 view.setImage(new Image(getClass().getResourceAsStream("images/common/back_arrow.png")));
             });
 
+            VBox centerScene = new VBox(score, this.boardUI);
+            centerScene.setSpacing(10);
+            centerScene.setAlignment(Pos.CENTER);
             BorderPane pane = new BorderPane(
-                    this.boardUI,
+                    centerScene,
                     new HBox(view),
                     null,
                     null,

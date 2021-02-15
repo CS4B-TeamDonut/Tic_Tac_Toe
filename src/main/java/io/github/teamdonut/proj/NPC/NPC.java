@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj.NPC;
 
-import io.github.teamdonut.proj.Board;
+import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.ISubject;
 import java.util.Objects;
 

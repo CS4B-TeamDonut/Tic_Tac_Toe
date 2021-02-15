@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj;
 
+import io.github.teamdonut.proj.controllers.AppController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -24,7 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        new GameController(stage).startGame();
+        new AppController(stage).startApp();
     }
 
     public static void main(String[] args) {

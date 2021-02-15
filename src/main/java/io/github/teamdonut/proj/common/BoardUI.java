@@ -1,15 +1,16 @@
-package io.github.teamdonut.proj;
+package io.github.teamdonut.proj.common;
 
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.util.Objects;
 
@@ -112,8 +113,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      */
     public BoardUI() {
         try {
-            xImage = new Image(getClass().getResourceAsStream("images/common/X_black.png"));
-            yImage = new Image(getClass().getResourceAsStream("images/common/O_black.png"));
+            xImage = new Image(getClass().getResourceAsStream("images/common/X_white.png"));
+            yImage = new Image(getClass().getResourceAsStream("images/common/O_white.png"));
             emptyImage = new Image(getClass().getResourceAsStream("images/common/Empty.png"));
         } catch(Exception e) {
             e.printStackTrace();
@@ -127,9 +128,10 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      * @author Kord Boniadi
      */
     private void boardConstruction() {
-        for (int i = 0; i < GRID_SIZE; i++) {
-            for (int j = 0; j < GRID_SIZE; j++) {
+        for (int y = 0; y < GRID_SIZE; y++) {
+            for (int x = 0; x < GRID_SIZE; x++) {
                 Pane clickable = new Pane();
+                setBoardBorder(clickable, x, y);
                 ImageView token = new ImageView(emptyImage);
                 token.setPreserveRatio(true);
                 token.setFitHeight(100);
@@ -141,12 +143,40 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
                     );
                     EventManager.notify(this, eventType);
                 });
-                this.add(clickable, j, i);
+                this.add(clickable, x, y);
             }
         }
-        this.setGridLinesVisible(true);
         this.setAlignment(Pos.CENTER);
     }
+
+    private void setBoardBorder(Pane pane, int x, int y) {
+        if (x == 1 && y % 2 == 0) { // top and bottom sides
+            pane.setBorder(new Border(new BorderStroke(
+                    Color.WHITE, null, null, null,
+                    BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
+                    null,
+                    BorderStroke.THICK,
+                    Insets.EMPTY
+            )));
+        } else if (x % 2 == 0 && y == 1) {  // left and right sides
+            pane.setBorder(new Border(new BorderStroke(
+                    Color.WHITE, null, null, null,
+                    BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE,
+                    null,
+                    BorderStroke.THICK,
+                    Insets.EMPTY
+            )));
+        } else if (x == 1) {
+            pane.setBorder(new Border(new BorderStroke( // center
+                    Color.WHITE, null, null, null,
+                    BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID,
+                    null,
+                    BorderStroke.THICK,
+                    Insets.EMPTY
+            )));
+        }
+    }
+
 
     /**
      * Clears Board view setting it to original starting state

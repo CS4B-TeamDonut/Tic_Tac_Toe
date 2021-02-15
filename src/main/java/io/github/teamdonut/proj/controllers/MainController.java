@@ -100,7 +100,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonHover(/*MouseEvent mouseEvent*/) {
-        singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("images/" + theme + "/singleplayer_button_hover.png")));
+        singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/singleplayer_button_hover.png")));
     }
 
     /**
@@ -109,7 +109,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonExit(/*MouseEvent mouseEvent*/) {
-        singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("images/" + theme + "/singleplayer_button.png")));
+        singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/singleplayer_button.png")));
     }
 
     /**
@@ -127,7 +127,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonHover(/*MouseEvent mouseEvent*/) {
-        multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("images/" + theme + "/multiplayer_button_hover.png")));
+        multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/multiplayer_button_hover.png")));
     }
 
 
@@ -137,7 +137,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonExit(/*MouseEvent mouseEvent*/) {
-        multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("images/" + theme + "/multiplayer_button.png")));
+        multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/multiplayer_button.png")));
     }
 
 }

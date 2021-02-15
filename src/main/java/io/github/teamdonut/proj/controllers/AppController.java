@@ -44,12 +44,12 @@ public class AppController implements IObserver {
      * @author Kord Boniadi
      */
     public void startApp() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../startPage.fxml"));
 
         EventManager.register(MainController.getInstance(), this);
 
         mainScene = new Scene(root);
-        mainScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
+        mainScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
         mainStage.setUserData(this);
 
         // set the title of the stage
@@ -72,7 +72,7 @@ public class AppController implements IObserver {
 
             this.board = (Board) eventType;
             this.boardUI = new BoardUI();
-            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("images/common/back_arrow.png")));
+            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             view.setPreserveRatio(true);
             view.setFitWidth(200);
             view.setFitHeight(100);
@@ -83,11 +83,11 @@ public class AppController implements IObserver {
             });
 
             view.setOnMouseEntered(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("images/common/back_arrow_hover.png")));
+                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
             });
 
             view.setOnMouseExited(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("images/common/back_arrow.png")));
+                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             });
 
             VBox centerScene = new VBox(score, this.boardUI);
@@ -106,7 +106,7 @@ public class AppController implements IObserver {
 
             EventManager.register(boardUI, this);
             boardScene = new Scene(pane);
-            boardScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
+            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(boardScene);
             mainStage.show();
 //            try {

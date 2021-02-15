@@ -4,12 +4,9 @@ import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,7 +50,7 @@ public class MainController implements Initializable, ISubject {
     /*end*****************************************************************/
 
     /**
-     * Is implicitly called when the main screen is being shown
+     * Is implicitly called when the main screen is being shown, currently does nothing
      * @param url javafx specific
      * @param rb javafx specific
      * @author Kord Boniadi
@@ -76,7 +73,10 @@ public class MainController implements Initializable, ISubject {
 
     }
 
-
+    /**
+     * Handles mouse click event on the single player image "button".
+     * @author Grant Goldsworth
+     */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
         Board board = new Board();
         EventManager.notify(this, board);
@@ -91,24 +91,49 @@ public class MainController implements Initializable, ISubject {
         //        window.show();
     }
 
+
+    /**
+     * Handles mouse hover event on the single player image "button", changing
+     * the button icon to the hovered icon status.
+     * @author Grant Goldsworth
+     */
     public void onSinglePlayerButtonHover(/*MouseEvent mouseEvent*/) {
         singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("images/theme_1/singleplayer_button_hover.png")));
     }
 
+    /**
+     * Handles mouse hover exit event on the single player image "button", changing the
+     * button icon to the normal status.
+     * @author Grant Goldsworth
+     */
     public void onSinglePlayerButtonExit(/*MouseEvent mouseEvent*/) {
         singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("images/theme_1/singleplayer_button.png")));
     }
 
-
-
+    /**
+     * Handles mouse hover exit event on the multiplayer image "button".
+     * Currently does nothign as MP is not implemented yet.
+     * @author Grant Goldsworth
+     */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
 
     }
 
+    /**
+     * Handles mouse hover exit event on the multi player image "button", changing the
+     * button icon to the hover status.
+     * @author Grant Goldsworth
+     */
     public void onMultiPlayerButtonHover(/*MouseEvent mouseEvent*/) {
         multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("images/theme_1/multiplayer_button_hover.png")));
     }
 
+
+    /**
+     * Handles mouse hover exit event on the multi player image "button", changing the
+     * button icon to the normal status.
+     * @author Grant Goldsworth
+     */
     public void onMultiPlayerButtonExit(/*MouseEvent mouseEvent*/) {
         multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("images/theme_1/multiplayer_button.png")));
     }

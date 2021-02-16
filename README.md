@@ -8,6 +8,7 @@ features every season.... Have fun and happy playing!!
 ## Table of Contents
 - [Installation](#installation)
 - [Features](#features)
+- [Documentation](#documentation)
 - [Team](#team)
 - [FAQ](#faq)
 - [Support](#support)
@@ -47,7 +48,7 @@ $ gradlew.bat run #on Windows
 
 ---
 
-## Documentation Page
+## Documentation
 **[JavaDocs](https://kboniadi.github.io/Tic_Tac_Toe/)**
 
 ---

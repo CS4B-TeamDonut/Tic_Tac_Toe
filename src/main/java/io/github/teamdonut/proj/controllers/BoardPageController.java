@@ -1,5 +1,6 @@
-package io.github.teamdonut.proj;
+package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.common.BoardUI;
 import io.github.teamdonut.proj.listener.EventManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 public class BoardPageController implements Initializable {
 
     private BoardUI boardUI;
-    private GameController game;
+    private AppController game;
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
 
@@ -36,7 +37,7 @@ public class BoardPageController implements Initializable {
         instance = this;
     }
 
-    public void setGameController(GameController game) {
+    public void setGameController(AppController game) {
         this.game = game;
         this.boardUI = game.boardUI;
         EventManager.register(boardUI, this.game);
@@ -57,7 +58,7 @@ public class BoardPageController implements Initializable {
     public void onBackButtonClick(MouseEvent actionEvent) throws IOException {
 //        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = ((GameController) window.getUserData()).mainScene;
+        Scene scene = ((AppController) window.getUserData()).mainScene;
 //        Scene scene = new Scene(root);
 //        scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
         window.setTitle("JavaFX and Gradle");

@@ -1,14 +1,19 @@
-package io.github.teamdonut.proj;
+package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.common.BoardUI;
+import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,7 +22,7 @@ import java.io.IOException;
  * Central Hub where all classes interact with
  * @author Kord Boniadi
  */
-public class GameController implements IObserver {
+public class AppController implements IObserver {
     private final Stage mainStage;
     public BoardUI boardUI;
     private Board board;
@@ -29,7 +34,7 @@ public class GameController implements IObserver {
      * @param stage mainStage object received from javafx start() method
      * @author Kord Boniadi
      */
-    public GameController(Stage stage) {
+    public AppController(Stage stage) {
         this.mainStage = stage;
     }
 
@@ -38,13 +43,13 @@ public class GameController implements IObserver {
      * @throws IOException failure to initialize *.fxml loader files
      * @author Kord Boniadi
      */
-    public void startGame() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
+    public void startApp() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../startPage.fxml"));
 
         EventManager.register(MainController.getInstance(), this);
 
         mainScene = new Scene(root);
-        mainScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
+        mainScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
         mainStage.setUserData(this);
 
         // set the title of the stage
@@ -62,9 +67,12 @@ public class GameController implements IObserver {
     @Override
     public void update(Object eventType) {
         if (eventType instanceof Board) {
+            Label score = new Label("test text");
+            score.setId("score");
+
             this.board = (Board) eventType;
             this.boardUI = new BoardUI();
-            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("images/common/back_arrow.png")));
+            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             view.setPreserveRatio(true);
             view.setFitWidth(200);
             view.setFitHeight(100);
@@ -75,15 +83,18 @@ public class GameController implements IObserver {
             });
 
             view.setOnMouseEntered(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png")));
+                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
             });
 
             view.setOnMouseExited(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("images/common/back_arrow.png")));
+                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             });
 
+            VBox centerScene = new VBox(score, this.boardUI);
+            centerScene.setSpacing(10);
+            centerScene.setAlignment(Pos.TOP_CENTER);
             BorderPane pane = new BorderPane(
-                    this.boardUI,
+                    centerScene,
                     new HBox(view),
                     null,
                     null,
@@ -95,7 +106,7 @@ public class GameController implements IObserver {
 
             EventManager.register(boardUI, this);
             boardScene = new Scene(pane);
-            boardScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
+            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(boardScene);
             mainStage.show();
 //            try {

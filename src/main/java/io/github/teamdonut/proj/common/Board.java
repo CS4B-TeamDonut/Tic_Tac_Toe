@@ -1,4 +1,4 @@
-package io.github.teamdonut.proj;
+package io.github.teamdonut.proj.common;
 
 import java.util.Arrays;
 import java.util.Objects;

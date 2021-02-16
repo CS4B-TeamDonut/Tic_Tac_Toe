@@ -49,7 +49,7 @@ $ gradlew.bat run #on Windows
 ---
 
 ## Documentation
-**[JavaDocs](https://kboniadi.github.io/Tic_Tac_Toe/)**
+**[here](https://kboniadi.github.io/Tic_Tac_Toe/)**
 
 ---
   
@@ -58,7 +58,7 @@ $ gradlew.bat run #on Windows
 - **Joey Campbell** - Developer - [joeyCampbelll](https://github.com/joeyCampbelll)
 - **Utsav Parajuli** - Developer - [utsavparajuli](https://github.com/utsavparajuli)
 - **Grant Goldsworth** - Developer - [grantgoldsworth](https://github.com/grantgoldsworth)
-- **Brandon Nguyenr** - Developer - [brandonnguyenr](https://github.com/brandonnguyenr)
+- **Brandon Nguyen** - Developer - [brandonnguyenr](https://github.com/brandonnguyenr)
 
 ---
 

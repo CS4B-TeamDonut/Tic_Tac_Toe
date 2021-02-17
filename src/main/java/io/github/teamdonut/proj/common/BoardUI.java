@@ -154,7 +154,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
     private void setBoardBorder(Pane pane, int x, int y) {
         if (x == 1 && y % 2 == 0) { // top and bottom sides
             pane.setBorder(new Border(new BorderStroke(
-                    Color.WHITE, null, null, null,
+                    Color.rgb(70, 63, 63), null, null, null,
                     BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
                     null,
                     BorderStroke.THICK,
@@ -162,15 +162,16 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
             )));
         } else if (x % 2 == 0 && y == 1) {  // left and right sides
             pane.setBorder(new Border(new BorderStroke(
-                    Color.WHITE, null, null, null,
+                    Color.rgb(70, 63, 63), null, null, null,
                     BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE,
                     null,
                     BorderStroke.THICK,
                     Insets.EMPTY
             )));
+
         } else if (x == 1) {
             pane.setBorder(new Border(new BorderStroke( // center
-                    Color.WHITE, null, null, null,
+                    Color.rgb(70, 63, 63), null, null, null,
                     BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID,
                     null,
                     BorderStroke.THICK,

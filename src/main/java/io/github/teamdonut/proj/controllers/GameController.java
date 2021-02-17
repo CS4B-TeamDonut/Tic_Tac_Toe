@@ -45,7 +45,7 @@ public class GameController implements ISubject, IObserver {
     public GameController() {
         this(
                 new Player("JohnnyP1", 'X'),
-                new Player("TimmyP2", 'O'),
+                new Player("Computer", 'O'),
                 new Board()
         );
     }
@@ -71,7 +71,7 @@ public class GameController implements ISubject, IObserver {
      */
     public GameController(Player player1, Player player2, Board board) {
         this.board = board;
-        this.player1 =  player1;
+        this.player1 = player1;
         this.player2 = player2;
         Random rand = new Random();
         swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
@@ -125,7 +125,7 @@ public class GameController implements ISubject, IObserver {
             Player.MoveInfo info = (Player.MoveInfo) eventType;
 
             if (swap == info.getPlayerInstance() && board.getToken(info.getX(), info.getY()) == board.EMPTY_VALUE) {
-                System.out.println("--equals and not taken--");
+//              System.out.println("--equals and not taken--");
                 board.updateToken(info.getX(), info.getY(), info.getPlayerInstance().getPlayerToken());
                 EventManager.notify(this, new DrawInfo(this.board));
                 swap = (swap == player1) ? player2 : player1;

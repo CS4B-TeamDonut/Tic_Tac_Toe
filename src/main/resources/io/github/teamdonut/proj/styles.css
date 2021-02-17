@@ -1,5 +1,5 @@
 .label {
-    -fx-text-fill: blue;
+    -fx-text-fill: red;
     -fx-font-size: 30px;
 }
 
@@ -11,7 +11,7 @@
 }
 
 #score {
-    -fx-text-fill: red;
+    -fx-text-fill: deepskyblue;
     -fx-font-size: 20px;
 }
 

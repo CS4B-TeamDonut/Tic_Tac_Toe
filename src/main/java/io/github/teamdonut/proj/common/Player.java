@@ -1,11 +1,60 @@
 package io.github.teamdonut.proj.common;
 
+import io.github.teamdonut.proj.listener.EventManager;
+import io.github.teamdonut.proj.listener.IObserver;
+import io.github.teamdonut.proj.listener.ISubject;
+
 import java.util.Objects;
 
 /**
  * Player is a data-only class that holds the data pertaining to a player.
  */
-public class Player {
+public class Player implements ISubject, IObserver {
+
+    /**
+     * Container for data to be sent out to IObservers subscribed to this class
+     * @see EventManager#notify(ISubject, Object)
+     * @author Kord Boniadi
+     */
+    public static class MoveInfo {
+        private final Player playerInstance;
+        private final int x;
+        private final int y;
+
+        MoveInfo(Player current, int x, int y) {
+            this.playerInstance = current;
+            this.x = x;
+            this.y = y;
+        }
+
+        public Player getPlayerInstance() {
+            return playerInstance;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof MoveInfo)) return false;
+            MoveInfo moveInfo = (MoveInfo) o;
+            return getX() == moveInfo.getX() &&
+                    getY() == moveInfo.getY() &&
+                    getPlayerInstance().equals(moveInfo.getPlayerInstance());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getPlayerInstance(), getX(), getY());
+        }
+    }
+
     private String playerName;
     private char playerToken;
 
@@ -88,5 +137,20 @@ public class Player {
                 "playerName='" + playerName + '\'' +
                 ", playerToken=" + playerToken +
                 '}';
+    }
+
+    /**
+     * New info is received through this method. Object decoding is needed
+     *
+     * @param eventType General Object type
+     * @author Kord Boniadi
+     */
+    @Override
+    public void update(Object eventType) {
+        if (eventType instanceof BoardUI.UserSelectionData) {
+            BoardUI.UserSelectionData temp = (BoardUI.UserSelectionData) eventType;
+
+            EventManager.notify(this, new MoveInfo(this, temp.getX(), temp.getY()));
+        }
     }
 }

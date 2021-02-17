@@ -136,6 +136,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
                 ImageView token = new ImageView(emptyImage);
                 token.setPreserveRatio(true);
                 token.setFitHeight(100);
+                token.setFitWidth(100);
                 clickable.getChildren().add(token);
                 clickable.setOnMouseClicked(event -> {
                     Object eventType = new UserSelectionData(

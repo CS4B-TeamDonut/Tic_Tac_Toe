@@ -1,6 +1,5 @@
 package io.github.teamdonut.proj.controllers;
 
-import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import javafx.fxml.FXML;
@@ -25,7 +24,7 @@ public class MainController implements Initializable, ISubject {
     @FXML
     private ImageView multiPlayerButton;
 
-    private String theme = "theme_2";
+    private final String theme = "theme_2";
 
     /*
      *  // By pass the need for this:
@@ -80,8 +79,8 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        Board board = new Board();
-        EventManager.notify(this, board);
+        GameController game = new GameController();
+        EventManager.notify(this, game);
 
         //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
         //        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

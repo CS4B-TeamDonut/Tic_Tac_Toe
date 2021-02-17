@@ -36,7 +36,7 @@ public class NPCEasyMode implements NPC {
 
         int x;      //row
         int y;      //col
-        char[][] boardAr = board.getBoard();    //tic tac toe board
+        char[][] boardAr = board.getUnderlyingBoard();    //tic tac toe board
 
         //initialization for random class
         Random num = new Random();

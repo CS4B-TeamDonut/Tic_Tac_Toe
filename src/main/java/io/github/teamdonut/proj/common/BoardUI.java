@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.common;
 
+import io.github.teamdonut.proj.controllers.GameController;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
@@ -26,8 +27,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      * @author Kord Boniadi
      */
     public static class UserSelectionData {
-        private int x;
-        private int y;
+        private final int x;
+        private final int y;
 
         /**
          * Constructor
@@ -103,7 +104,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
 
     private final int GRID_SIZE = 3;
     private Image xImage;
-    private Image yImage;
+    private Image oImage;
     private Image emptyImage;
 
     /**
@@ -114,7 +115,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
     public BoardUI() {
         try {
             xImage = new Image(getClass().getResourceAsStream("../images/common/X_white.png"));
-            yImage = new Image(getClass().getResourceAsStream("../images/common/O_white.png"));
+            oImage = new Image(getClass().getResourceAsStream("../images/common/O_white.png"));
             emptyImage = new Image(getClass().getResourceAsStream("../images/common/Empty.png"));
         } catch(Exception e) {
             e.printStackTrace();
@@ -135,6 +136,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
                 ImageView token = new ImageView(emptyImage);
                 token.setPreserveRatio(true);
                 token.setFitHeight(100);
+                token.setFitWidth(100);
                 clickable.getChildren().add(token);
                 clickable.setOnMouseClicked(event -> {
                     Object eventType = new UserSelectionData(
@@ -152,7 +154,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
     private void setBoardBorder(Pane pane, int x, int y) {
         if (x == 1 && y % 2 == 0) { // top and bottom sides
             pane.setBorder(new Border(new BorderStroke(
-                    Color.WHITE, null, null, null,
+                    Color.rgb(70, 63, 63), null, null, null,
                     BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
                     null,
                     BorderStroke.THICK,
@@ -160,15 +162,16 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
             )));
         } else if (x % 2 == 0 && y == 1) {  // left and right sides
             pane.setBorder(new Border(new BorderStroke(
-                    Color.WHITE, null, null, null,
+                    Color.rgb(70, 63, 63), null, null, null,
                     BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE,
                     null,
                     BorderStroke.THICK,
                     Insets.EMPTY
             )));
+
         } else if (x == 1) {
             pane.setBorder(new Border(new BorderStroke( // center
-                    Color.WHITE, null, null, null,
+                    Color.rgb(70, 63, 63), null, null, null,
                     BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID,
                     null,
                     BorderStroke.THICK,
@@ -207,7 +210,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
 
                 switch (currState.getToken(x, y)) {
                 case 'X' -> image.setImage(xImage);
-                case 'O' -> image.setImage(yImage);
+                case 'O' -> image.setImage(oImage);
                 case ' ' -> image.setImage(emptyImage);
                 default -> throw new RuntimeException("Board contained an invalid value");
                 }
@@ -222,6 +225,10 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      */
     @Override
     public void update(Object eventType) {
-        // update boardUI
+        if (eventType instanceof GameController.DrawInfo) {
+            GameController.DrawInfo data = (GameController.DrawInfo) eventType;
+
+            drawBoard(data.getUpdatedBoard());
+        }
     }
 }

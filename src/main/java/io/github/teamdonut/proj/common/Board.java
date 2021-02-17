@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Board {
     public final int BOARD_WIDTH = 3;
     public final int BOARD_HEIGHT = 3;
-    private final char EMPTY_VALUE = ' ';
+    public final char EMPTY_VALUE = ' ';
     private final char[][] board = new char[BOARD_WIDTH][BOARD_HEIGHT];
 
     /**
@@ -24,7 +24,7 @@ public class Board {
      * Gets the current char[][] board of a Board object.
      * @return the char[][] board of a Board object
      */
-    public char[][] getBoard() { return board; }
+    public char[][] getUnderlyingBoard() { return board; }
 
     /**
      * After checking to make sure the passed in position is within the board,
@@ -74,7 +74,7 @@ public class Board {
                 Objects.equals(BOARD_HEIGHT, board1.BOARD_HEIGHT) &&
                 Objects.equals(EMPTY_VALUE, board1.EMPTY_VALUE) &&
                 // Uses deepEquals to check nested arrays
-                Arrays.deepEquals(getBoard(), board1.getBoard());
+                Arrays.deepEquals(getUnderlyingBoard(), board1.getUnderlyingBoard());
     }
 
     /**
@@ -84,7 +84,7 @@ public class Board {
     @Override
     public int hashCode() {
         int result = Objects.hash(BOARD_WIDTH, BOARD_HEIGHT, EMPTY_VALUE);
-        result = 31 * result + Arrays.hashCode(getBoard());
+        result = 31 * result + Arrays.hashCode(getUnderlyingBoard());
         return result;
     }
 

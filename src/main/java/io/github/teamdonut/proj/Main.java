@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * @author Joey Campbell
  * @author Utsav Parajuli
  * @author Grant Goldsworth
- * @author Brandon Nguyenr
+ * @author Brandon Nguyen
  * @version 0.1
  * @since 2/13/21
  */

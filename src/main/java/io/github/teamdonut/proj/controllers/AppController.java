@@ -1,7 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.common.BoardUI;
-import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -25,7 +23,6 @@ import java.io.IOException;
 public class AppController implements IObserver {
     private final Stage mainStage;
     public BoardUI boardUI;
-    private Board board;
     public Scene mainScene;
     public Scene boardScene;
 
@@ -66,11 +63,11 @@ public class AppController implements IObserver {
      */
     @Override
     public void update(Object eventType) {
-        if (eventType instanceof Board) {
-            Label score = new Label("test text");
+        if (eventType instanceof GameController) {
+            Label score = new Label("{running score}");
             score.setId("score");
 
-            this.board = (Board) eventType;
+            GameController game = (GameController) eventType;
             this.boardUI = new BoardUI();
             ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             view.setPreserveRatio(true);
@@ -96,35 +93,21 @@ public class AppController implements IObserver {
             BorderPane pane = new BorderPane(
                     centerScene,
                     new HBox(view),
+                    new Label(game.getPlayer2().getPlayerName()),
                     null,
-                    null,
-                    null
+                    new Label(game.getPlayer1().getPlayerName())
             );
             pane.setId("boardPage");
             pane.setPrefWidth(800);
             pane.setPrefHeight(450);
 
-            EventManager.register(boardUI, this);
+            EventManager.register(boardUI, game.getPlayer1());
+            EventManager.register(boardUI, game.getPlayer2());
+            EventManager.register(game, boardUI);
+//            EventManager.register(boardUI, this);
             boardScene = new Scene(pane);
             boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(boardScene);
-            mainStage.show();
-//            try {
-//                Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
-//                boardScene = new Scene(root);
-//                boardScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
-//                this.board = (Board) eventType;
-//                this.boardUI = new BoardUI();
-//                BoardPageController.getInstance().setGameController(this);
-//                mainStage.setScene(boardScene);
-//                mainStage.show();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-        } else if (eventType instanceof BoardUI.UserSelectionData) {
-            BoardUI.UserSelectionData temp = (BoardUI.UserSelectionData) eventType;
-            this.board.updateToken(temp.getX(), temp.getY(), 'X');
-            this.boardUI.drawBoard(this.board);
         }
     }
 }

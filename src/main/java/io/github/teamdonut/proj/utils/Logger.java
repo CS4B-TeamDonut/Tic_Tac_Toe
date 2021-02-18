@@ -1,7 +1,10 @@
 package io.github.teamdonut.proj.utils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -91,14 +94,13 @@ public final class Logger {
             appName = getString(relativePath, "app_name", "Unknown");
             basePackage = getString(relativePath, "default_package", null);
             String outputFile = getString(relativePath, "output_file", null);
-
             appLogger = java.util.logging.Logger.getLogger(appName);
 
-            if (outputFile != null) {
-                Handler handler = new FileHandler(outputFile, true);
-                handler.setFormatter(new SimpleFormatter());
-                appLogger.addHandler(handler);
-            }
+            Files.createDirectories(Path.of(System.getProperty("user.dir") + "/"
+                    + outputFile.substring(0, outputFile.lastIndexOf('/'))));
+            Handler handler = new FileHandler(outputFile, true);
+            handler.setFormatter(new SimpleFormatter());
+            appLogger.addHandler(handler);
 
         } catch (SecurityException | IOException e) {
             Logger.log(e);

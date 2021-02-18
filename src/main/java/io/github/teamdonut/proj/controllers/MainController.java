@@ -79,8 +79,11 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        GameController game = new GameController();
-        EventManager.notify(this, game);
+
+          IntermediateController name = new IntermediateController();
+          EventManager.notify(this, name);
+//        GameController game = new GameController();
+//        EventManager.notify(this, game);
 
         //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
         //        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

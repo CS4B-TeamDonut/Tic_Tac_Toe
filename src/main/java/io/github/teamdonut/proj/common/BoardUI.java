@@ -4,6 +4,7 @@ import io.github.teamdonut.proj.controllers.GameController;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.Logger;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
 import java.util.Objects;
 
 /**
@@ -118,7 +118,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
             oImage = new Image(getClass().getResourceAsStream("../images/common/O_white.png"));
             emptyImage = new Image(getClass().getResourceAsStream("../images/common/Empty.png"));
         } catch(Exception e) {
-            e.printStackTrace();
+            Logger.log(e);
         }
         boardConstruction();
     }

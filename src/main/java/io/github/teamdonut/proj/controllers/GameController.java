@@ -5,6 +5,8 @@ import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.Logger;
+
 import java.util.Random;
 
 /**
@@ -125,8 +127,8 @@ public class GameController implements ISubject, IObserver {
             Player.MoveInfo info = (Player.MoveInfo) eventType;
 
             if (swap == info.getPlayerInstance() && board.getToken(info.getX(), info.getY()) == board.EMPTY_VALUE) {
-//              System.out.println("--equals and not taken--");
                 board.updateToken(info.getX(), info.getY(), info.getPlayerInstance().getPlayerToken());
+                Logger.log("board updated");
                 EventManager.notify(this, new DrawInfo(this.board));
                 swap = (swap == player1) ? player2 : player1;
             }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teamdonut.proj.controllers.IntermediateController">
+   <center>
+      <VBox fx:id="nameEntryPAge" alignment="CENTER" prefHeight="421.0" prefWidth="450.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="textDisplay">
+               <font>
+                  <Font name="Chalkduster" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameEntry" alignment="CENTER" maxHeight="50.0" maxWidth="180.0" minHeight="50.0" minWidth="180.0" prefHeight="50.0" prefWidth="0.0">
+               <font>
+                  <Font name="Chalkduster" size="13.0" />
+               </font></TextField>
+            <Button fx:id="nameEntered" alignment="CENTER" mnemonicParsing="false" onAction="#onNameEntered" text="Enter">
+               <font>
+                  <Font name="Chalkduster" size="13.0" />
+               </font>
+            </Button>
+         </children></VBox>
+   </center>
+   <top>
+      <ImageView fx:id="backButton" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT" />
+   </top>
+</BorderPane>

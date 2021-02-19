@@ -1,6 +1,5 @@
 package io.github.teamdonut.proj.utils;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;

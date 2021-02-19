@@ -225,6 +225,6 @@ public final class Logger {
         if (stackLevel >= stackTrace.length)
             return null;
         String[] source = stackTrace[stackLevel].getClassName().split("\\.");
-        return source[source.length - 1];
+        return source[source.length - 1] + ":" + stackTrace[stackLevel].getLineNumber();
     }
 }

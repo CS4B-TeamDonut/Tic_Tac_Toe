@@ -128,7 +128,6 @@ public class GameController implements ISubject, IObserver {
 
             if (swap == info.getPlayerInstance() && board.getToken(info.getX(), info.getY()) == board.EMPTY_VALUE) {
                 board.updateToken(info.getX(), info.getY(), info.getPlayerInstance().getPlayerToken());
-                Logger.log("board updated");
                 EventManager.notify(this, new DrawInfo(this.board));
                 swap = (swap == player1) ? player2 : player1;
             }

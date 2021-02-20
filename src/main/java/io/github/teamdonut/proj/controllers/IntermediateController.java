@@ -17,18 +17,8 @@ import javafx.scene.text.TextFlow;
 
 public class IntermediateController implements ISubject {
 
-    public Label textDisplay;
-    public VBox nameEntryPage;
     @FXML
     private ImageView backButton;
-    @FXML
-    private TextFlow displayText;
-
-    @FXML
-    private TextField nameEntry;
-
-    @FXML
-    private Button entry;
 
     private final String theme = "theme_2";
 
@@ -42,10 +32,6 @@ public class IntermediateController implements ISubject {
         instance = this;
     }
 
-    public void onNameEntered() {
-        GameController game = new GameController();
-        EventManager.notify(this,game);
-    }
 
 
 }

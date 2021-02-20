@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -95,6 +96,12 @@ public class AppController implements IObserver {
 
             TextField nameEntry = new TextField();
             nameEntry.setId("nameEntry");
+
+            nameEntry.setOnKeyPressed(event -> {
+                if(event.getCode() == KeyCode.ENTER) {
+                    update(new GameController());
+                }
+            });
 
             Button entry = new Button("Enter");
             entry.setId("entry");

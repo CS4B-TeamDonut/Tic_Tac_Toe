@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * @author Utsav Parajuli
- * @version 2.0
+ * @version 0.1
  * NPC represents the non computer player which will have several levels of difficulty. The interface has a
  * method to make a move. It will also extend the ISubject interface which is used as a design pattern
  */

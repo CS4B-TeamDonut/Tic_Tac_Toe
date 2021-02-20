@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  * @author utsavparajuli
- * @version 3.0
+ * @version 0.1
  *
  * This class will implement the NPC interface as an easy difficulty. The logic in making the move for the NPC
  * is based on just finding an empty spot.

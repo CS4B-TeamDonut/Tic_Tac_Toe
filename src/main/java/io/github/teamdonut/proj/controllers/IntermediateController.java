@@ -28,7 +28,7 @@ public class IntermediateController implements ISubject {
     private TextField nameEntry;
 
     @FXML
-    private Button nameEntered;
+    private Button entry;
 
     private final String theme = "theme_2";
 

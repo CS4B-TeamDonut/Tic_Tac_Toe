@@ -72,6 +72,7 @@ public class AppController implements IObserver {
             title.setId("title");
 
             IntermediateController name = (IntermediateController) eventType;
+
             ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             view.setPreserveRatio(true);
             view.setFitWidth(200);
@@ -90,12 +91,16 @@ public class AppController implements IObserver {
                 view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             });
 
+            Button entry = new Button();
+            entry.setId("entry");
+
+            VBox centerScene = new VBox(title, )
             BorderPane pane = new BorderPane(
-                    new VBox(title, new TextField(), new Button()),
+                    new VBox(new TextField(), new Button()),
                     view,
                     null,
                     null,
-                    null
+                    title
             );
             pane.setId("intermediatePage");
             pane.setPrefWidth(800);
@@ -115,6 +120,7 @@ public class AppController implements IObserver {
 
             GameController game = (GameController) eventType;
             this.boardUI = new BoardUI();
+
             ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             view.setPreserveRatio(true);
             view.setFitWidth(200);

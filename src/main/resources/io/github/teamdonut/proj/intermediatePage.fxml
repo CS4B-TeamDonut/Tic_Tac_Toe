@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teamdonut.proj.controllers.IntermediateController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teamdonut.proj.controllers.IntermediateController">
    <center>
-      <VBox fx:id="nameEntryPAge" alignment="CENTER" prefHeight="421.0" prefWidth="450.0" spacing="25.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="textDisplay">
-               <font>
-                  <Font name="Chalkduster" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nameEntry" alignment="CENTER" maxHeight="50.0" maxWidth="180.0" minHeight="50.0" minWidth="180.0" prefHeight="50.0" prefWidth="0.0">
-               <font>
-                  <Font name="Chalkduster" size="13.0" />
-               </font></TextField>
-            <Button fx:id="nameEntered" alignment="CENTER" mnemonicParsing="false" onAction="#onNameEntered" text="Enter">
-               <font>
-                  <Font name="Chalkduster" size="13.0" />
-               </font>
-            </Button>
-         </children></VBox>
+      <VBox fx:id="nameEntryPage" alignment="CENTER" prefHeight="421.0" prefWidth="450.0" spacing="25.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <ImageView fx:id="backButton" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT" />
+       <ImageView fx:id="backButton" fitHeight="89.0" fitWidth="97.0" onMouseClicked="#onBackButtonClick" onMouseEntered="#onBackButtonEnter" onMouseExited="#onBackButtonExit" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
+           <Image url="@images/common/back_arrow_black.png" />
+       </ImageView>
    </top>
 </BorderPane>

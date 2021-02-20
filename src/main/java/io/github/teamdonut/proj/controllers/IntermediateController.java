@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -16,13 +17,12 @@ import javafx.scene.text.TextFlow;
 
 public class IntermediateController implements ISubject {
 
+    public Label textDisplay;
+    public VBox nameEntryPage;
     @FXML
     private ImageView backButton;
     @FXML
     private TextFlow displayText;
-
-    @FXML
-    private VBox nameEntryPAge;
 
     @FXML
     private TextField nameEntry;

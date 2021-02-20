@@ -94,6 +94,7 @@ public class AppController implements IObserver {
             });
 
             TextField nameEntry = new TextField();
+            nameEntry.setId("nameEntry");
 
             Button entry = new Button("Enter");
             entry.setId("entry");

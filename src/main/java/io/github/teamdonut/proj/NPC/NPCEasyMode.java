@@ -18,6 +18,7 @@ public class NPCEasyMode implements NPC {
     /**
      * Constructor for the NPCEasyMode class. Does not initialize anything. Overrides the compiler generated
      * constructor
+     * @author Utsav Parajuli
      */
     public NPCEasyMode() {
     }
@@ -27,6 +28,7 @@ public class NPCEasyMode implements NPC {
      * number which will be placed in the board. The method will iterate through the board until it finds
      * any empty spaces. Once the spot is found it will exit the loop and update the call the notify method of
      * the EventManager and pass the data.
+     * @author Utsav Parajuli
      * @param board : the tic tac toe board
      * @param c : the token
      */
@@ -65,6 +67,7 @@ public class NPCEasyMode implements NPC {
     /**
      * Returns a hash code value for the object. This method is
      * supported for the benefit of hash tables such as those provided by
+     * @author Utsav Parajuli
      * @return : a hash code value
      */
     @Override
@@ -74,7 +77,7 @@ public class NPCEasyMode implements NPC {
 
     /**
      * Indicates whether some other object is "equal to" this one.
-     *
+     * @author Utsav Parajuli
      * @param obj the reference object with which to compare.
      * @return {@code true} if this object is the same as the obj
      * argument; {@code false} otherwise.
@@ -86,7 +89,7 @@ public class NPCEasyMode implements NPC {
 
     /**
      * Returns a string representation of the object.
-     *
+     * @author Utsav Parajuli
      * @return a string representation of the object.
      */
     @Override

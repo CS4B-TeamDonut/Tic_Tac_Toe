@@ -93,25 +93,26 @@ public class AppController implements IObserver {
                 view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
             });
 
-            Button entry = new Button();
+            TextField nameEntry = new TextField();
+
+            Button entry = new Button("Enter");
             entry.setId("entry");
 
-            VBox centerScene = new VBox(title, )
-            BorderPane pane = new BorderPane(
-                    new VBox(new TextField(), new Button()),
-                    view,
-                    null,
-                    null,
-                    title
-            );
+            entry.setOnMouseClicked(event -> {
+                update(new GameController());
+            });
+
+            VBox centerScene = new VBox(title, nameEntry, entry);
+            centerScene.setSpacing(10);
+            centerScene.setAlignment(Pos.TOP_CENTER);
+
+            BorderPane pane = new BorderPane(centerScene,
+                                            view,null,
+                                    null,null);
             pane.setId("intermediatePage");
             pane.setPrefWidth(800);
             pane.setPrefHeight(450);
 
-//            EventManager.register(boardUI, game.getPlayer1());
-//            EventManager.register(boardUI, game.getPlayer2());
-//            EventManager.register(game, boardUI);
-//            EventManager.register(boardUI, this);
             intermediateScene = new Scene(pane);
             intermediateScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(intermediateScene);

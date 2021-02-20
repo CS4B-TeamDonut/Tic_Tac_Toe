@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.common.BoardUI;
+import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import javafx.fxml.FXMLLoader;
@@ -97,7 +98,8 @@ public class AppController implements IObserver {
 
             nameEntry.setOnKeyPressed(event -> {
                 if(event.getCode() == KeyCode.ENTER) {
-                    update(new GameController());
+                    System.out.println(nameEntry.getText());
+                    update(new GameController(new Player(nameEntry.getText())));
                 }
             });
 

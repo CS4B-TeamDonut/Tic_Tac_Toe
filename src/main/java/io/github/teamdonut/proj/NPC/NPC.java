@@ -5,7 +5,7 @@ import io.github.teamdonut.proj.listener.ISubject;
 import java.util.Objects;
 
 /**
- * @author utsavparajuli
+ * @author Utsav Parajuli
  * @version 2.0
  * NPC represents the non computer player which will have several levels of difficulty. The interface has a
  * method to make a move. It will also extend the ISubject interface which is used as a design pattern
@@ -14,6 +14,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
 
     /**
      * The class BoardMoveInfo contains the data that should be updated in the game class using IObserver.
+     * @author Utsav Parajuli
      */
      class BoardMoveInfo {
         private final int  x;     //row in board
@@ -23,6 +24,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
         /**
          * This constructor will initialize the BoardModeInfo class with the x, y, and c which are row-position
          * in board, column-position in board, and token to be placed in board respectively.
+         * @author Utsav Parajuli
          * @param x : row number
          * @param y : column number
          * @param c : token
@@ -35,6 +37,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
 
         /**
          * This method will return the x-position/row chose by the NPC
+         * @author Utsav Parajuli
          * @return x
          */
         public int getX() {
@@ -43,6 +46,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
 
         /**
          * This method will return the y-position/column chose by the NPC
+         * @author Utsav Parajuli
          * @return y
          */
         public int getY() {
@@ -51,6 +55,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
 
         /**
          * This method will return the token to be placed in the board
+         * @author Utsav Parajuli
          * @return c
          */
         public char getC() {
@@ -60,6 +65,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
         /**
          * This method will override the equals method of the object and will check if two instances
          * of the BoardMoveInfo classes are equal
+         * @author Utsav Parajuli
          * @param o : an object
          * @return : a boolean value of true if the objects are equal or else false
          */
@@ -76,6 +82,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
 
         /**
          * Overrides the hashCode method
+         * @author Utsav Parajuli
          * @return : the hashcode of the object
          */
         @Override
@@ -85,6 +92,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
 
         /**
          * Overrides the toString method which will return the data of the class as a string
+         * @author Utsav Parajuli
          * @return : a string value
          */
         @Override
@@ -101,6 +109,7 @@ public interface NPC extends ISubject {  //need to implement IObserver and ISubj
      * This method will make a move for the NPC. It will take in the board object and token of the NPC as
      * parameters and will use algorithms depending on the difficulty level of the NPC to make a move and place
      * it's token on the board.
+     * @author Utsav Parajuli
      * @param board : the tic tac toe board
      * @param c : the token
      */

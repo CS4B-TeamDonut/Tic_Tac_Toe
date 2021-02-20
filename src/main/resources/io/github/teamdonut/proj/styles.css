@@ -24,12 +24,12 @@
 
 #nameEntry {
     -fx-background-color: black;
-    -fx-text-fill: khaki;
+    -fx-text-fill: white;
     -fx-alignment: center;
     -fx-min-height: 50;
     -fx-max-height: 50;
     -fx-min-width: 60;
-    -fx-max-width: 160;
+    -fx-max-width: 200;
     -fx-font-size: 20px;
     -fx-font-family: Chalkduster;
 }

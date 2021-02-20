@@ -15,7 +15,19 @@
     -fx-font-size: 20px;
 }
 
+#title {
+    -fx-text-fill: khaki;
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+}
+
 #boardPage {
+    -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_03.png");
+    -fx-background-size: 800 450;
+}
+
+#intermediatePage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_03.png");
     -fx-background-size: 800 450;
 }

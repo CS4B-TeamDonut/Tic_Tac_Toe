@@ -1,0 +1,21 @@
+.label {
+    -fx-text-fill: khaki;
+    -fx-font-size: 30px;
+}
+
+#mainMenuPane {
+    -fx-background-image: url("/io/github/teamdonut/proj/images/theme_2/title_2.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+#score {
+    -fx-text-fill: lightsteelblue;
+    -fx-font-size: 20px;
+}
+
+#boardPage {
+    -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_03.png");
+    -fx-background-size: 800 450;
+}

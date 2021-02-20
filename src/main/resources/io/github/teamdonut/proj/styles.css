@@ -23,10 +23,20 @@
 }
 
 #nameEntry {
+    -fx-background-color: black;
+    -fx-text-fill: khaki;
     -fx-alignment: center;
+    -fx-min-height: 50;
+    -fx-max-height: 50;
+    -fx-min-width: 60;
+    -fx-max-width: 160;
+    -fx-font-size: 20px;
+    -fx-font-family: Chalkduster;
 }
 #entry {
     -fx-alignment: center;
+    -fx-background-color: black;
+    -fx-text-fill: khaki;
     -fx-font-size: 20;
     -fx-font-family: Chalkduster;
 }

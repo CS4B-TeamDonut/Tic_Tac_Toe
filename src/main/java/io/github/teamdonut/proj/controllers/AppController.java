@@ -18,7 +18,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -68,36 +67,27 @@ public class AppController implements IObserver {
      * Receives data from a subscribed subject
      * @param eventType object container
      * @author Kord Boniadi
+     * @author Utsav Parajuli
      */
     @Override
     public void update(Object eventType) {
+        //checking if the eventType is an IntermediateController
         if (eventType instanceof IntermediateController) {
+            //setting the title in the screen
             Label title = new Label("Please Enter Your Name");
             title.setId("title");
 
             IntermediateController name = (IntermediateController) eventType;
 
-            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-            view.setPreserveRatio(true);
-            view.setFitWidth(200);
-            view.setFitHeight(100);
+            //getting the properties of back button
+            ImageView view = getImageInfo();
 
-            view.setOnMouseClicked(event -> {
-                mainStage.setScene(mainScene);
-                mainStage.show();
-            });
-
-            view.setOnMouseEntered(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
-            });
-
-            view.setOnMouseExited(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-            });
-
+            //text field for the player to enter their name
             TextField nameEntry = new TextField();
             nameEntry.setId("nameEntry");
 
+            //when the player presses "ENTER" key after entering their name they
+            //will be directed towards the boardPage
             nameEntry.setOnKeyPressed(event -> {
                 if(event.getCode() == KeyCode.ENTER) {
                     System.out.println(nameEntry.getText());
@@ -105,17 +95,18 @@ public class AppController implements IObserver {
                 }
             });
 
+            //button for the player to press to enter their name
             Button entry = new Button("Enter");
             entry.setId("entry");
 
-            entry.setOnMouseClicked(event -> {
-                update(new GameController());
-            });
+            entry.setOnMouseClicked(event -> update(new GameController()));
 
+            //creating a scene to put the arrange the title, name entry field and button
             VBox centerScene = new VBox(title, nameEntry, entry);
             centerScene.setSpacing(10);
             centerScene.setAlignment(Pos.TOP_CENTER);
 
+            //new boarder pane
             BorderPane pane = new BorderPane(centerScene,
                                             view,null,
                                     null,null);
@@ -127,6 +118,7 @@ public class AppController implements IObserver {
             intermediateScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(intermediateScene);
         }
+        //if the event type is a GameController
         if (eventType instanceof GameController) {
             Label score = new Label("{running score}");
             score.setId("score");
@@ -134,23 +126,7 @@ public class AppController implements IObserver {
             GameController game = (GameController) eventType;
             this.boardUI = new BoardUI();
 
-            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-            view.setPreserveRatio(true);
-            view.setFitWidth(200);
-            view.setFitHeight(100);
-
-            view.setOnMouseClicked(event -> {
-                mainStage.setScene(mainScene);
-                mainStage.show();
-            });
-
-            view.setOnMouseEntered(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
-            });
-
-            view.setOnMouseExited(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-            });
+            ImageView view = getImageInfo();
 
             VBox centerScene = new VBox(score, this.boardUI);
             centerScene.setSpacing(10);
@@ -174,5 +150,29 @@ public class AppController implements IObserver {
             boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(boardScene);
         }
+    }
+
+    /**
+     * This method will return an ImageView object that has the properties of the back
+     * button
+     * @author Utsav Parajuli
+     * @author Kord Boniadi
+     * @return view
+     */
+    private ImageView getImageInfo() {
+        ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
+        view.setPreserveRatio(true);
+        view.setFitWidth(200);
+        view.setFitHeight(100);
+
+        view.setOnMouseClicked(event -> {
+            mainStage.setScene(mainScene);
+            mainStage.show();
+        });
+
+        view.setOnMouseEntered(event -> view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"))));
+
+        view.setOnMouseExited(event -> view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"))));
+        return view;
     }
 }

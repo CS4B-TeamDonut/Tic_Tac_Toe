@@ -3,6 +3,7 @@ package io.github.teamdonut.proj.controllers;
 import io.github.teamdonut.proj.common.BoardUI;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
+import io.github.teamdonut.proj.utils.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -32,6 +33,7 @@ public class AppController implements IObserver {
      * @author Kord Boniadi
      */
     public AppController(Stage stage) {
+        Logger.init("io/github/teamdonut/proj/configs/logging.properties");
         this.mainStage = stage;
     }
 

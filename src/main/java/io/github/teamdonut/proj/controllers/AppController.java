@@ -90,7 +90,6 @@ public class AppController implements IObserver {
             //will be directed towards the boardPage
             nameEntry.setOnKeyPressed(event -> {
                 if(event.getCode() == KeyCode.ENTER) {
-                    System.out.println(nameEntry.getText());
                     update(new GameController(new Player(nameEntry.getText())));
                 }
             });

@@ -23,36 +23,37 @@ import java.util.ResourceBundle;
 @Deprecated
 public class BoardPageController implements Initializable {
 
-    private BoardUI boardUI;
-    private AppController game;
-    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
-    private final Image backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
-
-    private static BoardPageController instance;
-    public static BoardPageController getInstance() {
-        return instance;
-    }
-
-    public BoardPageController() {
-        instance = this;
-    }
-
-    public void setGameController(AppController game) {
-        this.game = game;
-        this.boardUI = game.boardUI;
-        EventManager.register(boardUI, this.game);
-    }
-
     @FXML
     private ImageView backButton;
 
     @FXML
     private BorderPane boardPage;
 
+    private BoardUI board;
+    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
+    private final Image backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
+
+    public BoardPageController(BoardUI board) {
+        this.board = board;
+    }
+
+    public void setGameController(AppController game) {
+//        this.game = game;
+//        this.boardUI = game.boardUI;
+//        EventManager.register(boardUI, this.game);
+    }
+
+    /**
+     * Called to initialize a controller after its root element has been
+     * completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param resources The resources used to localize the root object, or {@code null} if
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        boardUI = new BoardUI();
-        boardPage.setCenter(this.boardUI);
+        boardPage.setCenter(board);
     }
 
     public void onBackButtonClick(MouseEvent actionEvent) throws IOException {
@@ -74,5 +75,4 @@ public class BoardPageController implements Initializable {
     public void onBackButtonExit() {
         backButton.setImage(backButtonIdle);
     }
-
 }

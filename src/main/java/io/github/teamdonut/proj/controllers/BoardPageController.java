@@ -1,27 +1,35 @@
 package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.common.BoardUI;
-import io.github.teamdonut.proj.listener.EventManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * This class should no longer be used
- * @deprecated
+ * This class handles the game board page UI
+ * @author Kord Boniadi
  */
-@Deprecated
 public class BoardPageController implements Initializable {
+
+    @FXML
+    private Label scoreLabel;
+
+    @FXML
+    private Label playerNameLeft;
+
+    @FXML
+    private Label playerNameRight;
 
     @FXML
     private ImageView backButton;
@@ -29,50 +37,68 @@ public class BoardPageController implements Initializable {
     @FXML
     private BorderPane boardPage;
 
-    private BoardUI board;
-    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("images/common/back_arrow.png"));
-    private final Image backButtonHover = new Image(getClass().getResourceAsStream("images/common/back_arrow_hover_gray.png"));
+    private final BoardUI board;
+    private final GameController game;
+    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
+    private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
 
-    public BoardPageController(BoardUI board) {
+    /**
+     * Constructor
+     * @param board instance of boardUI
+     * @param game instance of gameController
+     * @author Kord Boniadi
+     */
+    public BoardPageController(BoardUI board, GameController game) {
         this.board = board;
-    }
-
-    public void setGameController(AppController game) {
-//        this.game = game;
-//        this.boardUI = game.boardUI;
-//        EventManager.register(boardUI, this.game);
+        this.game = game;
     }
 
     /**
      * Called to initialize a controller after its root element has been
      * completely processed.
-     *
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
      * @param resources The resources used to localize the root object, or {@code null} if
+     * @author Kord Boniadi
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        boardPage.setCenter(board);
+        scoreLabel.setText("score");
+        playerNameLeft.setText(game.getPlayer1().getPlayerName());
+        playerNameRight.setText(game.getPlayer2().getPlayerName());
+        ((VBox) boardPage.getCenter()).getChildren().add(board);
+        BorderPane.setAlignment(playerNameLeft, Pos.TOP_CENTER);
+        BorderPane.setAlignment(playerNameRight, Pos.TOP_CENTER);
     }
 
-    public void onBackButtonClick(MouseEvent actionEvent) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
+    /**
+     * Event handler for back button
+     * @param actionEvent mouse event
+     * @author Kord Boniadi
+     */
+    public void onBackButtonClick(MouseEvent actionEvent) {
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = ((AppController) window.getUserData()).mainScene;
-//        Scene scene = new Scene(root);
-//        scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
-        window.setTitle("JavaFX and Gradle");
-        window.setScene(scene);
+        window.setTitle("Donut Tic Tac Toe");
+        window.setScene(((AppController) window.getUserData()).mainScene);
         window.setResizable(false);
         window.show();
     }
 
+    /**
+     * Event handler for back button hover effect
+     * @author Kord Boniadi
+     */
     public void onBackButtonEnter() {
         backButton.setImage(backButtonHover);
     }
 
+    /**
+     * Event handler for back button idle effect
+     * @author Kord Boniadi
+     */
     public void onBackButtonExit() {
         backButton.setImage(backButtonIdle);
     }
+
+
 }

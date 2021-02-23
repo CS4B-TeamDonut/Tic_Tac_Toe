@@ -5,15 +5,8 @@ import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.utils.Logger;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -66,50 +59,66 @@ public class AppController implements IObserver {
     @Override
     public void update(Object eventType) {
         if (eventType instanceof GameController) {
-            Label score = new Label("{running score}");
-            score.setId("score");
-
             GameController game = (GameController) eventType;
-            this.boardUI = new BoardUI();
-            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-            view.setPreserveRatio(true);
-            view.setFitWidth(200);
-            view.setFitHeight(100);
-
-            view.setOnMouseClicked(event -> {
-                mainStage.setScene(mainScene);
-                mainStage.show();
-            });
-
-            view.setOnMouseEntered(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
-            });
-
-            view.setOnMouseExited(event -> {
-                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-            });
-
-            VBox centerScene = new VBox(score, this.boardUI);
-            centerScene.setSpacing(10);
-            centerScene.setAlignment(Pos.TOP_CENTER);
-            BorderPane pane = new BorderPane(
-                    centerScene,
-                    new HBox(view),
-                    new Label(game.getPlayer2().getPlayerName()),
-                    null,
-                    new Label(game.getPlayer1().getPlayerName())
-            );
-            pane.setId("boardPage");
-            pane.setPrefWidth(800);
-            pane.setPrefHeight(450);
-
+            boardUI = new BoardUI();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
+            loader.setController(new BoardPageController(boardUI, game));
+            try {
+                boardScene = new Scene(loader.load());
+                boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+                mainStage.setScene(boardScene);
+            } catch (IOException e) {
+                Logger.log(e);
+            }
             EventManager.register(boardUI, game.getPlayer1());
             EventManager.register(boardUI, game.getPlayer2());
             EventManager.register(game, boardUI);
-//            EventManager.register(boardUI, this);
-            boardScene = new Scene(pane);
-            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-            mainStage.setScene(boardScene);
+
+//            Label score = new Label("{running score}");
+//            score.setId("score");
+//
+//            GameController game = (GameController) eventType;
+//            this.boardUI = new BoardUI();
+//            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
+//            view.setPreserveRatio(true);
+//            view.setFitWidth(200);
+//            view.setFitHeight(100);
+//
+//            view.setOnMouseClicked(event -> {
+//                mainStage.setScene(mainScene);
+//                mainStage.show();
+//            });
+//
+//            view.setOnMouseEntered(event -> {
+//                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
+//            });
+//
+//            view.setOnMouseExited(event -> {
+//                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
+//            });
+//
+//            VBox centerScene = new VBox(score, this.boardUI);
+//            centerScene.setSpacing(10);
+//            centerScene.setAlignment(Pos.TOP_CENTER);
+//            BorderPane pane = new BorderPane(
+//                    centerScene,
+//                    new HBox(view),
+//                    new Label(game.getPlayer2().getPlayerName()),
+//                    null,
+//                    new Label(game.getPlayer1().getPlayerName())
+//            );
+//            pane.setId("boardPage");
+//            pane.setPrefWidth(800);
+//            pane.setPrefHeight(450);
+//
+////            EventManager.register(boardUI, this);
+//            boardScene = new Scene(pane);
+//            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+//            mainStage.setScene(boardScene);
+//            EventManager.register(boardUI, game.getPlayer1());
+//            EventManager.register(boardUI, game.getPlayer2());
+//            EventManager.register(game, boardUI);
+
         }
     }
 }

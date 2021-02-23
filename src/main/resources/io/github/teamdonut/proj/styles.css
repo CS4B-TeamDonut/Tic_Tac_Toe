@@ -10,7 +10,7 @@
     -fx-background-position: center center;
 }
 
-#score {
+#scoreLabel {
     -fx-text-fill: lightsteelblue;
     -fx-font-size: 20px;
 }

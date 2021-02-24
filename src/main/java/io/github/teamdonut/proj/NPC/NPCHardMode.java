@@ -3,7 +3,7 @@ package io.github.teamdonut.proj.NPC;
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.utils.DataValidation;
 
-public class NPCHardMode implements NPC{
+public class NPCHardMode implements NPC {
 
     //constructor
     public NPCHardMode() {
@@ -13,7 +13,7 @@ public class NPCHardMode implements NPC{
      * Hard mode or Homi Mode - use minimax algorithm to choose the move for homi mode AI.
      * @param board : the tic tac toe board
      * @param c : the token
-     * @author: Grant Goldsworth
+     * @author : Grant Goldsworth
      */
     @Override
     public void makeMove(Board board, char c) {
@@ -23,6 +23,9 @@ public class NPCHardMode implements NPC{
         char[][] localBoard = board.getUnderlyingBoard(); // get the actual board data
 
         // call recursive minimax algorithm function
+
+        // pass move to new BoardInfo thing
+        // notify manager
     }
 
     /**
@@ -30,7 +33,7 @@ public class NPCHardMode implements NPC{
      * current state of the board, and make the best possible decision in order
      * for the AI to win or achieve a draw.
      * @param board the board with the current state of the game
-     * @param depth the current depth of the recusion; used to increase efficiency
+     * @param depth the current depth of the recursion; used to increase efficiency
      * @param isMaximizer whether or not current call is for the maximizer's turn
      * @return value chosen at current node by AI
      */
@@ -39,11 +42,60 @@ public class NPCHardMode implements NPC{
     };
 
     /**
-     * Returns whether or not the game is over - if all cells on board have been occupied
-     * @param board
-     * @return
+     * Returns the numerical win/loss status of the current board.
+     * Positive 10 is returned if the maximizer has won, negative 10 if
+     * the minimizer has won, and 0 if there is a draw or no win/loss.
+     * @param board the board with the current state of the game
+     * @return 10 if max win, 0 if draw/none, -10 if min win
      */
-    private boolean isTerminal(Board board) {
-        return false;
+    public static int evaluate(Board board) {
+        // check rows for X or O victory
+        // check that contents are equal in row, then return +/- 10 based on what character is
+        for (int row = 0; row < 3; row++)
+        {
+            if (board.getToken(row, 0) == board.getToken(row, 1) && board.getToken(row, 0) == board.getToken(row, 2))
+            {
+                // row is all one token - what token is it?
+                if (board.getToken(row, 0) == 'X')
+                    return 10;
+                else
+                    return -10;
+            }
+
+        }
+
+        // check columns for X or O victory
+        for (int col = 0; col < 3; col++)
+        {
+            if (board.getToken(0, col) == board.getToken(1, col) && board.getToken(0, col) == board.getToken(2, col))
+            {
+                // col is all one token - what token is it?
+                if (board.getToken(0, col) == 'X')
+                    return 10;
+                else
+                    return -10;
+            }
+
+        }
+
+        // check diagonals for X or O victory
+        // diagonal 1
+        if (board.getToken(0,0) == board.getToken(1,1) && board.getToken(0,0) == board.getToken(2,2)) {
+            if (board.getToken(0,0) == 'X')
+                return 10;
+            else
+                return -10;
+        }
+
+        // diagonal 2
+        if (board.getToken(0,2) == board.getToken(1,1) && board.getToken(0,2) == board.getToken(2,0)) {
+            if (board.getToken(0,2) == 'X')
+                return 10;
+            else
+                return -10;
+        }
+
+        // final case: no win/loss, return 0
+        return 0;
     }
 }

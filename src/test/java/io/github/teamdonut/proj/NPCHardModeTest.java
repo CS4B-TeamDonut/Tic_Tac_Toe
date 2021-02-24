@@ -3,9 +3,6 @@ package io.github.teamdonut.proj;
 import io.github.teamdonut.proj.NPC.NPCHardMode;
 import io.github.teamdonut.proj.common.Board;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -73,12 +70,62 @@ public class NPCHardModeTest
      */
     @Test
     public void miniMaxAlgoTest() {
-        // give a scenario
-        // run minimax
-        // ensure that it returns correct numerical choice
 
+        int bestValue = -100;   // simulated best value
+        int moveRow = 0;        // row of minimax's choice
+        int moveCol = 0;        // col of minimax's choice
+
+        // give a scenario
+        Board board = new Board();
+        board.updateToken(0, 0, 'X');
+        board.updateToken(0, 1, 'O');
+        board.updateToken(0, 2, 'X');
+        board.updateToken(1, 0, 'O');
+        board.updateToken(1, 1, 'O');
+        board.updateToken(1, 2, 'X');
+
+        // create a simple driver to run minimax on this scenario
+        // for each cell
+        for (int row = 0; row < 3; row ++) {
+            for (int col = 0; col < 3; col ++) {
+               // if the cell is empty
+               if(board.getToken(row, col) == ' ') {
+                   // simulate the player's move here (or maximizer's move)
+                   board.updateToken(row, col, NPCHardMode.MAXIMIZER);
+
+                   // run minimax on this spot and record result
+                   int miniMaxResult = NPCHardMode.miniMax(board, 0, false);
+
+                   // undo the move for this iteration
+                   board.updateToken(row, col, ' ');
+
+                   // if the current move's value from minimax is better than the bestValue, update
+                   // the best value and record location
+                   // should end with value 10 and move [2,2]
+                   if (bestValue < miniMaxResult) {
+                       bestValue = miniMaxResult;
+                       moveRow = row;
+                       moveCol = col;
+                   }
+               }
+            }
+        }
+
+
+        // ensure that it returns correct numerical choice
+        assertEquals(10, bestValue);
+        assertEquals(2, moveRow);
+        assertEquals(2, moveCol);
     }
 
+
+    /**
+     * Test the isFullBoard method that checks if the board
+     * is completely full - every cell has
+     * a token that is not the character ' '
+     * @author Grant Goldsworth
+     * @see NPCHardMode#isFullBoard(Board)
+     */
     @Test
     public void fullBoardTest() {
         Board board = new Board();
@@ -98,7 +145,7 @@ public class NPCHardModeTest
         // assert that method returns that it is not a full board
         assertFalse(NPCHardMode.isFullBoard(board));
 
-
-
     }
+
+
 }

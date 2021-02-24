@@ -108,7 +108,6 @@ public class NPCHardMode implements NPC {
     }
 
 
-
     /**
      * Returns the numerical win/loss status of the current board.
      * Positive 10 is returned if the maximizer has won, negative 10 if

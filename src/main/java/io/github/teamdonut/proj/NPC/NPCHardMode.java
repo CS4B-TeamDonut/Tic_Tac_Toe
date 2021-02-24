@@ -9,6 +9,7 @@ public class NPCHardMode implements NPC {
     public NPCHardMode() {
     }
 
+
     /**
      * Hard mode or Homi Mode - use minimax algorithm to choose the move for homi mode AI.
      * @param board : the tic tac toe board
@@ -28,6 +29,7 @@ public class NPCHardMode implements NPC {
         // notify manager
     }
 
+
     /**
      * The minimax algorithm. Uses recursion to analyze all possible paths forward from the
      * current state of the board, and make the best possible decision in order
@@ -37,9 +39,10 @@ public class NPCHardMode implements NPC {
      * @param isMaximizer whether or not current call is for the maximizer's turn
      * @return value chosen at current node by AI
      */
-    private int miniMax(Board board, int depth, boolean isMaximizer) {
+    public static int miniMax(Board board, int depth, boolean isMaximizer) {
         return 1;
     };
+
 
     /**
      * Returns the numerical win/loss status of the current board.
@@ -97,5 +100,25 @@ public class NPCHardMode implements NPC {
 
         // final case: no win/loss, return 0
         return 0;
+    }
+
+    /**
+     * Checks to see if the board is full or not (all cells have a token that
+     * is not the character ' ').
+     * @param board the board to test
+     * @return true if all cells have a value besides ' ', false otherwise
+     */
+    public static boolean isFullBoard(Board board) {
+        for (char[] row : board.getUnderlyingBoard()) {
+            for (char col : row) {
+                // does cell have a valid token? If not, board isn't empty
+                // TODO: note to reviewer: if Board.EMPTY_VALUE is made static, this would look nicer
+                if (col == ' ')
+                    return false;
+            }
+        }
+
+        // all board cells have a token
+        return true;
     }
 }

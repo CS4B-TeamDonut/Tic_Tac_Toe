@@ -5,6 +5,9 @@ import io.github.teamdonut.proj.utils.DataValidation;
 
 public class NPCHardMode implements NPC {
 
+    public static final char MAXIMIZER = 'X';
+    public static final char MINIMIZER = 'O';
+
     //constructor
     public NPCHardMode() {
     }
@@ -40,8 +43,68 @@ public class NPCHardMode implements NPC {
      * @return value chosen at current node by AI
      */
     public static int miniMax(Board board, int depth, boolean isMaximizer) {
-        return 1;
-    };
+
+        // evaluate the current board to find out if there is a win/loss
+        int boardState = evaluate(board);
+
+        // base cases
+        // maximizer win        minimizer win
+        if (boardState == 10 || boardState == -10)
+            return boardState;
+
+        // the board is full - draw
+        if(isFullBoard(board))
+            return 0;
+
+        // maximizer's move
+        if(isMaximizer) {
+            int bestValue = -100;
+            // for each child move, analyze possible routes and the state
+            // this means traversing all cells in the board and analyzing
+            for(int row = 0; row < 3; row ++) {
+                for(int col = 0; col < 3; col ++) {
+                    // is this cell empty?
+                    if(board.getToken(row, col) == ' ') {
+                        // make move of maximizer since it's their move
+                        board.updateToken(row, col, MAXIMIZER);
+
+                        // with hypothetical move made, analyze game state with recursive call
+                        bestValue = miniMax(board, depth + 1, !isMaximizer);
+
+                        // undo the move
+                        // TODO again would love to have the ability to do Board.EMPTY_VALUE rather than ' '
+                        board.updateToken(row, col, ' ');
+                    }
+                }
+            } // end for each child
+            return bestValue;
+        } // end maximizer's move
+
+
+        // minimizer's move
+        else {
+            int bestValue = 100;
+            // for each child move, analyze possible routes and the state
+            // this means traversing all cells in the board and analyzing
+            for(int row = 0; row < 3; row ++) {
+                for(int col = 0; col < 3; col ++) {
+                    // is this cell empty?
+                    if(board.getToken(row, col) == ' ') {
+                        // make move of minimizer since it's their move
+                        board.updateToken(row, col, MINIMIZER);
+
+                        // with hypothetical move made, analyze game state with recursive call
+                        bestValue = miniMax(board, depth + 1, isMaximizer);
+
+                        // undo the move
+                        // TODO again would love to have the ability to do Board.EMPTY_VALUE rather than ' '
+                        board.updateToken(row, col, ' ');
+                    }
+                }
+            } // end for each child
+            return bestValue;
+        } // end minimizer's move
+    }
 
 
     /**

@@ -12,6 +12,7 @@ public class NPCHardMode implements NPC {
     public NPCHardMode() {
     }
 
+
     /**
      * Hard mode or Homi Mode - use minimax algorithm to choose the move for homi mode AI.
      * @param board : the tic tac toe board
@@ -105,6 +106,7 @@ public class NPCHardMode implements NPC {
             return bestValue;
         } // end minimizer's move
     }
+
 
 
     /**

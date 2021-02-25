@@ -4,6 +4,12 @@ import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.utils.DataValidation;
 
+/**
+ * Implementation of Homi mode for the tic tac toe AI.
+ * This NPC uses minimax to calculate the best possible move and
+ * will always win or tie the other player.
+ * @author Grant Goldsworth
+ */
 public class NPCHardMode implements NPC {
 
     public static final char MAXIMIZER = 'X';

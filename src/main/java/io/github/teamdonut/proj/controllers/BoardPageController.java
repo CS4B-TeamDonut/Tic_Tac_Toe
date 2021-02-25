@@ -100,5 +100,4 @@ public class BoardPageController implements Initializable {
         backButton.setImage(backButtonIdle);
     }
 
-
 }

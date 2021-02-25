@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.MusicPlayer;
 import io.github.teamdonut.proj.common.BoardUI;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
@@ -36,19 +37,32 @@ public class AppController implements IObserver {
      * @author Kord Boniadi
      */
     public void startApp() throws IOException {
+        MusicPlayer.getInstance();
         Parent root = FXMLLoader.load(getClass().getResource("../startPage.fxml"));
 
-        EventManager.register(MainController.getInstance(), this);
-
-        mainScene = new Scene(root);
-        mainScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+        Scene start = new Scene(root);
+        start.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
         mainStage.setUserData(this);
-
+        root.requestFocus();
         // set the title of the stage
         mainStage.setTitle("Donut Tic Tac Toe");
-        mainStage.setScene(mainScene);
+        mainStage.setScene(start);
         mainStage.setResizable(false);
         mainStage.show();
+
+//        Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
+//
+//        EventManager.register(MainController.getInstance(), this);
+//
+//        mainScene = new Scene(root);
+//        mainScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+//        mainStage.setUserData(this);
+//
+//        // set the title of the stage
+//        mainStage.setTitle("Donut Tic Tac Toe");
+//        mainStage.setScene(mainScene);
+//        mainStage.setResizable(false);
+//        mainStage.show();
     }
 
     /**

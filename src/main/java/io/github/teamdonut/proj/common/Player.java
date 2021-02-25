@@ -3,7 +3,6 @@ package io.github.teamdonut.proj.common;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
-
 import java.util.Objects;
 
 /**

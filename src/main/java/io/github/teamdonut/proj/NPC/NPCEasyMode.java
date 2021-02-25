@@ -63,6 +63,26 @@ public class NPCEasyMode implements NPC {
     }
 
     /**
+     * Checks to see if the board is full or not (all cells have a token that
+     * is not the character ' ').
+     * @param board the board to test
+     * @return true if all cells have a value besides ' ', false otherwise
+     * @author Grant Goldsworth
+     */
+    public static boolean isFullBoard(Board board) {
+        for (char[] row : board.getUnderlyingBoard()) {
+            for (char col : row) {
+                // does cell have a valid token? If not, board isn't empty
+                if (col == ' ')
+                    return false;
+            }
+        }
+
+        // all board cells have a token
+        return true;
+    }
+
+    /**
      * Returns a hash code value for the object. This method is
      * supported for the benefit of hash tables such as those provided by
      * @return : a hash code value

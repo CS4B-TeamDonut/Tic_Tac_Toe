@@ -54,15 +54,33 @@ public class GameController implements ISubject, IObserver {
 
     /**
      * Constructor
+     * @author Utsav Parajuli
+     * @param player1 player object instance
+     */
+    public GameController(Player player1) {
+        this(
+                new Player(player1.getPlayerName(), 'X'),
+                new Player("Computer", 'O'),
+                new Board()
+        );
+    }
+
+
+    /**
+     * Constructor
      * @param player1 player object instance
      * @param player2 player object instance
      * @author Kord Boniadi
      * @author Brandon Nguyen
+     * @author Utsav Parajuli
      */
     public GameController(Player player1, Player player2) {
-        this(player1, player2, new Board());
-    }
 
+        this(
+                new Player(player1.getPlayerName(), player1.getPlayerToken()),
+                new Player(player2.getPlayerName(), player2.getPlayerToken()),
+                new Board());
+    }
     /**
      * Constructor
      * @param player1 player object instance

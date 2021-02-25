@@ -44,6 +44,7 @@ public class NPCHardMode implements NPC {
      */
     public static int miniMax(Board board, int depth, boolean isMaximizer) {
 
+        // TODO implement alpha-beta pruning
         // evaluate the current board to find out if there is a win/loss
         int boardState = evaluate(board);
 
@@ -69,7 +70,7 @@ public class NPCHardMode implements NPC {
                         board.updateToken(row, col, MAXIMIZER);
 
                         // with hypothetical move made, analyze game state with recursive call
-                        bestValue = miniMax(board, depth + 1, !isMaximizer);
+                        bestValue = Math.max(bestValue, miniMax(board, depth + 1, !isMaximizer));
 
                         // undo the move
                         // TODO again would love to have the ability to do Board.EMPTY_VALUE rather than ' '
@@ -94,7 +95,7 @@ public class NPCHardMode implements NPC {
                         board.updateToken(row, col, MINIMIZER);
 
                         // with hypothetical move made, analyze game state with recursive call
-                        bestValue = miniMax(board, depth + 1, isMaximizer);
+                        bestValue = Math.min(bestValue, miniMax(board, depth + 1, isMaximizer));
 
                         // undo the move
                         // TODO again would love to have the ability to do Board.EMPTY_VALUE rather than ' '

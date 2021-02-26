@@ -3,7 +3,12 @@
     -fx-font-size: 30px;
 }
 
-#mainMenuPane {
+#startKey {
+    -fx-text-fill: white;
+    -fx-font-size: 40px;
+}
+
+#mainMenuPane, #startPage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/theme_2/title_2.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;

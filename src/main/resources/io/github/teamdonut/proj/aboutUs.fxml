@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="aboutUsPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teamdonut.proj.controllers.AboutUsController">
+   <center>
+      <Label text="Label" BorderPane.alignment="CENTER">
+         <graphic>
+            <Hyperlink text="Hyperlink" translateX="50.0" translateY="60.0" />
+         </graphic></Label>
+   </center>
+   <bottom>
+      <Label text="Label" translateY="-30.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="backButton" fitHeight="89.0" fitWidth="97.0" onMouseClicked="#onBackButtonClick" onMouseEntered="#onBackButtonEnter" onMouseExited="#onBackButtonExit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/common/back_arrow.png" />
+               </image></ImageView>
+            <Label fx:id="aboutUsTitle" text="Label" translateX="400.0" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

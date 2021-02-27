@@ -21,6 +21,7 @@ public class AppController implements IObserver {
     public Scene mainScene;
     public Scene boardScene;
     public Scene intermediateScene;
+    public Scene aboutUsScene;
 
     /**
      * Constructor
@@ -73,6 +74,22 @@ public class AppController implements IObserver {
      */
     @Override
     public void update(Object eventType) {
+
+        if (eventType instanceof AboutUsController) {
+            AboutUsController aboutUs = (AboutUsController) eventType;
+            EventManager.register(aboutUs, this);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../aboutUs.fxml"));
+
+            try {
+                aboutUsScene = new Scene(loader.load());
+                aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+                mainStage.setScene(aboutUsScene);
+            } catch (IOException e) {
+                Logger.log(e);
+            }
+
+        }
         //checking if the eventType is an IntermediateController
         if (eventType instanceof IntermediateController) {
             IntermediateController name = (IntermediateController) eventType;

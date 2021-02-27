@@ -8,11 +8,11 @@
    <center>
       <Label fx:id="info" text="Label" translateX="-110.0" translateY="-60.0" BorderPane.alignment="CENTER">
          <graphic>
-            <Hyperlink fx:id="githubLink" text="Hyperlink" translateX="50.0" translateY="60.0" />
+            <Hyperlink fx:id="githubLink" text="Hyperlink" translateX="380.0" translateY="130.0" />
          </graphic></Label>
    </center>
    <bottom>
-      <Label fx:id="contributors" text="Label" BorderPane.alignment="CENTER" />
+      <Label fx:id="contributors" text="Label" translateY="-20.0" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">

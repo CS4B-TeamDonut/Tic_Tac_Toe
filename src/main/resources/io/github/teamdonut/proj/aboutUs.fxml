@@ -8,7 +8,7 @@
    <center>
       <Label text="Label" BorderPane.alignment="CENTER">
          <graphic>
-            <Hyperlink text="Hyperlink" translateX="50.0" translateY="60.0" />
+            <Hyperlink fx:id="githubLink" text="Hyperlink" translateX="50.0" translateY="60.0" />
          </graphic></Label>
    </center>
    <bottom>
@@ -21,7 +21,7 @@
                <image>
                   <Image url="@images/common/back_arrow.png" />
                </image></ImageView>
-            <Label fx:id="aboutUsTitle" text="Label" translateX="400.0" />
+            <Label fx:id="aboutUsTitle" text="Label" translateY="20.0" />
          </children>
       </HBox>
    </top>

@@ -28,6 +28,20 @@
     -fx-min-height: 35;
 }
 
+#aboutUsTitle {
+    -fx-text-fill: khaki;
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 40px;
+    -fx-alignment: center;
+    -fx-min-width: 600;
+    -fx-min-height: 35;
+}
+
+#githubLink {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 18px;
+}
+
 #nameEntry {
     -fx-background-color: black;
     -fx-text-fill: #75a2e1;

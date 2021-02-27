@@ -1,15 +1,22 @@
 package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,6 +30,10 @@ public class AboutUsController implements Initializable, ISubject {
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
+    public BorderPane aboutUsPage;
+
+    @FXML
+    public Hyperlink githubLink;
 
 
     /**
@@ -35,7 +46,18 @@ public class AboutUsController implements Initializable, ISubject {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        aboutUsTitle.setText("Hello");
+        aboutUsTitle.setText("TEAM DONUT CS4B");
+
+        githubLink.setText("GitHub Repository");
+        githubLink.setOnAction(event -> {
+            if(Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://github.com/kboniadi/Tic_Tac_Toe"));
+                } catch (IOException | URISyntaxException e) {
+                    Logger.log(e);
+                }
+            }
+        });
     }
 
     /**

@@ -42,6 +42,13 @@
     -fx-font-size: 18px;
 }
 
+#info {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 19px;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
 #nameEntry {
     -fx-background-color: black;
     -fx-text-fill: #75a2e1;

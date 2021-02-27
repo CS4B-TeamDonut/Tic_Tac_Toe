@@ -35,6 +35,12 @@ public class AboutUsController implements Initializable, ISubject {
     @FXML
     public Hyperlink githubLink;
 
+    @FXML
+    public Label contributors;
+
+    @FXML
+    public Label info;
+
 
     /**
      * Called to initialize a controller after its root element has been
@@ -48,6 +54,14 @@ public class AboutUsController implements Initializable, ISubject {
     public void initialize(URL location, ResourceBundle resources) {
         aboutUsTitle.setText("TEAM DONUT CS4B");
 
+        info.setText("""
+                Welcome to our Tic Tac Toe Board Game. You will
+                be able to play local multiplayer with your friends,
+                as well as battle against a computer A.I. in two 
+                difficulty modes. We will be adding new features
+                soon. Stay tuned.
+                            Have fun and happy playing!!""");
+
         githubLink.setText("GitHub Repository");
         githubLink.setOnAction(event -> {
             if(Desktop.isDesktopSupported()) {
@@ -58,6 +72,11 @@ public class AboutUsController implements Initializable, ISubject {
                 }
             }
         });
+
+        contributors.setText("Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Joey Campbell, Utsav Parajuli " +
+                             "Copyright 2021 © Donut");
+
+
     }
 
     /**

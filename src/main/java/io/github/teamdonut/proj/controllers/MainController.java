@@ -30,11 +30,11 @@ public class MainController implements Initializable, ISubject {
     @FXML
     public BorderPane mainMenuPane;
 
-    @FXML
-    public ImageView aboutButton;
+//    @FXML
+//    private ImageView aboutButton;      //corner button
 
     @FXML
-    public ImageView aboutUsRect;
+    private ImageView aboutUsRect;      //rectangle button
 
     @FXML
     private ImageView singlePlayerButton;
@@ -42,9 +42,10 @@ public class MainController implements Initializable, ISubject {
     @FXML
     private ImageView multiPlayerButton;
 
-    private final String theme = "theme_2";
+    @FXML
+    private Scene aboutUsScene;
 
-    Scene aboutUsScene;
+    private final String theme = "theme_2";
 
     /*
      *  // By pass the need for this:
@@ -120,14 +121,6 @@ public class MainController implements Initializable, ISubject {
      * the button icon to the hovered icon status.
      * @author Grant Goldsworth
      */
-    public void onAboutUsButtonHover(/*MouseEvent mouseEvent*/) {
-        //aboutUsButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/singleplayer_button_hover.png")));
-    }
-    /**
-     * Handles mouse hover event on the single player image "button", changing
-     * the button icon to the hovered icon status.
-     * @author Grant Goldsworth
-     */
     public void onSinglePlayerButtonHover(/*MouseEvent mouseEvent*/) {
         singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/singleplayer_button_hover.png")));
     }
@@ -169,24 +162,48 @@ public class MainController implements Initializable, ISubject {
         multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/multiplayer_button.png")));
     }
 
+    /**
+     * Handles mouse click event on the about us image "button".
+     * @author Utsav Parajuli
+     */
     public void onAboutButtonClicked(/*MouseEvent mouseEvent*/) {
         AboutUsController aboutUs = new AboutUsController();
         EventManager.notify(this, aboutUs);
     }
 
-    public void onAboutButtonEnter(/*MouseEvent mouseEvent*/) {
-        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square_hover.png")));
-    }
+//    /**
+//     * Handles mouse hover event on the about us image "button", changing
+//     * the button icon to the hovered icon status.
+//     * @author Utsav Parajuli
+//     */
+//    public void onAboutButtonEnter(/*MouseEvent mouseEvent*/) {
+//        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square_hover.png")));
+//    }
+//
+//    /**
+//     * Handles mouse hover exit event on the about us image "button", changing the
+//     * button icon to the normal status.
+//     * @author Utsav Parajuli
+//     */
+//    public void onAboutButtonExit(MouseEvent mouseEvent) {
+//        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square.png")));
+//    }
 
-    public void onAboutButtonExit(MouseEvent mouseEvent) {
-        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square.png")));
-    }
-
+    /**
+     * Handles mouse hover event on the about us image "button", changing
+     * the button icon to the hovered icon status.
+     * @author Utsav Parajuli
+     */
     public void onAboutRectEnter(/*MouseEvent mouseEvent*/) {
         aboutUsRect.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_hover.png")));
 
     }
 
+    /**
+     * Handles mouse hover exit event on the about us image "button", changing the
+     * button icon to the normal status.
+     * @author Utsav Parajuli
+     */
     public void onAboutRectExit(/*MouseEvent mouseEvent*/) {
         aboutUsRect.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button.png")));
 

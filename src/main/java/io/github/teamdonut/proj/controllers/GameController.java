@@ -75,7 +75,6 @@ public class GameController implements ISubject, IObserver {
      * @author Utsav Parajuli
      */
     public GameController(Player player1, Player player2) {
-
         this(
                 new Player(player1.getPlayerName(), player1.getPlayerToken()),
                 new Player(player2.getPlayerName(), player2.getPlayerToken()),

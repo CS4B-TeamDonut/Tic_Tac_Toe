@@ -12,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -20,27 +19,34 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class that handles the About Us page UI
+ *
+ * @author Utsav Parajuli
+ * @version 0.1
+ */
 public class AboutUsController implements Initializable, ISubject {
 
     @FXML
-    public Label aboutUsTitle;
+    private Label aboutUsTitle;
 
     @FXML
-    public ImageView backButton;
+    private ImageView backButton;
+
+    @FXML
+    private BorderPane aboutUsPage;
+
+    @FXML
+    private Hyperlink githubLink;
+
+    @FXML
+    private Label contributors;
+
+    @FXML
+    private Label info;
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
-    public BorderPane aboutUsPage;
-
-    @FXML
-    public Hyperlink githubLink;
-
-    @FXML
-    public Label contributors;
-
-    @FXML
-    public Label info;
-
 
     /**
      * Called to initialize a controller after its root element has been
@@ -49,11 +55,15 @@ public class AboutUsController implements Initializable, ISubject {
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
      * @param resources The resources used to localize the root object, or {@code null} if
+     *                  the resource is unknown
+     * @author Utsav Parajuli
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //about us page
         aboutUsTitle.setText("TEAM DONUT CS4B");
 
+        //application info
         info.setText("""
                 Welcome to our Tic Tac Toe Board Game. You will
                 be able to play local multiplayer with your friends,
@@ -62,6 +72,7 @@ public class AboutUsController implements Initializable, ISubject {
                 soon. Stay tuned.
                             Have fun and happy playing!!""");
 
+        //url link to the github repository
         githubLink.setText("GitHub Repository");
         githubLink.setOnAction(event -> {
             if(Desktop.isDesktopSupported()) {
@@ -73,6 +84,7 @@ public class AboutUsController implements Initializable, ISubject {
             }
         });
 
+        //name of the contributors
         contributors.setText("""
                              Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Joey Campbell, Utsav Parajuli
                                                             Copyright 2021 © Donut""");

@@ -37,7 +37,7 @@ public class NPCHardMode implements NPC {
         for (int row = 0; row < 3; row ++) {
             for (int col = 0; col < 3; col ++) {
                 // if the cell is empty
-                if(board.getToken(row, col) == ' ') {
+                if(board.getToken(row, col) == board.EMPTY_VALUE) {
                     // simulate the player's move here (or maximizer's move)
                     board.updateToken(row, col, NPCHardMode.MAXIMIZER);
 
@@ -45,7 +45,7 @@ public class NPCHardMode implements NPC {
                     int miniMaxResult = NPCHardMode.miniMax(board, 0, false);
 
                     // undo the move for this iteration
-                    board.updateToken(row, col, ' ');
+                    board.updateToken(row, col, board.EMPTY_VALUE);
 
                     // if the current move's value from minimax is better than the bestValue, update
                     // the best value and record location
@@ -60,6 +60,7 @@ public class NPCHardMode implements NPC {
         } // end for each cell in board
 
         // TODO verify that this is how its supposed to be done
+        //  verified
         EventManager.notify(this, new NPC.BoardMoveInfo(moveRow, moveCol, c));
     }
 
@@ -97,7 +98,7 @@ public class NPCHardMode implements NPC {
             for(int row = 0; row < 3; row ++) {
                 for(int col = 0; col < 3; col ++) {
                     // is this cell empty?
-                    if(board.getToken(row, col) == ' ') {
+                    if(board.getToken(row, col) == board.EMPTY_VALUE) {
                         // make move of maximizer since it's their move
                         board.updateToken(row, col, MAXIMIZER);
 
@@ -105,8 +106,7 @@ public class NPCHardMode implements NPC {
                         bestValue = Math.max(bestValue, miniMax(board, depth + 1, !isMaximizer));
 
                         // undo the move
-                        // TODO again would love to have the ability to do Board.EMPTY_VALUE rather than ' '
-                        board.updateToken(row, col, ' ');
+                        board.updateToken(row, col, board.EMPTY_VALUE);
                     }
                 }
             } // end for each child
@@ -122,7 +122,7 @@ public class NPCHardMode implements NPC {
             for(int row = 0; row < 3; row ++) {
                 for(int col = 0; col < 3; col ++) {
                     // is this cell empty?
-                    if(board.getToken(row, col) == ' ') {
+                    if(board.getToken(row, col) == board.EMPTY_VALUE) {
                         // make move of minimizer since it's their move
                         board.updateToken(row, col, MINIMIZER);
 
@@ -130,8 +130,7 @@ public class NPCHardMode implements NPC {
                         bestValue = Math.min(bestValue, miniMax(board, depth + 1, isMaximizer));
 
                         // undo the move
-                        // TODO again would love to have the ability to do Board.EMPTY_VALUE rather than ' '
-                        board.updateToken(row, col, ' ');
+                        board.updateToken(row, col, board.EMPTY_VALUE);
                     }
                 }
             } // end for each child
@@ -210,7 +209,6 @@ public class NPCHardMode implements NPC {
         for (char[] row : board.getUnderlyingBoard()) {
             for (char col : row) {
                 // does cell have a valid token? If not, board isn't empty
-                // TODO: note to reviewer: if Board.EMPTY_VALUE is made static, this would look nicer
                 if (col == ' ')
                     return false;
             }

@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.EventSoundPing;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.Logger;
@@ -102,7 +103,7 @@ public class MainController implements Initializable, ISubject {
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
 //        GameController game = new GameController();
 //        EventManager.notify(this, game);
-
+        EventSoundPing.getInstance().playButtonSound2();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);
 
@@ -140,7 +141,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
-
+        EventSoundPing.getInstance().playButtonSound2();
     }
 
     /**

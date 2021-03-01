@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.EventSoundPing;
 import io.github.teamdonut.proj.listener.EventManager;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -60,6 +61,7 @@ public class StartController implements Initializable {
      */
     public void onKeyPressed(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode().equals(KeyCode.Z)) {
+            EventSoundPing.getInstance().playButtonSound2();
             Stage window = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
 

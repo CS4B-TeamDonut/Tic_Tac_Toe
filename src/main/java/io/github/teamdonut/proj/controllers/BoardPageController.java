@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.EventSoundPing;
 import io.github.teamdonut.proj.common.BoardUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -77,6 +78,7 @@ public class BoardPageController implements Initializable {
      * @author Kord Boniadi
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
+        EventSoundPing.getInstance().playButtonSound1();
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);

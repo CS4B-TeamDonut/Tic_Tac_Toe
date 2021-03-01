@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
-import io.github.teamdonut.proj.MusicPlayer;
+import io.github.teamdonut.music.MusicPlayer;
 import io.github.teamdonut.proj.common.BoardUI;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;

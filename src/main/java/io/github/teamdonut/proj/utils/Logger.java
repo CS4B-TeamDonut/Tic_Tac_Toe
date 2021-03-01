@@ -205,7 +205,7 @@ public final class Logger {
      * @param defaultValue the default value to use if not found
      * @return the string or default value if not found
      */
-    static String getString(String bundlePath, String key, String defaultValue) {
+    private static String getString(String bundlePath, String key, String defaultValue) {
         int pos = bundlePath.indexOf(".properties");
         try {
             return  ResourceBundle.getBundle(bundlePath.substring(0,pos)).getString(key);
@@ -219,7 +219,7 @@ public final class Logger {
      * @param stackLevel the level in the stack trace
      * @return the classname of th calling class
      */
-    static String getCallingClassName(int stackLevel) {
+    private static String getCallingClassName(int stackLevel) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         if (stackLevel >= stackTrace.length)
             return null;

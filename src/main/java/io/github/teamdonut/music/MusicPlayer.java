@@ -1,4 +1,4 @@
-package io.github.teamdonut.proj;
+package io.github.teamdonut.music;
 
 import io.github.teamdonut.proj.utils.Logger;
 import javafx.beans.value.ChangeListener;
@@ -21,7 +21,7 @@ public final class MusicPlayer {
     private ChangeListener<Duration> progressChangeListener;
     private final ProgressBar progress = new ProgressBar();
     private final List<String> SUPPORTED_FILE_TYPES = Arrays.asList(".mp3", ".wav");
-    private final String musicDirPath = "src/main/resources/io/github/teamdonut/proj/music/";
+    private final String musicDirPath = "src/main/resources/io/github/teamdonut/music/";
 
     /**
      * @return one instance of MusicPlayer

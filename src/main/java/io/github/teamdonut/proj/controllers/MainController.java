@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
-import io.github.teamdonut.proj.EventSoundPing;
+import io.github.teamdonut.sounds.EventSounds;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import javafx.fxml.FXML;
@@ -80,7 +80,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        EventSoundPing.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound2();
         GameController game = new GameController();
         EventManager.notify(this, game);
 
@@ -119,7 +119,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        EventSoundPing.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound2();
     }
 
     /**

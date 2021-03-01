@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.common;
 
+import io.github.teamdonut.proj.EventSoundPing;
 import io.github.teamdonut.proj.controllers.GameController;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;

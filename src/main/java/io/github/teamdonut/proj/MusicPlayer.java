@@ -16,11 +16,12 @@ import java.util.Objects;
  * Singleton class for app music paler
  * @author Kord Boniadi
  */
-public class MusicPlayer {
+public final class MusicPlayer {
     private static MusicPlayer instance;
     private ChangeListener<Duration> progressChangeListener;
-    final ProgressBar progress = new ProgressBar();
+    private final ProgressBar progress = new ProgressBar();
     private final List<String> SUPPORTED_FILE_TYPES = Arrays.asList(".mp3", ".wav");
+    private final String musicDirPath = "src/main/resources/io/github/teamdonut/proj/music/";
 
     /**
      * @return one instance of MusicPlayer
@@ -36,7 +37,7 @@ public class MusicPlayer {
      * @author Kord Boniadi
      */
     private MusicPlayer() {
-        final File dir = new File("src/main/resources/io/github/teamdonut/proj/music/");
+        final File dir = new File(musicDirPath);
         if (!dir.exists() && dir.isDirectory()) {
             Logger.log("Cannot find audio source directory: {0}", dir);
             return;
@@ -60,13 +61,13 @@ public class MusicPlayer {
             final MediaPlayer player = players.get(i);
             final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
             player.setOnEndOfMedia(() -> {
-                System.out.println("setOnEndOfMedia triggered");
                 player.currentTimeProperty().removeListener(progressChangeListener);
                 player.stop();
                 nextPlayer.play();
 //                nextPlayer.seek(Duration.ZERO);
             });
         }
+//        players.get(0).setVolume(0.05);
         players.get(0).play();
         setCurrentlyPlaying(players.get(0));
     }
@@ -79,6 +80,7 @@ public class MusicPlayer {
      */
     private MediaPlayer createPlayer(String filePath) {
         final MediaPlayer player = new MediaPlayer(new Media(new File(filePath).toURI().toString()));
+//        player.setVolume(0.05);
         player.setOnError(() -> Logger.log("Media error occurred: {0}", player.getError()));
         return player;
     }
@@ -89,7 +91,6 @@ public class MusicPlayer {
      * @author Kord Boniadi
      */
     private void setCurrentlyPlaying(final MediaPlayer newPlayer) {
-        System.out.println("inside setCurrentlyPlaying");
         newPlayer.seek(Duration.ZERO);
         progress.setProgress(0);
         progressChangeListener = (observableValue, oldValue, newValue) -> {

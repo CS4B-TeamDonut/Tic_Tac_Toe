@@ -2,7 +2,6 @@
     -fx-text-fill: khaki;
     -fx-font-size: 30px;
 }
-
 #startKey {
     -fx-text-fill: white;
     -fx-font-size: 40px;
@@ -20,7 +19,77 @@
     -fx-font-size: 20px;
 }
 
-#boardPage {
+#title {
+    -fx-text-fill: khaki;
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+    -fx-min-width: 600;
+    -fx-min-height: 35;
+}
+
+#aboutUsTitle {
+    -fx-text-fill: khaki;
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 40px;
+    -fx-alignment: center;
+    -fx-min-width: 600;
+    -fx-min-height: 35;
+}
+
+#githubLink {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+}
+
+#info {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 19px;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+#nameEntry {
+    -fx-background-color: black;
+    -fx-text-fill: #75a2e1;
+    -fx-alignment: center;
+    -fx-min-height: 50;
+    -fx-max-height: 50;
+    -fx-min-width: 60;
+    -fx-max-width: 200;
+    -fx-font-size: 20px;
+    -fx-font-family: Chalkduster;
+}
+#entryButton {
+    -fx-alignment: center;
+    -fx-background-color: black;
+    -fx-text-fill: khaki;
+    -fx-font-size: 20;
+    -fx-font-family: Chalkduster;
+}
+#boardPage, #intermediatePage, #aboutUsPage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_03.png");
     -fx-background-size: 800 450;
+}
+
+#difficultyLevelBar, #tokenBar {
+    -fx-background-color: black;
+}
+
+#difficultyLevelTitle, #tokenSelectorTitle {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 16;
+}
+
+#tokenO, #tokenX, #easyMode, #hardMode {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 13;
+    -fx-text-fill: #75a2e1;
+}
+
+#contributors {
+    -fx-font-family: Chalkduster;
+    -fx-font-size: 13;
+    -fx-text-fill: #75a2e1;
 }

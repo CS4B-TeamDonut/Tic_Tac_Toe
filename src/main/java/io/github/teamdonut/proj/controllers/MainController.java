@@ -2,11 +2,23 @@ package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,13 +28,22 @@ import java.util.ResourceBundle;
  */
 public class MainController implements Initializable, ISubject {
     @FXML
-    public VBox mainMenuPane;
+    public BorderPane mainMenuPane;
+
+//    @FXML
+//    private ImageView aboutButton;      //corner button
+
+    @FXML
+    private ImageView aboutUsRect;      //rectangle button
 
     @FXML
     private ImageView singlePlayerButton;
 
     @FXML
     private ImageView multiPlayerButton;
+
+    @FXML
+    private Scene aboutUsScene;
 
     private final String theme = "theme_2";
 
@@ -79,8 +100,11 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        GameController game = new GameController();
-        EventManager.notify(this, game);
+//        GameController game = new GameController();
+//        EventManager.notify(this, game);
+
+        IntermediateController name = new IntermediateController();
+        EventManager.notify(this, name);
 
         //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
         //        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -91,7 +115,6 @@ public class MainController implements Initializable, ISubject {
         //        window.setResizable(false);
         //        window.show();
     }
-
 
     /**
      * Handles mouse hover event on the single player image "button", changing
@@ -139,4 +162,50 @@ public class MainController implements Initializable, ISubject {
         multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/multiplayer_button.png")));
     }
 
+    /**
+     * Handles mouse click event on the about us image "button".
+     * @author Utsav Parajuli
+     */
+    public void onAboutButtonClicked(/*MouseEvent mouseEvent*/) {
+        AboutUsController aboutUs = new AboutUsController();
+        EventManager.notify(this, aboutUs);
+    }
+
+//    /**
+//     * Handles mouse hover event on the about us image "button", changing
+//     * the button icon to the hovered icon status.
+//     * @author Utsav Parajuli
+//     */
+//    public void onAboutButtonEnter(/*MouseEvent mouseEvent*/) {
+//        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square_hover.png")));
+//    }
+//
+//    /**
+//     * Handles mouse hover exit event on the about us image "button", changing the
+//     * button icon to the normal status.
+//     * @author Utsav Parajuli
+//     */
+//    public void onAboutButtonExit(MouseEvent mouseEvent) {
+//        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square.png")));
+//    }
+
+    /**
+     * Handles mouse hover event on the about us image "button", changing
+     * the button icon to the hovered icon status.
+     * @author Utsav Parajuli
+     */
+    public void onAboutRectEnter(/*MouseEvent mouseEvent*/) {
+        aboutUsRect.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_hover.png")));
+
+    }
+
+    /**
+     * Handles mouse hover exit event on the about us image "button", changing the
+     * button icon to the normal status.
+     * @author Utsav Parajuli
+     */
+    public void onAboutRectExit(/*MouseEvent mouseEvent*/) {
+        aboutUsRect.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button.png")));
+
+    }
 }

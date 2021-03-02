@@ -89,7 +89,6 @@ public class MusicPlayer {
      * @author Kord Boniadi
      */
     private void setCurrentlyPlaying(final MediaPlayer newPlayer) {
-        System.out.println("inside setCurrentlyPlaying");
         newPlayer.seek(Duration.ZERO);
         progress.setProgress(0);
         progressChangeListener = (observableValue, oldValue, newValue) -> {

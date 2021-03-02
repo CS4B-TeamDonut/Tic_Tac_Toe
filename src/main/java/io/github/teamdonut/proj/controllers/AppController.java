@@ -14,12 +14,15 @@ import java.io.IOException;
 /**
  * Central Hub where all classes interact with
  * @author Kord Boniadi
+ * @author Utsav Parajuli
  */
 public class AppController implements IObserver {
     private final Stage mainStage;
     public BoardUI boardUI;
     public Scene mainScene;
     public Scene boardScene;
+    public Scene intermediateScene;
+    public Scene aboutUsScene;
 
     /**
      * Constructor
@@ -69,9 +72,86 @@ public class AppController implements IObserver {
      * Receives data from a subscribed subject
      * @param eventType object container
      * @author Kord Boniadi
+     * @author Utsav Parajuli
      */
     @Override
     public void update(Object eventType) {
+
+        //checking if the event type is an AboutUsController
+        if (eventType instanceof AboutUsController) {
+            AboutUsController aboutUs = (AboutUsController) eventType;
+            EventManager.register(aboutUs, this);
+
+            //loads fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../aboutUs.fxml"));
+
+            //setting the main stage to the about us page scene
+            try {
+                aboutUsScene = new Scene(loader.load());
+                aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+                mainStage.setScene(aboutUsScene);
+            } catch (IOException e) {
+                Logger.log(e);
+            }
+        }
+
+        //checking if the eventType is an IntermediateController
+        if (eventType instanceof IntermediateController) {
+            IntermediateController name = (IntermediateController) eventType;
+            EventManager.register(name, this);
+
+            //loads the fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../intermediatePage.fxml"));
+
+            //setting the controller
+            loader.setController(name);
+            try {
+                intermediateScene = new Scene(loader.load());
+                intermediateScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+                mainStage.setScene(intermediateScene);
+            } catch (IOException e) {
+                Logger.log(e);
+            }
+            //setting the title in the screen
+//            Label title = new Label("Please Enter Your Name");
+//            title.setId("title");
+
+            //getting the properties of back button
+//            ImageView view = getImageInfo();
+//
+//            //text field for the player to enter their name
+//            TextField nameEntry = new TextField();
+//            nameEntry.setId("nameEntry");
+//
+//            //when the player presses "ENTER" key after entering their name they
+//            //will be directed towards the boardPage
+//            nameEntry.setOnKeyPressed(event -> {
+//                if(event.getCode() == KeyCode.ENTER) {
+//                    update(new GameController(new Player(nameEntry.getText())));
+//                }
+//            });
+//
+//            //button for the player to press to enter their name
+//            Button entry = new Button("Enter");
+//            entry.setId("entry");
+//
+//            entry.setOnMouseClicked(event -> update(new GameController()));
+//
+//            //creating a scene to put the arrange the title, name entry field and button
+//            VBox centerScene = new VBox(title, nameEntry, entry);
+//            centerScene.setSpacing(10);
+//            centerScene.setAlignment(Pos.TOP_CENTER);
+//
+//            //new boarder pane
+//            BorderPane pane = new BorderPane(centerScene,
+//                                            view,null,
+//                                    null,null);
+//            pane.setId("intermediatePage");
+//            pane.setPrefWidth(800);
+//            pane.setPrefHeight(450);
+        }
+        //if the event type is a GameController
+        //keeping track of commit
         if (eventType instanceof GameController) {
             GameController game = (GameController) eventType;
             boardUI = new BoardUI();

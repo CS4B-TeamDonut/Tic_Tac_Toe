@@ -209,7 +209,7 @@ public class NPCHardMode implements NPC {
         for (char[] row : board.getUnderlyingBoard()) {
             for (char col : row) {
                 // does cell have a valid token? If not, board isn't empty
-                if (col == ' ')
+                if (col == board.EMPTY_VALUE)
                     return false;
             }
         }

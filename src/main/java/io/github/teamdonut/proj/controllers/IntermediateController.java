@@ -112,7 +112,7 @@ public class IntermediateController implements Initializable, ISubject {
 
         //TODO: Setting the number of characters the player can use as a name; Here I put
         //      4 so when you go to enter you can't enter anymore after 4 characters
-        nameEntry.setMaxLength(4);
+        nameEntry.setMaxLength(5);
 
 
         //start button
@@ -169,6 +169,14 @@ public class IntermediateController implements Initializable, ISubject {
         char userToken;
         char cpuToken;
         String cpuLevel;
+        String userName;
+
+        if (nameEntry.getText().isEmpty()) {
+            userName = "Guest";
+        }
+        else {
+            userName = nameEntry.getText();
+        }
 
         if (tokenO.isSelected()) {
             userToken = 'O';
@@ -185,7 +193,7 @@ public class IntermediateController implements Initializable, ISubject {
         }
 
         GameController game = new GameController(
-                new Player(nameEntry.getText(), userToken),
+                new Player(userName, userToken),
                 new Player(cpuLevel, cpuToken));
 
         EventManager.notify(IntermediateController.getInstance(), game);

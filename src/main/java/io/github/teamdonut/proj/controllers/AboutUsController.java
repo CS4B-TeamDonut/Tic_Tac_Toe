@@ -85,9 +85,13 @@ public class AboutUsController implements Initializable, ISubject {
         });
 
         //name of the contributors
-        contributors.setText("""
-                             Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Joey Campbell, Utsav Parajuli
-                                                            Copyright 2021 © Donut""");
+//        contributors.setText( "Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar + " +
+//                              "                                         Copyright " +  copyright + " 2021 Donut");
+
+        contributors.setText( """
+                                 Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar
+                                                                          Copyright \u00a9 2021 Donut""");
+
 
 
     }

@@ -3,7 +3,14 @@ package io.github.teamdonut.proj.controllers;
 import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.Logger;
+import io.github.teamdonut.proj.utils.RestrictiveTextField;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -31,7 +38,7 @@ public class IntermediateController implements Initializable, ISubject {
     public Label title;
 
     @FXML
-    public TextField nameEntry;
+    public RestrictiveTextField nameEntry;
 
     @FXML
     public Button entryButton;
@@ -103,6 +110,11 @@ public class IntermediateController implements Initializable, ISubject {
         //name entry box
         nameEntry.setAlignment(Pos.CENTER);
 
+        //TODO: Setting the number of characters the player can use as a name; Here I put
+        //      4 so when you go to enter you can't enter anymore after 4 characters
+        nameEntry.setMaxLength(4);
+
+
         //start button
         entryButton.setId("entryButton");
         entryButton.setText("START");
@@ -128,8 +140,8 @@ public class IntermediateController implements Initializable, ISubject {
 
     /**
      * When the name of the user is entered and all the options are chosen this method will start the game
-     * @param keyEvent : press of a key
      *
+     * @param keyEvent : press of a key
      * @author Utsav Parajuli
      */
     public void onNameEntered(KeyEvent keyEvent) {
@@ -140,6 +152,7 @@ public class IntermediateController implements Initializable, ISubject {
 
     /**
      * This method will start the game when the start button is clicked
+     *
      * @param actionEvent : mouse click
      */
     public void onButtonClicked(ActionEvent actionEvent) {
@@ -160,22 +173,20 @@ public class IntermediateController implements Initializable, ISubject {
         if (tokenO.isSelected()) {
             userToken = 'O';
             cpuToken = 'X';
-        }
-        else {
+        } else {
             userToken = 'X';
             cpuToken = 'O';
         }
 
         if (easyMode.isSelected()) {
-            cpuLevel = "NPC Easy";
-        }
-        else {
-            cpuLevel = "NPC Hard";
+            cpuLevel = "Rook";
+        } else {
+            cpuLevel = "Pro";
         }
 
         GameController game = new GameController(
-                              new Player(nameEntry.getText(), userToken),
-                              new Player(cpuLevel, cpuToken));
+                new Player(nameEntry.getText(), userToken),
+                new Player(cpuLevel, cpuToken));
 
         EventManager.notify(IntermediateController.getInstance(), game);
     }

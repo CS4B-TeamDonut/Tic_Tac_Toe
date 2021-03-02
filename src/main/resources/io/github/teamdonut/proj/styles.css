@@ -40,7 +40,8 @@
 #githubLink {
     -fx-font-family: Chalkduster;
     -fx-font-size: 18px;
-    -fx-alignment: center;
+    -fx-text-fill: #42a9eb;
+    -fx-alignment: bottom-center;
 }
 
 #info {
@@ -74,7 +75,7 @@
 }
 
 #difficultyLevelBar, #tokenBar {
-    -fx-background-color: black;
+    -fx-background-color: transparent;
 }
 
 #difficultyLevelTitle, #tokenSelectorTitle {
@@ -88,7 +89,7 @@
     -fx-text-fill: #75a2e1;
 }
 
-#contributors {
+#contributors, #copyright {
     -fx-font-family: Chalkduster;
     -fx-font-size: 13;
     -fx-text-fill: #75a2e1;

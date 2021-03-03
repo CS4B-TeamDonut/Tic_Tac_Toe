@@ -1,13 +1,21 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.common.Player;
+import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.RestrictiveTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -21,6 +29,22 @@ public class MultiplayerController implements Initializable, ISubject {
 
     @FXML
     public Label player1Name;
+
+//    @FXML
+//    public RestrictiveTextField nameEntryMP1;
+//
+//    @FXML
+//    public RestrictiveTextField nameEntryMP2;
+
+    @FXML
+    public TextField nameEntryMP1;
+
+    @FXML
+    public TextField nameEntryMP2;
+
+    @FXML
+    public Button entryButton;
+
 
     @FXML
     private ImageView backButton;
@@ -51,10 +75,51 @@ public class MultiplayerController implements Initializable, ISubject {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        title.setText("Multiplayer Mode");
+
         title.setAlignment(Pos.TOP_CENTER);
 
         player1Name.setAlignment(Pos.TOP_CENTER);
+
+        entryButton.setId("entryButton");
+
+//        nameEntryMP1.setMaxLength(5);
+//        nameEntryMP2.setMaxLength(5);
+
+    }
+
+    public void onNameEntered(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            startGame();
+        }
+    }
+
+    public void onStartClicked(ActionEvent actionEvent) {
+        startGame();
+    }
+
+    private void startGame() {
+        String player1Name;
+        String player2Name;
+
+        if (nameEntryMP1.getText().isEmpty()) {
+            player1Name = "P1";
+        }
+        else {
+            player1Name = "P1: " + nameEntryMP1.getText();
+        }
+
+        if (nameEntryMP2.getText().isEmpty()) {
+            player2Name = "P2";
+        }
+        else {
+            player2Name = "P2: " + nameEntryMP2.getText();
+        }
+
+        GameController game = new GameController(
+                new Player(player1Name, 'X'),
+                new Player(player2Name, 'O'));
+
+        EventManager.notify(MultiplayerController.getInstance(), game);
     }
 
     /**

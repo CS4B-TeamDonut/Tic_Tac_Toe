@@ -2,7 +2,13 @@ package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
+<<<<<<< HEAD
 import io.github.teamdonut.sounds.EventSounds;
+=======
+import io.github.teamdonut.proj.utils.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+>>>>>>> 4a76960 (multiplayer page progress 1)
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -130,7 +136,12 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
+<<<<<<< HEAD
         EventSounds.getInstance().playButtonSound2();
+=======
+        MultiplayerController multiplayer = new MultiplayerController();
+        EventManager.notify(this, multiplayer);
+>>>>>>> 4a76960 (multiplayer page progress 1)
     }
 
     /**

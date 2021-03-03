@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 /**
  * Intermediate Screen controller class where the player can enter their name
  * @author Utsav Parajuli
- * @version 0.2
+ * @version 0.3
  */
 public class SinglePlayerController implements Initializable, ISubject {
 
@@ -41,7 +41,7 @@ public class SinglePlayerController implements Initializable, ISubject {
     public RestrictiveTextField nameEntry;
 
     @FXML
-    public Button entryButton;
+    public ImageView startButton;
 
     @FXML
     private ImageView backButton;
@@ -69,6 +69,9 @@ public class SinglePlayerController implements Initializable, ISubject {
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
+
+    private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
+    private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
 
     private static SinglePlayerController instance;     //instance of the controller
 
@@ -116,8 +119,7 @@ public class SinglePlayerController implements Initializable, ISubject {
 
 
         //start button
-        entryButton.setId("entryButton");
-        entryButton.setText("START");
+        startButton.setId("startButton");
 
         //difficulty level option
         difficultyLevelTitle.setText("Difficulty: ");
@@ -155,7 +157,7 @@ public class SinglePlayerController implements Initializable, ISubject {
      *
      * @param actionEvent : mouse click
      */
-    public void onButtonClicked(ActionEvent actionEvent) {
+    public void onStartButtonClick(MouseEvent actionEvent) {
         startGame();
     }
 
@@ -230,4 +232,23 @@ public class SinglePlayerController implements Initializable, ISubject {
     public void onBackButtonExit() {
         backButton.setImage(backButtonIdle);
     }
+
+    /**
+     * Event handler for start button hover effect
+     *
+     * @author Utsav Parajuli
+     */
+    public void onStartButtonEnter() {
+        startButton.setImage(startButtonHover);
+    }
+
+    /**
+     * Event handler for start button idle effect
+     *
+     * @author Utsav Parajuli
+     */
+    public void onStartButtonExit() {
+        startButton.setImage(startButtonIdle);
+    }
+
 }

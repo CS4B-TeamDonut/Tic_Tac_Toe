@@ -21,8 +21,6 @@ public class HumanPlayer implements IPlayerType
     @Override
     public void makeMove(Board board, char c)
     {
-        // TODO: need to get move and notify event manager
 
-        // notify
     }
 }

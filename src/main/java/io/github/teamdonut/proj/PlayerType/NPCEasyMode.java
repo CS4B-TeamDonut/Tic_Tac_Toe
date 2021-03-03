@@ -15,6 +15,7 @@ import java.util.Random;
  */
 public class NPCEasyMode implements IPlayerType {
 
+
     /**
      * Constructor for the NPCEasyMode class. Does not initialize anything. Overrides the compiler generated
      * constructor

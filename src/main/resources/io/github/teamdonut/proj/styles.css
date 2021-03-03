@@ -69,7 +69,7 @@
     -fx-font-size: 20;
     -fx-font-family: Chalkduster;
 }
-#boardPage, #intermediatePage, #aboutUsPage {
+#boardPage, #singlePlayerPage, #aboutUsPage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_03.png");
     -fx-background-size: 800 450;
 }

@@ -21,7 +21,7 @@ public class AppController implements IObserver {
     public BoardUI boardUI;
     public Scene mainScene;
     public Scene boardScene;
-    public Scene intermediateScene;
+    public Scene singlePlayerScene;
     public Scene aboutUsScene;
 
     /**
@@ -95,20 +95,20 @@ public class AppController implements IObserver {
             }
         }
 
-        //checking if the eventType is an IntermediateController
-        if (eventType instanceof IntermediateController) {
-            IntermediateController name = (IntermediateController) eventType;
+        //checking if the eventType is an SinglePlayerController
+        if (eventType instanceof SinglePlayerController) {
+            SinglePlayerController name = (SinglePlayerController) eventType;
             EventManager.register(name, this);
 
             //loads the fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../intermediatePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../singlePlayerPage.fxml"));
 
             //setting the controller
             loader.setController(name);
             try {
-                intermediateScene = new Scene(loader.load());
-                intermediateScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-                mainStage.setScene(intermediateScene);
+                singlePlayerScene = new Scene(loader.load());
+                singlePlayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+                mainStage.setScene(singlePlayerScene);
             } catch (IOException e) {
                 Logger.log(e);
             }

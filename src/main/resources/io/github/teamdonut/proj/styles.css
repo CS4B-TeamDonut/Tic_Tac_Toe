@@ -74,7 +74,7 @@
 }
 
 #difficultyLevelBar, #tokenBar {
-    -fx-background-color: black;
+    -fx-background-color: transparent;
 }
 
 #difficultyLevelTitle, #tokenSelectorTitle {

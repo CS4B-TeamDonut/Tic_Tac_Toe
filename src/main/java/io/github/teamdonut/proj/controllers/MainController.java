@@ -4,6 +4,7 @@ import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -140,7 +141,8 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
-
+        MultiplayerController multiplayer = new MultiplayerController();
+        EventManager.notify(this, multiplayer);
     }
 
     /**

@@ -22,6 +22,7 @@ public class AppController implements IObserver {
     public Scene mainScene;
     public Scene boardScene;
     public Scene intermediateScene;
+    public Scene multiplayerScene;
     public Scene aboutUsScene;
 
     /**
@@ -73,6 +74,7 @@ public class AppController implements IObserver {
      * @param eventType object container
      * @author Kord Boniadi
      * @author Utsav Parajuli
+     * @author Joey Campbell
      */
     @Override
     public void update(Object eventType) {
@@ -150,6 +152,26 @@ public class AppController implements IObserver {
 //            pane.setPrefWidth(800);
 //            pane.setPrefHeight(450);
         }
+
+        if (eventType instanceof MultiplayerController) {
+
+            MultiplayerController multiplayer = (MultiplayerController) eventType;
+            EventManager.register(multiplayer, this);
+
+            //loads the fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../multiplayerPage.fxml"));
+
+            //setting the controller
+            loader.setController(multiplayer);
+            try {
+                multiplayerScene = new Scene(loader.load());
+                multiplayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+                mainStage.setScene(multiplayerScene);
+            } catch (IOException e) {
+                Logger.log(e);
+            }
+        }
+
         //if the event type is a GameController
         //keeping track of commit
         if (eventType instanceof GameController) {

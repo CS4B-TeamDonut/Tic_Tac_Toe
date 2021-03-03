@@ -103,7 +103,7 @@ public class MainController implements Initializable, ISubject {
 //        GameController game = new GameController();
 //        EventManager.notify(this, game);
 
-        IntermediateController name = new IntermediateController();
+        SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);
 
         //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));

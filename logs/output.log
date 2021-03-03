@@ -1106,3 +1106,164 @@
 [Mar 02, 2021 10:01:15 AM] [INFO][tic-tac-toe-IntermediateController:175]  
 [Mar 02, 2021 10:01:23 AM] [INFO][tic-tac-toe-IntermediateController:179] Utsav 
 [Mar 02, 2021 10:01:26 AM] [INFO][tic-tac-toe-IntermediateController:175]  
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:60] java.lang.Exception: custom message 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:60] Caused by: java.lang.Exception: custom cause 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 10:13:17 AM] [INFO][tic-tac-toe-LoggerTest:36] this is a message 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:26] another message: java.lang.Exception: custom message 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 io.github.teamdonut.proj.LoggerTest.testLogExceptionMessage(LoggerTest.java:26) 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:16] java.lang.Exception: custom exception 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 io.github.teamdonut.proj.LoggerTest.testLogException(LoggerTest.java:16) 
+[Mar 02, 2021 10:13:17 AM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 10:13:17 AM] [WARNING][tic-tac-toe-LoggerTest:52] test 1, 2, 3 
+[Mar 02, 2021 10:13:17 AM] [INFO][tic-tac-toe-LoggerTest:44] test 1, 2, 3 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] javafx.fxml.LoadException: 
+/Users/utsavparajuli/Documents/source/cs4b/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/intermediatePage.fxml:17
+ 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2707) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2685) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] Caused by: java.lang.IllegalArgumentException: Can not set io.github.teamdonut.proj.utils.RestrictiveTextField field io.github.teamdonut.proj.controllers.IntermediateController.nameEntry to javafx.scene.control.TextField 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:167) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:171) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeObjectFieldAccessorImpl.set(UnsafeObjectFieldAccessorImpl.java:81) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.reflect.Field.set(Field.java:793) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.injectFields(FXMLLoader.java:1176) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processValue(FXMLLoader.java:867) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:761) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2808) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2634) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 11:18:26 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] javafx.fxml.LoadException: 
+/Users/utsavparajuli/Documents/source/cs4b/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/intermediatePage.fxml:17
+ 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2707) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2685) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] Caused by: java.lang.IllegalArgumentException: Can not set io.github.teamdonut.proj.utils.RestrictiveTextField field io.github.teamdonut.proj.controllers.IntermediateController.nameEntry to javafx.scene.control.TextField 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:167) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:171) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeObjectFieldAccessorImpl.set(UnsafeObjectFieldAccessorImpl.java:81) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.reflect.Field.set(Field.java:793) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.injectFields(FXMLLoader.java:1176) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processValue(FXMLLoader.java:867) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:761) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2808) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2634) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 11:18:27 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] javafx.fxml.LoadException: 
+/Users/utsavparajuli/Documents/source/cs4b/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/intermediatePage.fxml:17
+ 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2707) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2685) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] Caused by: java.lang.IllegalArgumentException: Can not set io.github.teamdonut.proj.utils.RestrictiveTextField field io.github.teamdonut.proj.controllers.IntermediateController.nameEntry to javafx.scene.control.TextField 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:167) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:171) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/jdk.internal.reflect.UnsafeObjectFieldAccessorImpl.set(UnsafeObjectFieldAccessorImpl.java:81) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.reflect.Field.set(Field.java:793) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.injectFields(FXMLLoader.java:1176) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processValue(FXMLLoader.java:867) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:761) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2808) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2634) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 11:18:28 AM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:60] java.lang.Exception: custom message 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:60] Caused by: java.lang.Exception: custom cause 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:07:47 PM] [INFO][tic-tac-toe-LoggerTest:36] this is a message 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:26] another message: java.lang.Exception: custom message 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 io.github.teamdonut.proj.LoggerTest.testLogExceptionMessage(LoggerTest.java:26) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:16] java.lang.Exception: custom exception 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 io.github.teamdonut.proj.LoggerTest.testLogException(LoggerTest.java:16) 
+[Mar 02, 2021 8:07:47 PM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:07:47 PM] [WARNING][tic-tac-toe-LoggerTest:52] test 1, 2, 3 
+[Mar 02, 2021 8:07:47 PM] [INFO][tic-tac-toe-LoggerTest:44] test 1, 2, 3 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:60] java.lang.Exception: custom message 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:60] Caused by: java.lang.Exception: custom cause 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:08:07 PM] [INFO][tic-tac-toe-LoggerTest:36] this is a message 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:26] another message: java.lang.Exception: custom message 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 io.github.teamdonut.proj.LoggerTest.testLogExceptionMessage(LoggerTest.java:26) 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:16] java.lang.Exception: custom exception 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 io.github.teamdonut.proj.LoggerTest.testLogException(LoggerTest.java:16) 
+[Mar 02, 2021 8:08:07 PM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:08:07 PM] [WARNING][tic-tac-toe-LoggerTest:52] test 1, 2, 3 
+[Mar 02, 2021 8:08:07 PM] [INFO][tic-tac-toe-LoggerTest:44] test 1, 2, 3 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] javafx.fxml.LoadException: Error resolving onMouseClicked='#onStartButtonClick', either the event handler is not in the Namespace or there is an error in the script.
+/Users/utsavparajuli/Documents/source/cs4b/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/singlePlayerPage.fxml:38
+ 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2703) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:620) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:780) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2924) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2639) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 8:44:38 PM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] javafx.fxml.LoadException: Error resolving onMouseEntered='#onStartButtonEnter', either the event handler is not in the Namespace or there is an error in the script.
+/Users/utsavparajuli/Documents/source/cs4b/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/singlePlayerPage.fxml:38
+ 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2703) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:620) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:780) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2924) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2639) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:109) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 02, 2021 8:45:33 PM] [SEVERE][tic-tac-toe-AppController:113] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:60] java.lang.Exception: custom message 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:60] Caused by: java.lang.Exception: custom cause 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 io.github.teamdonut.proj.LoggerTest.testExceptionCause(LoggerTest.java:60) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:60] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:52:04 PM] [INFO][tic-tac-toe-LoggerTest:36] this is a message 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:26] another message: java.lang.Exception: custom message 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 io.github.teamdonut.proj.LoggerTest.testLogExceptionMessage(LoggerTest.java:26) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:26] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:16] java.lang.Exception: custom exception 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 io.github.teamdonut.proj.LoggerTest.testLogException(LoggerTest.java:16) 
+[Mar 02, 2021 8:52:04 PM] [SEVERE][tic-tac-toe-LoggerTest:16] 	 java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+[Mar 02, 2021 8:52:04 PM] [WARNING][tic-tac-toe-LoggerTest:52] test 1, 2, 3 
+[Mar 02, 2021 8:52:04 PM] [INFO][tic-tac-toe-LoggerTest:44] test 1, 2, 3 

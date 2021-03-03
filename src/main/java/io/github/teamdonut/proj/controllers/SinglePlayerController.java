@@ -30,9 +30,9 @@ import java.util.ResourceBundle;
 /**
  * Intermediate Screen controller class where the player can enter their name
  * @author Utsav Parajuli
- * @version 0.2
+ * @version 0.3
  */
-public class IntermediateController implements Initializable, ISubject {
+public class SinglePlayerController implements Initializable, ISubject {
 
     @FXML
     public Label title;
@@ -41,7 +41,7 @@ public class IntermediateController implements Initializable, ISubject {
     public RestrictiveTextField nameEntry;
 
     @FXML
-    public Button entryButton;
+    public ImageView startButton;
 
     @FXML
     private ImageView backButton;
@@ -70,7 +70,10 @@ public class IntermediateController implements Initializable, ISubject {
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
 
-    private static IntermediateController instance;     //instance of the controller
+    private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
+    private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
+
+    private static SinglePlayerController instance;     //instance of the controller
 
     /**
      * This method will return the instance of the controller
@@ -78,7 +81,7 @@ public class IntermediateController implements Initializable, ISubject {
      * @return this
      * @author Utsav Parajuli
      */
-    public static IntermediateController getInstance() {
+    public static SinglePlayerController getInstance() {
         return instance;
     }
 
@@ -87,7 +90,7 @@ public class IntermediateController implements Initializable, ISubject {
      *
      * @author Utsav Parajuli
      */
-    public IntermediateController() {
+    public SinglePlayerController() {
         instance = this;
     }
 
@@ -116,8 +119,7 @@ public class IntermediateController implements Initializable, ISubject {
 
 
         //start button
-        entryButton.setId("entryButton");
-        entryButton.setText("START");
+        startButton.setId("startButton");
 
         //difficulty level option
         difficultyLevelTitle.setText("Difficulty: ");
@@ -155,7 +157,7 @@ public class IntermediateController implements Initializable, ISubject {
      *
      * @param actionEvent : mouse click
      */
-    public void onButtonClicked(ActionEvent actionEvent) {
+    public void onStartButtonClick(MouseEvent actionEvent) {
         startGame();
     }
 
@@ -196,7 +198,7 @@ public class IntermediateController implements Initializable, ISubject {
                 new Player(userName, userToken),
                 new Player(cpuLevel, cpuToken));
 
-        EventManager.notify(IntermediateController.getInstance(), game);
+        EventManager.notify(SinglePlayerController.getInstance(), game);
     }
 
     /**
@@ -230,4 +232,23 @@ public class IntermediateController implements Initializable, ISubject {
     public void onBackButtonExit() {
         backButton.setImage(backButtonIdle);
     }
+
+    /**
+     * Event handler for start button hover effect
+     *
+     * @author Utsav Parajuli
+     */
+    public void onStartButtonEnter() {
+        startButton.setImage(startButtonHover);
+    }
+
+    /**
+     * Event handler for start button idle effect
+     *
+     * @author Utsav Parajuli
+     */
+    public void onStartButtonExit() {
+        startButton.setImage(startButtonIdle);
+    }
+
 }

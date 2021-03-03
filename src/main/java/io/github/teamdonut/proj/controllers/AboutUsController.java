@@ -43,6 +43,9 @@ public class AboutUsController implements Initializable, ISubject {
     private Label contributors;
 
     @FXML
+    private Label copyright;
+
+    @FXML
     private Label info;
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
@@ -83,10 +86,8 @@ public class AboutUsController implements Initializable, ISubject {
                 }
             }
         });
-
-        contributors.setText( """
-                                 Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar
-                                                                          Copyright \u00a9 2021 Donut""");
+        contributors.setText( "Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar");
+        copyright.setText("Copyright \u00a9 2021 Donut");
 
 
 

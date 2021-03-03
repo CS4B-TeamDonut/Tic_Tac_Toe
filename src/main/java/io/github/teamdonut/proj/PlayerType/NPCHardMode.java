@@ -6,7 +6,7 @@ import io.github.teamdonut.proj.utils.DataValidation;
 
 /**
  * Implementation of Homi mode for the tic tac toe AI.
- * This NPC uses minimax to calculate the best possible move and
+ * This PlayerType uses minimax to calculate the best possible move and
  * will always win or tie the other player.
  * @author Grant Goldsworth
  */

@@ -10,7 +10,7 @@ import java.util.Random;
  * @author utsavparajuli
  * @version 3.0
  *
- * This class will implement the NPC interface as an easy difficulty. The logic in making the move for the NPC
+ * This class will implement the PlayerType interface as an easy difficulty. The logic in making the move for the PlayerType
  * is based on just finding an empty spot.
  */
 public class NPCEasyMode implements IPlayerType {
@@ -23,7 +23,7 @@ public class NPCEasyMode implements IPlayerType {
     }
 
     /**
-     * This method will make a move for the NPC which is in easy difficulty mode. It will generate a x and y
+     * This method will make a move for the PlayerType which is in easy difficulty mode. It will generate a x and y
      * number which will be placed in the board. The method will iterate through the board until it finds
      * any empty spaces. Once the spot is found it will exit the loop and update the call the notify method of
      * the EventManager and pass the data.

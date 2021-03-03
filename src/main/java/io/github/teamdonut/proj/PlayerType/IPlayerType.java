@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author utsavparajuli
  * @author Grant Goldsworth
  * @version 2.0
- * NPC represents the non computer player which will have several levels of difficulty. The interface has a
+ * PlayerType represents the non computer player which will have several levels of difficulty. The interface has a
  * method to make a move. It will also extend the ISubject interface which is used as a design pattern
  */
 public interface IPlayerType extends ISubject {  //need to implement IObserver and ISubject
@@ -26,7 +26,6 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
          * in board, column-position in board, and token to be placed in board respectively.
          * @param x : column number
          * @param y : row number
-         * @param c : token
          */
         BoardMoveInfo(int x, int y) {
             this.x = x;
@@ -88,8 +87,8 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
     }
 
     /**
-     * This method will make a move for the NPC. It will take in the board object and token of the NPC as
-     * parameters and will use algorithms depending on the difficulty level of the NPC to make a move and place
+     * This method will make a move for the PlayerType. It will take in the board object and token of the PlayerType as
+     * parameters and will use algorithms depending on the difficulty level of the PlayerType to make a move and place
      * it's token on the board.
      * @param board : the tic tac toe board
      * @param c : the token

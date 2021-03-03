@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Testing for NPC Easy Mode
+ * Testing for PlayerType Easy Mode
  */
 public class NPCEasyModeTest {
 

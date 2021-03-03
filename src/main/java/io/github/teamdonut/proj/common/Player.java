@@ -58,7 +58,9 @@ public class Player implements ISubject, IObserver {
 
     private String playerName;
     private char playerToken;
-    IPlayerType playerType;
+
+    // IPlayerType instance - handles how this "Player" makes/calculates moves
+    private IPlayerType playerType;
 
     /**
      * Constructs a Player object with no arguments.

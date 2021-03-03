@@ -140,7 +140,7 @@ public class SinglePlayerController implements Initializable, ISubject {
 
     /**
      * Helper method that will check the options entered by the user and assign the correct token to both the
-     * player and NPC. Will also check the difficulty level. Then will instantiate a game object and notify the observers
+     * player and PlayerType. Will also check the difficulty level. Then will instantiate a game object and notify the observers
      *
      * @author : Utsav Parajuli
      */

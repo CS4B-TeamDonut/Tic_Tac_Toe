@@ -1476,3 +1476,42 @@
 [Mar 02, 2021 8:41:35 PM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:167) 
 [Mar 02, 2021 8:41:35 PM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
 [Mar 02, 2021 8:41:35 PM] [SEVERE][tic-tac-toe-AppController:171] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] javafx.fxml.LoadException: Error resolving onMouseClicked='#onStartButtonClick', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Source/IntelliJ/Java/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/multiplayerPage.fxml:38
+ 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2703) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:620) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:780) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2924) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2639) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:167) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 03, 2021 11:20:47 AM] [SEVERE][tic-tac-toe-AppController:171] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] javafx.fxml.LoadException: Error resolving onMouseClicked='#onStartButtonClick', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Source/IntelliJ/Java/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/multiplayerPage.fxml:38
+ 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2703) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:620) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:780) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2924) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2639) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:167) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 03, 2021 11:22:15 AM] [SEVERE][tic-tac-toe-AppController:171] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] javafx.fxml.LoadException: Error resolving onMouseClicked='#onStartButtonClick', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Source/IntelliJ/Java/Tic_Tac_Toe/build/resources/main/io/github/teamdonut/proj/multiplayerPage.fxml:38
+ 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2703) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:620) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:780) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2924) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2639) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2517) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.controllers.AppController.update(AppController.java:167) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 io.github.teamdonut.proj.listener.EventManager.lambda$notify$1(EventManager.java:70) 
+[Mar 03, 2021 11:22:16 AM] [SEVERE][tic-tac-toe-AppController:171] 	 java.base/java.lang.Iterable.forEach(Iterable.java:75) 

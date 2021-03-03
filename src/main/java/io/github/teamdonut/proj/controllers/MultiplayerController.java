@@ -43,7 +43,7 @@ public class MultiplayerController implements Initializable, ISubject {
     public TextField nameEntryMP2;
 
     @FXML
-    public Button entryButton;
+    public ImageView startButton;
 
 
     @FXML
@@ -51,7 +51,8 @@ public class MultiplayerController implements Initializable, ISubject {
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
-
+    private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
+    private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
     private static MultiplayerController instance;     //instance of the controller
 
     /**
@@ -80,7 +81,7 @@ public class MultiplayerController implements Initializable, ISubject {
 
         player1Name.setAlignment(Pos.TOP_CENTER);
 
-        entryButton.setId("entryButton");
+        startButton.setId("startButton");
 
 //        nameEntryMP1.setMaxLength(5);
 //        nameEntryMP2.setMaxLength(5);
@@ -93,7 +94,8 @@ public class MultiplayerController implements Initializable, ISubject {
         }
     }
 
-    public void onStartClicked(ActionEvent actionEvent) {
+    public void onStartButtonClick(ActionEvent actionEvent) {
+        System.out.println("TEST");
         startGame();
     }
 
@@ -152,5 +154,23 @@ public class MultiplayerController implements Initializable, ISubject {
      */
     public void onBackButtonExit() {
         backButton.setImage(backButtonIdle);
+    }
+
+    /**
+     * Event handler for start button hover effect
+     *
+     * @author Utsav Parajuli
+     */
+    public void onStartButtonEnter() {
+        startButton.setImage(startButtonHover);
+    }
+
+    /**
+     * Event handler for start button idle effect
+     *
+     * @author Utsav Parajuli
+     */
+    public void onStartButtonExit() {
+        startButton.setImage(startButtonIdle);
     }
 }

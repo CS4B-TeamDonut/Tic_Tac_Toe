@@ -98,7 +98,7 @@ public final class Logger {
             appName = getString(relativePath, "app_name", "Unknown");
             basePackage = getString(relativePath, "default_package", null);
 
-            SimpleDateFormat simpleFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+            SimpleDateFormat simpleFormatter = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss");
             String outputFile = "log_" + simpleFormatter.format(new Date()) + ".log";
             String output_dir = getString(relativePath, "output_dir", null);
 

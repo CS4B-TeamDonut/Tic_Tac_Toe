@@ -1,6 +1,8 @@
 package io.github.teamdonut.proj.common;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Game is a data-only class that holds access to the logic of the game
@@ -74,56 +76,65 @@ public class Game {
      * @return true or false depending if there is a winning scenario
      */
     public int hasWon(char[][] boardArr) {
+
+        int xWinner      = 1;
+        int oWinner      = 0;
+        int continueGame = 2;
+
         for (int i = 0; i < 3; i++) {
             if (boardArr[i][0] == 'X' && boardArr[i][1] == 'X' && boardArr[i][2] == 'X') {
-                return 1;
+                return xWinner;
             }
         }
 
         for (int i = 0; i < 3; i++) {
             if (boardArr[i][0] == 'O' && boardArr[i][1] == 'O' && boardArr[i][2] == 'O') {
-                return 0;
+                return oWinner;
             }
         }
 
         for (int j = 0; j < 3; j++) {
             if (boardArr[0][j] == 'X' && boardArr[1][j] == 'X' && boardArr[2][j] == 'X') {
-                return 1;
+                return xWinner;
             }
         }
 
         for (int j = 0; j < 3; j++) {
             if (boardArr[0][j] == 'O' && boardArr[1][j] == 'O' && boardArr[2][j] == 'O') {
-                return 0;
+                return oWinner;
             }
         }
 
         if (boardArr[0][0] == 'X' && boardArr[1][1] == 'X' && boardArr[2][2] == 'X') {
-            return 1;
+            return xWinner;
         }
 
         if (boardArr[0][0] == 'O' && boardArr[1][1] == 'O' && boardArr[2][2] == 'O') {
-            return 0;
+            return oWinner;
         }
 
         if (boardArr[0][2] == 'X' && boardArr[1][1] == 'X' && boardArr[2][0] == 'X') {
-            return 1;
+            return xWinner;
         }
 
         if (boardArr[0][2] == 'O' && boardArr[1][1] == 'O' && boardArr[2][0] == 'O') {
-            return 0;
+            return oWinner;
         }
-        return -1;
+        return continueGame;
     }
 
-    public Player whoWon(int winner) {
-        if(winner == 0)
+    public Player whoWon(char[][] boardArr) {
+        if(hasWon(boardArr) == 0)
         {
             return player1;
         }
         else {
             return player2;
         }
+    }
+
+    public boolean gameOver(char[][] boardArr) {
+        return isBoardFull(boardArr) || hasWon(boardArr) == 1 || hasWon(boardArr) == 0;
     }
 
 
@@ -143,9 +154,17 @@ public class Game {
         return true;
     }
 
-
-
-
+//    public class StopWatch {
+//        int interval;
+//
+//        Timer timer = new Timer();
+//
+//        TimerTask task = new TimerTask() {
+//            public void run() {
+//                timer.schedule(task, 50001);
+//            }
+//        };
+//    }
 
     @Override
     public boolean equals(Object o) {

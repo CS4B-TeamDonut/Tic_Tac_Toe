@@ -23,6 +23,7 @@ public class Game {
      * @param player1 first player
      * @param player2 second player
      * @param boardArr1 board array holding chars
+     * @param token token of the player either X or O
      */
     public Game(Player player1, Player player2, char[][] boardArr1, char token) {
         this.player1      = player1;
@@ -31,7 +32,10 @@ public class Game {
         this.boardArr     = boardArr1;
         Arrays.stream(boardArr).forEach(str -> Arrays.fill(str, EMPTY_VALUE));
     }
-
+    /**
+     * Getter that returns the board array.
+     * @return token player token
+     */
     public char getToken() {return token; }
 
     /**
@@ -121,10 +125,22 @@ public class Game {
         return 'C';
     }
 
+    /**
+     * gameOver checks if the game is over by checking all the scenarios
+     * @param boardArr board array
+     * @return true or false depending if there is a winner or not
+     */
     public boolean gameOver(char[][] boardArr) {
         return isBoardFull(boardArr) || hasWon(boardArr) == 'X' || hasWon(boardArr) == 'O';
     }
 
+    /**
+     * whoWon determines the name of the actual winner
+     * @param boardArr board array
+     * @param player1 first player
+     * @param player2 second player
+     * @return nothing/string of space, this will have to return a winners name
+     */
     public String whoWon(char[][] boardArr, Player player1, Player player2) {
 
         String returnNothing = " ";
@@ -159,6 +175,11 @@ public class Game {
         return true;
     }
 
+    /**
+     * Checks whether or not a Game object has the same size and state as another Board object.
+     * @param o The Board that is being checked for equality
+     * @return A boolean representing the equality of two Game objects
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -167,6 +188,10 @@ public class Game {
         return Objects.equals(player1, game.player1) && Objects.equals(player2, game.player2) && Arrays.equals(boardArr, game.boardArr);
     }
 
+    /**
+     * Returns the hash code of the calling Game object.
+     * @return An integer representing the hashcode of the calling Board object
+     */
     @Override
     public int hashCode() {
         int result = Objects.hash(player1, player2, EMPTY_VALUE);

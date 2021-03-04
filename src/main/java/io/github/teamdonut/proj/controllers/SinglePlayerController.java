@@ -5,6 +5,7 @@ import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.Logger;
 import io.github.teamdonut.proj.utils.RestrictiveTextField;
+import io.github.teamdonut.sounds.EventSounds;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -158,6 +159,7 @@ public class SinglePlayerController implements Initializable, ISubject {
      * @param actionEvent : mouse click
      */
     public void onStartButtonClick(MouseEvent actionEvent) {
+        EventSounds.getInstance().playButtonSound2();
         startGame();
     }
 
@@ -208,6 +210,7 @@ public class SinglePlayerController implements Initializable, ISubject {
      * @author Kord Boniadi
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
+        EventSounds.getInstance().playButtonSound1();
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);

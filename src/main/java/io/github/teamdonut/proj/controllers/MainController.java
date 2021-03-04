@@ -2,23 +2,14 @@ package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
-import io.github.teamdonut.proj.utils.Logger;
-import javafx.event.ActionEvent;
+import io.github.teamdonut.sounds.EventSounds;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -102,10 +93,9 @@ public class MainController implements Initializable, ISubject {
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
 //        GameController game = new GameController();
 //        EventManager.notify(this, game);
-
+        EventSounds.getInstance().playButtonSound2();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);
-
         //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
         //        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         //        Stage window = (Stage) gameButton.getScene().getWindow();
@@ -140,7 +130,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
-
+        EventSounds.getInstance().playButtonSound2();
     }
 
     /**
@@ -167,6 +157,7 @@ public class MainController implements Initializable, ISubject {
      * @author Utsav Parajuli
      */
     public void onAboutButtonClicked(/*MouseEvent mouseEvent*/) {
+        EventSounds.getInstance().playButtonSound2();
         AboutUsController aboutUs = new AboutUsController();
         EventManager.notify(this, aboutUs);
     }

@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
-import io.github.teamdonut.proj.MusicPlayer;
+import io.github.teamdonut.music.MusicPlayer;
 import io.github.teamdonut.proj.common.BoardUI;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
@@ -52,7 +52,7 @@ public class AppController implements IObserver {
         mainStage.setScene(start);
         mainStage.setResizable(false);
         mainStage.show();
-
+        Logger.log("program started..");
 //        Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
 //
 //        EventManager.register(MainController.getInstance(), this);

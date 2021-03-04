@@ -1,7 +1,6 @@
 package io.github.teamdonut.proj;
+import io.github.teamdonut.proj.common.Game;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     @Test
@@ -20,10 +19,6 @@ public class GameTest {
         boardArr[2][0] = 'O';
         boardArr[2][1] = ' ';
         boardArr[2][2] = ' ';
-
-        if (game.hasWon(boardArr)) {
-            System.out.println("Winner");
-        }
     }
 
     @Test

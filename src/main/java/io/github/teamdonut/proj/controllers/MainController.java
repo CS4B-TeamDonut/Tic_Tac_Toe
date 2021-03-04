@@ -158,6 +158,7 @@ public class MainController implements Initializable, ISubject {
      * @author Utsav Parajuli
      */
     public void onAboutButtonClicked(/*MouseEvent mouseEvent*/) {
+        EventSounds.getInstance().playButtonSound2();
         AboutUsController aboutUs = new AboutUsController();
         EventManager.notify(this, aboutUs);
     }

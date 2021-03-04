@@ -2,6 +2,7 @@ package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.Logger;
+import io.github.teamdonut.sounds.EventSounds;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -122,6 +123,7 @@ public class AboutUsController implements Initializable, ISubject {
      * @author Kord Boniadi
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
+        EventSounds.getInstance().playButtonSound1();
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);

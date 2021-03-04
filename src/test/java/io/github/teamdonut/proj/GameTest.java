@@ -21,7 +21,7 @@ public class GameTest {
         boardArr[2][1] = ' ';
         boardArr[2][2] = ' ';
 
-        if(game.hasWon(boardArr) == 1 || game.hasWon(boardArr) == 0) {
+        if(game.hasWon(boardArr) == 'X' || game.hasWon(boardArr) == 'O') {
             System.out.println("Winner");
         } else {
             System.out.println("Other Scenario");
@@ -57,6 +57,37 @@ public class GameTest {
         Game game = new Game();
         char[][] boardArr = new char[3][3];
 
+        boardArr[0][0] = ' ';
+        boardArr[0][1] = 'X';
+        boardArr[0][2] = ' ';
+
+        boardArr[1][0] = ' ';
+        boardArr[1][1] = 'X';
+        boardArr[1][2] = ' ';
+
+        boardArr[2][0] = ' ';
+        boardArr[2][1] = 'X';
+        boardArr[2][2] = ' ';
+
+        if(game.hasWon(boardArr) == 'O') {
+            System.out.println("O winner");
+        } else if(game.hasWon(boardArr) == 'X') {
+            System.out.println("X winner");
+        } else {
+            System.out.println(game.hasWon(boardArr));
+            System.out.println("Continue");
+        }
+    }
+
+    @Test
+    public void whoWon() {
+        Game game = new Game();
+
+        Player player1 = new Player("Tim", 'X');
+        Player player2 = new Player("Jorge", 'O');
+
+        char[][] boardArr = new char[3][3];
+
         boardArr[0][0] = 'X';
         boardArr[0][1] = ' ';
         boardArr[0][2] = ' ';
@@ -69,41 +100,18 @@ public class GameTest {
         boardArr[2][1] = ' ';
         boardArr[2][2] = ' ';
 
-        if(game.hasWon(boardArr) == 0) {
-            System.out.println("O winner");
-        } else if(game.hasWon(boardArr) == 1) {
-            System.out.println("X winner");
-        } else {
-            System.out.println(game.hasWon(boardArr));
-            System.out.println("Continue");
+        if(game.hasWon(boardArr) == player1.getPlayerToken()) {
+            String name;
+            name = player1.getPlayerName();
+            System.out.println(name + " is the winner!");
+        }
+
+        if(game.hasWon(boardArr) == player2.getPlayerToken()) {
+            String name;
+            name = player2.getPlayerName();
+            System.out.println(name + " is the winner!");
         }
     }
-
-//    @Test
-//    public void whoWon() {
-//        Game game = new Game();
-//
-//        Player player1 = new Player("Tim", 'O');
-//        Player player2 = new Player("Jorge", 'X');
-//
-//        char[][] boardArr = new char[3][3];
-//
-//        boardArr[0][0] = 'X';
-//        boardArr[0][1] = ' ';
-//        boardArr[0][2] = ' ';
-//
-//        boardArr[1][0] = 'X';
-//        boardArr[1][1] = ' ';
-//        boardArr[1][2] = ' ';
-//
-//        boardArr[2][0] = 'X';
-//        boardArr[2][1] = ' ';
-//        boardArr[2][2] = ' ';
-//
-//        if(game.hasWon(boardArr) == 0) {
-//            System.out.println()
-//        }
-//    }
 
     @Test
     public void full() {

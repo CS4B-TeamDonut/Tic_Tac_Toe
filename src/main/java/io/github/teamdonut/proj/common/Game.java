@@ -9,6 +9,7 @@ public class Game {
 
     private Player player1;
     private Player player2;
+    private char token;
     private char[][] boardArr;
     private final char EMPTY_VALUE = ' ';
 
@@ -23,12 +24,15 @@ public class Game {
      * @param player2 second player
      * @param boardArr1 board array holding chars
      */
-    public Game(Player player1, Player player2, char[][] boardArr1) {
+    public Game(Player player1, Player player2, char[][] boardArr1, char token) {
         this.player1      = player1;
         this.player2      = player2;
+        this.token        = token;
         this.boardArr     = boardArr1;
         Arrays.stream(boardArr).forEach(str -> Arrays.fill(str, EMPTY_VALUE));
     }
+
+    public char getToken() {return token; }
 
     /**
      * Getter that returns the board array.
@@ -73,52 +77,48 @@ public class Game {
      * @param boardArr board array
      * @return true or false depending if there is a winning scenario
      */
-    public int hasWon(char[][] boardArr) {
-
-        int xWinner      = 1;
-        int oWinner      = 0;
-        int continueGame = 2;
+    public char hasWon(char[][] boardArr) {
 
         for (int i = 0; i < 3; i++) {
             if (boardArr[i][0] == 'X' && boardArr[i][1] == 'X' && boardArr[i][2] == 'X') {
-                return xWinner;
+                return 'X';
             }
         }
 
         for (int i = 0; i < 3; i++) {
             if (boardArr[i][0] == 'O' && boardArr[i][1] == 'O' && boardArr[i][2] == 'O') {
-                return oWinner;
+                return 'O';
             }
         }
 
         for (int j = 0; j < 3; j++) {
             if (boardArr[0][j] == 'X' && boardArr[1][j] == 'X' && boardArr[2][j] == 'X') {
-                return xWinner;
+                return 'X';
             }
         }
 
         for (int j = 0; j < 3; j++) {
             if (boardArr[0][j] == 'O' && boardArr[1][j] == 'O' && boardArr[2][j] == 'O') {
-                return oWinner;
+                return 'O';
             }
         }
 
         if (boardArr[0][0] == 'X' && boardArr[1][1] == 'X' && boardArr[2][2] == 'X') {
-            return xWinner;
+            return 'X';
         }
 
         if (boardArr[0][0] == 'O' && boardArr[1][1] == 'O' && boardArr[2][2] == 'O') {
-            return oWinner;
+            return 'O';
         }
 
         if (boardArr[0][2] == 'X' && boardArr[1][1] == 'X' && boardArr[2][0] == 'X') {
-            return xWinner;
+            return 'X';
         }
 
         if (boardArr[0][2] == 'O' && boardArr[1][1] == 'O' && boardArr[2][0] == 'O') {
-            return oWinner;
+            return 'O';
         }
-        return continueGame;
+        return 'C';
     }
 
     public Player whoWon(char[][] boardArr) {
@@ -132,7 +132,7 @@ public class Game {
     }
 
     public boolean gameOver(char[][] boardArr) {
-        return isBoardFull(boardArr) || hasWon(boardArr) == 1 || hasWon(boardArr) == 0;
+        return isBoardFull(boardArr) || hasWon(boardArr) == 'X' || hasWon(boardArr) == 'O';
     }
 
     /**

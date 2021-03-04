@@ -96,7 +96,6 @@ public class MainController implements Initializable, ISubject {
         EventSounds.getInstance().playButtonSound2();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);
-
         //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
         //        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         //        Stage window = (Stage) gameButton.getScene().getWindow();

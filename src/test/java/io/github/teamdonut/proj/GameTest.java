@@ -80,11 +80,12 @@ public class GameTest {
     }
 
     @Test
-    public void whoWon() {
+    public void determineNameWinner() {
         Game game = new Game();
+        String name;
 
-        Player player1 = new Player("Tim", 'X');
-        Player player2 = new Player("Jorge", 'O');
+        Player player1 = new Player("Tim", 'O');
+        Player player2 = new Player("Jorge", 'X');
 
         char[][] boardArr = new char[3][3];
 
@@ -100,17 +101,8 @@ public class GameTest {
         boardArr[2][1] = ' ';
         boardArr[2][2] = ' ';
 
-        if(game.hasWon(boardArr) == player1.getPlayerToken()) {
-            String name;
-            name = player1.getPlayerName();
-            System.out.println(name + " is the winner!");
-        }
-
-        if(game.hasWon(boardArr) == player2.getPlayerToken()) {
-            String name;
-            name = player2.getPlayerName();
-            System.out.println(name + " is the winner!");
-        }
+        name = game.whoWon(boardArr, player1, player2);
+        System.out.println(name + " is the WINNER!");
     }
 
     @Test

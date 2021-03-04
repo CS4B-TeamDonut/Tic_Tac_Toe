@@ -121,18 +121,26 @@ public class Game {
         return 'C';
     }
 
-    public Player whoWon(char[][] boardArr) {
-        if(hasWon(boardArr) == 0)
-        {
-            return player1;
-        }
-        else {
-            return player2;
-        }
-    }
-
     public boolean gameOver(char[][] boardArr) {
         return isBoardFull(boardArr) || hasWon(boardArr) == 'X' || hasWon(boardArr) == 'O';
+    }
+
+    public String whoWon(char[][] boardArr, Player player1, Player player2) {
+
+        String returnNothing = " ";
+        if(hasWon(boardArr) == player1.getPlayerToken()) {
+            String name;
+            name = player1.getPlayerName();
+            return name;
+        }
+
+        if(hasWon(boardArr) == player2.getPlayerToken()) {
+            String name;
+            name = player2.getPlayerName();
+            return name;
+        }
+
+        return returnNothing;
     }
 
     /**

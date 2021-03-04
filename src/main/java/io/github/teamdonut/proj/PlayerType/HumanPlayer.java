@@ -8,8 +8,7 @@ import io.github.teamdonut.proj.common.Board;
  * and passes it to the event manager. </p>
  * @author Grant Goldsworth
  */
-public class HumanPlayer implements IPlayerType
-{
+public class HumanPlayer implements IPlayerType {
 
     /**
      * Handle the human player's move, notifying the event handler
@@ -19,8 +18,7 @@ public class HumanPlayer implements IPlayerType
      * @author Grant Goldsworth
      */
     @Override
-    public void makeMove(Board board, char c)
-    {
+    public void makeMove(Board board, char c) {
 
     }
 }

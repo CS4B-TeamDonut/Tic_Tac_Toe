@@ -12,11 +12,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.SystemUtils;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -78,13 +81,35 @@ public class AboutUsController implements Initializable, ISubject {
         //url link to the github repository
         githubLink.setText("GitHub Repository");
         githubLink.setOnAction(event -> {
-            if(Desktop.isDesktopSupported()) {
-                try {
+            try {
+                if (SystemUtils.IS_OS_LINUX) {
+                    if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
+                        Runtime.getRuntime().exec(new String[] { "xdg-open", "https://github.com/kboniadi/Tic_Tac_Toe" });
+                    } else {
+                        Logger.log("xdg-open not supported!");
+                    }
+                } else if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                     Desktop.getDesktop().browse(new URI("https://github.com/kboniadi/Tic_Tac_Toe"));
-                } catch (IOException | URISyntaxException e) {
-                    Logger.log(e);
                 }
+            } catch (Exception e) {
+                Logger.log(e);
             }
+//            if (System.getProperty("os_name").toLowerCase(Locale.ROOT).contains("nix") ||
+//                    System.getProperty("os_name").toLowerCase(Locale.ROOT).contains("nux") ||
+//                    System.getProperty("os_name").toLowerCase(Locale.ROOT).contains("aix")) {
+//                if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
+//                    Runtime.getRuntime().exec(new String[] { "xdg-open", new URI("https://github.com/kboniadi/Tic_Tac_Toe") });
+//                } else {
+//                    Logger.log("xdg-open not supported!");
+//                }
+//            }
+//            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+//                try {
+//                    Desktop.getDesktop().browse(new URI("https://github.com/kboniadi/Tic_Tac_Toe"));
+//                } catch (IOException | URISyntaxException e) {
+//                    Logger.log(e);
+//                }
+//            }
         });
         contributors.setText( "Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar");
         copyright.setText("Copyright \u00a9 2021 Donut");

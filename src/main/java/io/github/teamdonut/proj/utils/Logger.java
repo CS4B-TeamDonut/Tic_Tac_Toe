@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -92,15 +94,17 @@ public final class Logger {
 
             appName = getString(relativePath, "app_name", "Unknown");
             basePackage = getString(relativePath, "default_package", null);
-            String outputFile = getString(relativePath, "output_file", null);
+
+            SimpleDateFormat simpleFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+            String outputFile = "log_" + simpleFormatter.format(new Date()) + ".log";
+            String output_dir = getString(relativePath, "output_dir", null);
+
             appLogger = java.util.logging.Logger.getLogger(appName);
 
-            Files.createDirectories(Path.of(System.getProperty("user.dir") + "/"
-                    + outputFile.substring(0, outputFile.lastIndexOf('/'))));
-            Handler handler = new FileHandler(outputFile, true);
+            Files.createDirectories(Path.of(System.getProperty("user.dir") + "/" + output_dir));
+            Handler handler = new FileHandler(output_dir.concat(outputFile), true);
             handler.setFormatter(new SimpleFormatter());
             appLogger.addHandler(handler);
-
         } catch (SecurityException | IOException e) {
             Logger.log(e);
         }
@@ -176,7 +180,7 @@ public final class Logger {
         }
         if (lvl.intValue() < appLogger.getLevel().intValue())
             return;
-        message = String.format("[%s-%s] %s", appName, getCallingClassName(depth), message);
+        message = String.format("[thr%s %s] %s", Thread.currentThread().getId(), getHeaderInfo(depth), message);
         appLogger.log(lvl, message, objects);
         if (objects.length > 0 && objects[0] instanceof Throwable) {
             Throwable throwable = (Throwable) objects[0];
@@ -219,11 +223,17 @@ public final class Logger {
      * @param stackLevel the level in the stack trace
      * @return the classname of th calling class
      */
-    private static String getCallingClassName(int stackLevel) {
+    private static String getHeaderInfo(int stackLevel) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         if (stackLevel >= stackTrace.length)
             return null;
-        String[] source = stackTrace[stackLevel].getClassName().split("\\.");
-        return source[source.length - 1] + ":" + stackTrace[stackLevel].getLineNumber();
+//        String[] source = stackTrace[stackLevel].getClassName().split("\\.");
+        return "\"" + stackTrace[stackLevel].getFileName() + "\"" + ":" +
+                stackTrace[stackLevel].getLineNumber() + " " +
+                stackTrace[stackLevel].getMethodName() + "()";
+
+//        return source[source.length - 1] + ":" +
+//                stackTrace[stackLevel].getLineNumber() + " " +
+//                stackTrace[stackLevel].getMethodName() + "()";
     }
 }

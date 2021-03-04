@@ -22,7 +22,6 @@ import javafx.stage.Stage;
  * @since 2/13/21
  */
 public class Main extends Application {
-
     @Override
     public void start(Stage stage) throws Exception {
         new AppController(stage).startApp();

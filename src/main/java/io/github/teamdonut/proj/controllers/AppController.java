@@ -52,7 +52,7 @@ public class AppController implements IObserver {
         mainStage.setScene(start);
         mainStage.setResizable(false);
         mainStage.show();
-
+        Logger.log("program started..");
 //        Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
 //
 //        EventManager.register(MainController.getInstance(), this);

@@ -21,7 +21,7 @@ public class GameTest {
         boardArr[2][1] = ' ';
         boardArr[2][2] = ' ';
 
-        if(game.hasWon(boardArr) == 'X' || game.hasWon(boardArr) == 'O') {
+        if (game.hasWon(boardArr) == 'X' || game.hasWon(boardArr) == 'O') {
             System.out.println("Winner");
         } else {
             System.out.println("Other Scenario");
@@ -45,7 +45,7 @@ public class GameTest {
         boardArr[2][1] = 'X';
         boardArr[2][2] = ' ';
 
-        if(game.gameOver(boardArr)) {
+        if (game.gameOver(boardArr)) {
             System.out.println("Game Over");
         } else {
             System.out.println("Keep Playing");
@@ -69,9 +69,9 @@ public class GameTest {
         boardArr[2][1] = 'X';
         boardArr[2][2] = ' ';
 
-        if(game.hasWon(boardArr) == 'O') {
+        if (game.hasWon(boardArr) == 'O') {
             System.out.println("O winner");
-        } else if(game.hasWon(boardArr) == 'X') {
+        } else if (game.hasWon(boardArr) == 'X') {
             System.out.println("X winner");
         } else {
             System.out.println(game.hasWon(boardArr));
@@ -79,53 +79,54 @@ public class GameTest {
         }
     }
 
-    @Test
-    public void determineNameWinner() {
-        Game game = new Game();
-        String name;
+        @Test
+        public void determineNameWinner() {
+            Game game = new Game();
+            String name;
 
-        Player player1 = new Player("Tim", 'O');
-        Player player2 = new Player("Jorge", 'X');
+            Player player1 = new Player("Tim", 'O');
+            Player player2 = new Player("Jorge", 'X');
 
-        char[][] boardArr = new char[3][3];
+            char[][] boardArr = new char[3][3];
 
-        boardArr[0][0] = 'X';
-        boardArr[0][1] = ' ';
-        boardArr[0][2] = ' ';
+            boardArr[0][0] = 'X';
+            boardArr[0][1] = ' ';
+            boardArr[0][2] = ' ';
 
-        boardArr[1][0] = 'X';
-        boardArr[1][1] = ' ';
-        boardArr[1][2] = ' ';
+            boardArr[1][0] = 'X';
+            boardArr[1][1] = ' ';
+            boardArr[1][2] = ' ';
 
-        boardArr[2][0] = 'X';
-        boardArr[2][1] = ' ';
-        boardArr[2][2] = ' ';
+            boardArr[2][0] = 'X';
+            boardArr[2][1] = ' ';
+            boardArr[2][2] = ' ';
 
-        name = game.whoWon(boardArr, player1, player2);
-        System.out.println(name + " is the WINNER!");
-    }
-
-    @Test
-    public void full() {
-        Game game = new Game();
-        char[][] boardArr = new char[3][3];
-
-        boardArr[0][0] = 'X';
-        boardArr[0][1] = 'X';
-        boardArr[0][2] = 'X';
-
-        boardArr[1][0] = 'X';
-        boardArr[1][1] = 'X';
-        boardArr[1][2] = 'X';
-
-        boardArr[2][0] = 'X';
-        boardArr[2][1] = 'X';
-        boardArr[2][2] = 'X';
-
-        if (game.isBoardFull(boardArr)) {
-            System.out.println("Board is full");
-        } else {
-            System.out.println("Board is incomplete");
+            name = game.whoWon(boardArr, player1, player2);
+            System.out.println(name + " is the WINNER!");
         }
-    }
+
+        @Test
+        public void full() {
+            Game game = new Game();
+            char[][] boardArr = new char[3][3];
+
+            boardArr[0][0] = 'X';
+            boardArr[0][1] = 'X';
+            boardArr[0][2] = 'X';
+
+            boardArr[1][0] = 'X';
+            boardArr[1][1] = 'X';
+            boardArr[1][2] = 'X';
+
+            boardArr[2][0] = 'X';
+            boardArr[2][1] = 'X';
+            boardArr[2][2] = 'X';
+            boardArr[2][2] = ' ';
+
+            if (game.isBoardFull(boardArr)) {
+                System.out.println("Board is full");
+            } else {
+                System.out.println("Board is incomplete");
+            }
+        }
 }

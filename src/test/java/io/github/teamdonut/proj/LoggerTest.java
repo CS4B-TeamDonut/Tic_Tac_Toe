@@ -14,11 +14,7 @@ public class LoggerTest {
     @Test
     public void testLogException() {
         Logger.log(new Exception("custom exception"));
-        /*
-        [Feb 19, 2021 2:45:34 PM] [SEVERE][tic-tac-toe-LoggerTest] java.lang.Exception: custom exception \n
-        [Feb 19, 2021 2:45:34 PM] [SEVERE][tic-tac-toe-LoggerTest] \t io.github.teamdonut.proj.LoggerTest.testLogException(LoggerTest.java:14) \n
-        [Feb 19, 2021 2:45:34 PM] [SEVERE][tic-tac-toe-LoggerTest] \t java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-         */
+
     }
 
     @Test

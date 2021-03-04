@@ -94,8 +94,7 @@ public class MultiplayerController implements Initializable, ISubject {
         }
     }
 
-    public void onStartButtonClick(ActionEvent actionEvent) {
-        System.out.println("TEST");
+    public void onStartButtonClick(MouseEvent actionEvent) {
         startGame();
     }
 

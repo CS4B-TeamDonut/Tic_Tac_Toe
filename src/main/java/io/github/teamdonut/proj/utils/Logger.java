@@ -67,6 +67,9 @@ public final class Logger {
 
     }
 
+    /**
+     * Default init method
+     */
     public static void init() {
         init("", Level.INFO);
     }

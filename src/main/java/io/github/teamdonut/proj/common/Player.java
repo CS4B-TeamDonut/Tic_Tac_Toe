@@ -60,6 +60,7 @@ public class Player implements ISubject, IObserver {
     private char playerToken;
 
     // IPlayerType instance - handles how this "Player" makes/calculates moves
+    // basically the brain
     private IPlayerType playerType;
 
     /**

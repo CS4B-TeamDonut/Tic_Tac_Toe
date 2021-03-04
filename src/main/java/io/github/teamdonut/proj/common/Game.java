@@ -1,8 +1,6 @@
 package io.github.teamdonut.proj.common;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Game is a data-only class that holds access to the logic of the game
@@ -137,7 +135,6 @@ public class Game {
         return isBoardFull(boardArr) || hasWon(boardArr) == 1 || hasWon(boardArr) == 0;
     }
 
-
     /**
      * isBoardFull checks if the board is full, if there is an empty space, the board is incomplete
      * @param boardArr board array
@@ -153,18 +150,6 @@ public class Game {
         }
         return true;
     }
-
-//    public class StopWatch {
-//        int interval;
-//
-//        Timer timer = new Timer();
-//
-//        TimerTask task = new TimerTask() {
-//            public void run() {
-//                timer.schedule(task, 50001);
-//            }
-//        };
-//    }
 
     @Override
     public boolean equals(Object o) {

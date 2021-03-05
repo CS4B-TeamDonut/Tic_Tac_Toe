@@ -77,27 +77,6 @@ public class MultiplayerController implements Initializable, ISubject {
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
     private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
     private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
-    //instance of the controller
-    private static MultiplayerController instance;
-
-    /**
-     * This method will return the instance of the controller
-     *
-     * @return this (a MultiplayerController object)
-     * @author Joey Campbell
-     */
-    public static MultiplayerController getInstance() {
-        return instance;
-    }
-
-    /**
-     * Constructs a MultiplayerController object by instantiating its own static instance
-     *
-     * @author Joey Campbell
-     */
-    public MultiplayerController() {
-        instance = this;
-    }
 
     /**
      * Initializes a MultiplayerController object after its root element has been
@@ -221,7 +200,7 @@ public class MultiplayerController implements Initializable, ISubject {
                 new Player(player1Name, tokenP1),
                 new Player(player2Name, tokenP2));
 
-        EventManager.notify(MultiplayerController.getInstance(), game);
+        EventManager.notify(this, game);
     }
 
     /**

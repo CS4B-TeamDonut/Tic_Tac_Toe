@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj.common;
 
+import io.github.teamdonut.proj.NPC.Human;
+import io.github.teamdonut.proj.NPC.NPC;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
@@ -56,6 +58,7 @@ public class Player implements ISubject, IObserver {
 
     private String playerName;
     private char playerToken;
+    NPC playerType;
 
     /**
      * Constructs a Player object with no arguments.
@@ -67,7 +70,7 @@ public class Player implements ISubject, IObserver {
      * @param playerName The name of the player
      */
     public Player(String playerName) {
-        this.playerName = playerName;
+        this(playerName, 'X', new Human());
     }
 
     /**
@@ -76,10 +79,14 @@ public class Player implements ISubject, IObserver {
      * @param playerToken The token of the player ['X', 'O']
      */
     public Player(String playerName, char playerToken) {
-        this.playerName = playerName;
-        this.playerToken = playerToken;
+        this(playerName, playerToken, new Human());
     }
 
+    public Player(String playerName, char playerToken, NPC playerType) {
+        this.playerName = playerName;
+        this.playerToken = playerToken;
+        this.playerType = playerType;
+    }
     /**
      * Gets the player's name.
      * @return A String holding the player's name
@@ -104,6 +111,9 @@ public class Player implements ISubject, IObserver {
      */
     public void setPlayerToken(char playerToken) { this.playerToken = playerToken; }
 
+    public void setPlayerType(NPC playerType) {
+
+    }
     /**
      * Checks the equality of two Player objects.
      * @param o The Player that is being checked for equality

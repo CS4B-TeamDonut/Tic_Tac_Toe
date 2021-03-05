@@ -212,6 +212,8 @@ public class MultiplayerController implements Initializable, ISubject {
      * @author Kord Boniadi
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
+        EventManager.removeAllObserver(this);
+        EventSounds.getInstance().playButtonSound1();
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);

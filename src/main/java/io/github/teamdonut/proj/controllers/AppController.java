@@ -63,6 +63,7 @@ public class AppController implements IObserver {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../aboutUs.fxml"));
 
         //setting the main stage to the about us page scene
+        loader.setController(obj);
         try {
             aboutUsScene = new Scene(loader.load());
             aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
@@ -117,7 +118,6 @@ public class AppController implements IObserver {
         } catch (IOException e) {
             Logger.log(e);
         }
-
 
         EventManager.register(boardUI, obj.getPlayer1());
         EventManager.register(boardUI, obj.getPlayer2());

@@ -91,10 +91,10 @@ public class GameController implements ISubject, IObserver {
         this.board = board;
         this.player1 = player1;
         this.player2 = player2;
-        Random rand = new Random();
-        swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
-        EventManager.register(player1, this);
-        EventManager.register(player2, this);
+//        Random rand = new Random();
+//        swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
+//        EventManager.register(player1, this);
+//        EventManager.register(player2, this);
     }
 
     /**
@@ -131,6 +131,13 @@ public class GameController implements ISubject, IObserver {
 //        EventManager.register(player2, this);
 //    }
 
+    public void startGame() {
+        Random rand = new Random();
+        swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
+        EventManager.register(player1, this);
+        EventManager.register(player2, this);
+
+    }
     /**
      * New info is received through this method. Object decoding is needed
      *

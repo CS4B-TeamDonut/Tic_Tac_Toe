@@ -9,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -30,24 +28,38 @@ public class MultiplayerController implements Initializable, ISubject {
     @FXML
     public Label player1Name;
 
+    @FXML
+    public RestrictiveTextField nameEntryMP1;
+
+    @FXML
+    public RestrictiveTextField nameEntryMP2;
+
 //    @FXML
-//    public RestrictiveTextField nameEntryMP1;
+//    public TextField nameEntryMP1;
 //
 //    @FXML
-//    public RestrictiveTextField nameEntryMP2;
-
-    @FXML
-    public TextField nameEntryMP1;
-
-    @FXML
-    public TextField nameEntryMP2;
+//    public TextField nameEntryMP2;
 
     @FXML
     public ImageView startButton;
 
-
     @FXML
     private ImageView backButton;
+
+    @FXML
+    public RadioButton tokenXP1;
+
+    @FXML
+    public RadioButton tokenOP1;
+
+    @FXML
+    public RadioButton tokenXP2;
+
+    @FXML
+    public RadioButton tokenOP2;
+
+    private char tokenP1;
+    private char tokenP2;
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
@@ -77,20 +89,55 @@ public class MultiplayerController implements Initializable, ISubject {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        title.setAlignment(Pos.TOP_CENTER);
 
-        player1Name.setAlignment(Pos.TOP_CENTER);
+        ToggleGroup tokenGroup1 = new ToggleGroup();
+        ToggleGroup tokenGroup2 = new ToggleGroup();
 
-        startButton.setId("startButton");
+        tokenXP1.setToggleGroup(tokenGroup1);
+        tokenOP1.setToggleGroup(tokenGroup1);
+        tokenXP1.setSelected(true);
 
-//        nameEntryMP1.setMaxLength(5);
-//        nameEntryMP2.setMaxLength(5);
+        tokenXP2.setToggleGroup(tokenGroup2);
+        tokenOP2.setToggleGroup(tokenGroup2);
+        tokenOP2.setSelected(true);
+
+        tokenP1 = 'X';
+        tokenP2 = 'O';
+
+        nameEntryMP1.setMaxLength(5);
+        nameEntryMP2.setMaxLength(5);
 
     }
 
     public void onNameEntered(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             startGame();
+        }
+    }
+
+    public void onToggleClick1 (MouseEvent actionEvent) {
+        if (tokenXP1.isSelected()) {
+            tokenOP2.setSelected(true);
+            tokenP1 = 'X';
+            tokenP2 = 'O';
+        }
+        else {
+            tokenXP2.setSelected(true);
+            tokenP1 = 'O';
+            tokenP2 = 'X';
+        }
+    }
+
+    public void onToggleClick2 (MouseEvent actionEvent) {
+        if (tokenXP2.isSelected()) {
+            tokenOP1.setSelected(true);
+            tokenP2 = 'X';
+            tokenP1 = 'O';
+        }
+        else {
+            tokenXP1.setSelected(true);
+            tokenP2 = 'O';
+            tokenP1 = 'X';
         }
     }
 
@@ -101,6 +148,7 @@ public class MultiplayerController implements Initializable, ISubject {
     private void startGame() {
         String player1Name;
         String player2Name;
+
 
         if (nameEntryMP1.getText().isEmpty()) {
             player1Name = "P1";
@@ -115,10 +163,10 @@ public class MultiplayerController implements Initializable, ISubject {
         else {
             player2Name = "P2: " + nameEntryMP2.getText();
         }
-
+        System.out.println(tokenP1 + "  " + tokenP2);
         GameController game = new GameController(
-                new Player(player1Name, 'X'),
-                new Player(player2Name, 'O'));
+                new Player(player1Name, tokenP1),
+                new Player(player2Name, tokenP2));
 
         EventManager.notify(MultiplayerController.getInstance(), game);
     }

@@ -4,12 +4,13 @@ import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.RestrictiveTextField;
-import javafx.event.ActionEvent;
+import io.github.teamdonut.sounds.EventSounds;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -170,6 +171,7 @@ public class MultiplayerController implements Initializable, ISubject {
      * @author Joey Campbell
      */
     public void onStartButtonClick(MouseEvent actionEvent) {
+        EventSounds.getInstance().playButtonSound2();
         startGame();
     }
 

@@ -5,7 +5,6 @@ import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
-import io.github.teamdonut.proj.utils.Logger;
 
 import java.util.Random;
 

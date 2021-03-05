@@ -89,6 +89,23 @@ public class AppController implements IObserver {
         }
     }
 
+    public void createMultiPlayerPage(MultiplayerController obj) {
+        EventManager.register(obj, this);
+
+        //loads the fxml file
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../multiplayerPage.fxml"));
+
+        //setting the controller
+        loader.setController(obj);
+        try {
+            multiplayerScene = new Scene(loader.load());
+            multiplayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            mainStage.setScene(multiplayerScene);
+        } catch (IOException e) {
+            Logger.log(e);
+        }
+    }
+
     public void createBoardPage(GameController obj) {
         boardUI = new BoardUI();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
@@ -106,6 +123,7 @@ public class AppController implements IObserver {
         EventManager.register(boardUI, obj.getPlayer2());
         EventManager.register(obj, boardUI);
     }
+
     /**
      * Receives data from a subscribed subject
      * @param eventType object container
@@ -115,11 +133,13 @@ public class AppController implements IObserver {
     @Override
     public void update(Object eventType) {
 
-        if (eventType instanceof AboutUsController) // checking if event type is an AboutUsController
+        if (eventType instanceof AboutUsController)             // checking if event type is an AboutUsController
             createAboutPage((AboutUsController) eventType);
         else if (eventType instanceof SinglePlayerController)   // checking if event type is an SinglePlayerController
             createSinglePlayerPage((SinglePlayerController) eventType);
-        else if (eventType instanceof GameController)   // checking if event type is an GameController
+        else if (eventType instanceof MultiplayerController)    // checking if event type is an MultiplayerController
+            createMultiPlayerPage((MultiplayerController) eventType);
+        else if (eventType instanceof GameController)           // checking if event type is an GameController
             createBoardPage((GameController) eventType);
     }
 }

@@ -3,20 +3,15 @@ package io.github.teamdonut.proj.controllers;
 import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
-import io.github.teamdonut.proj.utils.Logger;
 import io.github.teamdonut.proj.utils.RestrictiveTextField;
 import io.github.teamdonut.sounds.EventSounds;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -73,28 +68,6 @@ public class SinglePlayerController implements Initializable, ISubject {
 
     private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
     private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
-
-//    private static SinglePlayerController instance;     //instance of the controller
-
-    /**
-     * This method will return the instance of the controller
-     *
-     * @return this
-     * @author Utsav Parajuli
-     */
-//    public static SinglePlayerController getInstance() {
-//        return instance;
-//    }
-
-    /**
-     * Constructor
-     *
-     * @author Utsav Parajuli
-     */
-//    public SinglePlayerController() {
-//        instance = this;
-//    }
-
 
     /**
      * Called to initialize a controller after its root element has been
@@ -199,7 +172,6 @@ public class SinglePlayerController implements Initializable, ISubject {
                 new Player(userName, userToken),
                 new Player(cpuLevel, cpuToken));
 
-//        EventManager.notify(SinglePlayerController.getInstance(), game);
         EventManager.notify(this, game);
     }
 

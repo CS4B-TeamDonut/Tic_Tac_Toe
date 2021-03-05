@@ -247,9 +247,10 @@ public final class Logger {
 
     /**
      * Caps the number of log file in the log dir
-     * @param parentFolder  path to root folder
-     * @param extensionCouldBeNull
-     * @param limit
+     * @param parentFolder path to root folder
+     * @param extensionCouldBeNull your choice of added an extension to delete
+     * @param limit number of files permitted in the parent dir
+     * @author Kord Boniadi
      */
     private static void deleteOldFiles(Path parentFolder, String extensionCouldBeNull, int limit) {
         List<Path> files = getSortedFilesByDataCreated(parentFolder, extensionCouldBeNull, false);
@@ -268,6 +269,14 @@ public final class Logger {
         });
     }
 
+    /**
+     *
+     * @param parentFolder path to root folder
+     * @param targetExtensionCouldBeNull your choice of added an extension to delete
+     * @param ascendingOrder ascending or descending order boolean
+     * @return  List of filtered/ordered files
+     * @author Kord Boniadi
+     */
     private static List<Path> getSortedFilesByDataCreated(Path parentFolder, String targetExtensionCouldBeNull, boolean ascendingOrder) {
         try {
             Comparator<Path> pathComparator = Comparator.comparingLong(f -> getFileCreationEpoch((f).toFile()));
@@ -282,6 +291,12 @@ public final class Logger {
         }
     }
 
+    /**
+     * Gets the time the file was created and returns it in milli
+     * @param file specific file to analyze
+     * @return time created in milli
+     * @author Kord Boniadi
+     */
     public static long getFileCreationEpoch(File file) {
         try {
             BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);

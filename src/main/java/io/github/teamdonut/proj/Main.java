@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj;
 
-import io.github.teamdonut.proj.controllers.AppController;
+import io.github.teamdonut.proj.controllers.AppController;  
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -31,4 +31,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-

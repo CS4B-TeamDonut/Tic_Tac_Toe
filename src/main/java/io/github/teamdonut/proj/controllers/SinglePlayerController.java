@@ -118,7 +118,6 @@ public class SinglePlayerController implements Initializable, ISubject {
         //      4 so when you go to enter you can't enter anymore after 4 characters
         nameEntry.setMaxLength(5);
 
-
         //start button
         startButton.setId("startButton");
 

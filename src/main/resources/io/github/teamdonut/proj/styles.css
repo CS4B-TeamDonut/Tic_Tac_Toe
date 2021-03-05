@@ -51,7 +51,7 @@
     -fx-text-fill: white;
 }
 
-#nameEntry {
+#nameEntry, #nameEntryMP1, #nameEntryMP2 {
     -fx-background-color: black;
     -fx-text-fill: #75a2e1;
     -fx-alignment: center;
@@ -62,14 +62,15 @@
     -fx-font-size: 20px;
     -fx-font-family: Chalkduster;
 }
-#entryButton {
-    -fx-alignment: center;
-    -fx-background-color: black;
-    -fx-text-fill: khaki;
-    -fx-font-size: 20;
-    -fx-font-family: Chalkduster;
-}
-#boardPage, #singlePlayerPage, #aboutUsPage {
+/*#entryButton {*/
+/*    -fx-alignment: center;*/
+/*    -fx-background-color: black;*/
+/*    -fx-text-fill: khaki;*/
+/*    -fx-font-size: 20;*/
+/*    -fx-font-family: Chalkduster;*/
+/*}*/
+
+#boardPage, #singlePlayerPage, #aboutUsPage, #multiplayerPage {
     -fx-background-image: url("/io/github/teamdonut/proj/images/common/main_03.png");
     -fx-background-size: 800 450;
 }
@@ -83,7 +84,8 @@
     -fx-font-size: 16;
 }
 
-#tokenO, #tokenX, #easyMode, #hardMode {
+#tokenO, #tokenX, #easyMode, #hardMode,
+#tokenXP1, #tokenOP1, #tokenXP2, #tokenOP2 {
     -fx-font-family: Chalkduster;
     -fx-font-size: 13;
     -fx-text-fill: #75a2e1;

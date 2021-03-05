@@ -74,7 +74,7 @@ public class SinglePlayerController implements Initializable, ISubject {
     private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
     private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
 
-    private static SinglePlayerController instance;     //instance of the controller
+//    private static SinglePlayerController instance;     //instance of the controller
 
     /**
      * This method will return the instance of the controller
@@ -82,18 +82,18 @@ public class SinglePlayerController implements Initializable, ISubject {
      * @return this
      * @author Utsav Parajuli
      */
-    public static SinglePlayerController getInstance() {
-        return instance;
-    }
+//    public static SinglePlayerController getInstance() {
+//        return instance;
+//    }
 
     /**
      * Constructor
      *
      * @author Utsav Parajuli
      */
-    public SinglePlayerController() {
-        instance = this;
-    }
+//    public SinglePlayerController() {
+//        instance = this;
+//    }
 
 
     /**
@@ -199,7 +199,8 @@ public class SinglePlayerController implements Initializable, ISubject {
                 new Player(userName, userToken),
                 new Player(cpuLevel, cpuToken));
 
-        EventManager.notify(SinglePlayerController.getInstance(), game);
+//        EventManager.notify(SinglePlayerController.getInstance(), game);
+        EventManager.notify(this, game);
     }
 
     /**

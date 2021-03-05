@@ -91,8 +91,6 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-//        GameController game = new GameController();
-//        EventManager.notify(this, game);
         EventSounds.getInstance().playButtonSound2();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);

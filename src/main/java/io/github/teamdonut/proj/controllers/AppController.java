@@ -54,187 +54,70 @@ public class AppController implements IObserver {
         mainStage.setResizable(false);
         mainStage.show();
         Logger.log("program started..");
-//        Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
-//
-//        EventManager.register(MainController.getInstance(), this);
-//
-//        mainScene = new Scene(root);
-//        mainScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-//        mainStage.setUserData(this);
-//
-//        // set the title of the stage
-//        mainStage.setTitle("Donut Tic Tac Toe");
-//        mainStage.setScene(mainScene);
-//        mainStage.setResizable(false);
-//        mainStage.show();
     }
 
+    public void createAboutPage(AboutUsController obj) {
+        EventManager.register(obj, this);
+
+        //loads fxml file
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../aboutUs.fxml"));
+
+        //setting the main stage to the about us page scene
+        try {
+            aboutUsScene = new Scene(loader.load());
+            aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            mainStage.setScene(aboutUsScene);
+        } catch (IOException e) {
+            Logger.log(e);
+        }
+    }
+
+    public void createSinglePlayerPage(SinglePlayerController obj) {
+        EventManager.register(obj, this);
+
+        //loads the fxml file
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../singlePlayerPage.fxml"));
+
+        //setting the controller
+        loader.setController(obj);
+        try {
+            singlePlayerScene = new Scene(loader.load());
+            singlePlayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            mainStage.setScene(singlePlayerScene);
+        } catch (IOException e) {
+            Logger.log(e);
+        }
+    }
+
+    public void createBoardPage(GameController obj) {
+        boardUI = new BoardUI();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
+        loader.setController(new BoardPageController(boardUI, obj));
+        try {
+            boardScene = new Scene(loader.load());
+            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            mainStage.setScene(boardScene);
+        } catch (IOException e) {
+            Logger.log(e);
+        }
+        EventManager.register(boardUI, obj.getPlayer1());
+        EventManager.register(boardUI, obj.getPlayer2());
+        EventManager.register(obj, boardUI);
+    }
     /**
      * Receives data from a subscribed subject
      * @param eventType object container
      * @author Kord Boniadi
      * @author Utsav Parajuli
-     * @author Joey Campbell
      */
     @Override
     public void update(Object eventType) {
 
-        //checking if the event type is an AboutUsController
-        if (eventType instanceof AboutUsController) {
-            AboutUsController aboutUs = (AboutUsController) eventType;
-            EventManager.register(aboutUs, this);
-
-            //loads fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../aboutUs.fxml"));
-
-            //setting the main stage to the about us page scene
-            try {
-                aboutUsScene = new Scene(loader.load());
-                aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-                mainStage.setScene(aboutUsScene);
-            } catch (IOException e) {
-                Logger.log(e);
-            }
-        }
-
-        //checking if the eventType is an SinglePlayerController
-        if (eventType instanceof SinglePlayerController) {
-            SinglePlayerController name = (SinglePlayerController) eventType;
-            EventManager.register(name, this);
-
-            //loads the fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../singlePlayerPage.fxml"));
-
-            //setting the controller
-            loader.setController(name);
-            try {
-                singlePlayerScene = new Scene(loader.load());
-                singlePlayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-                mainStage.setScene(singlePlayerScene);
-            } catch (IOException e) {
-                Logger.log(e);
-            }
-            //setting the title in the screen
-//            Label title = new Label("Please Enter Your Name");
-//            title.setId("title");
-
-            //getting the properties of back button
-//            ImageView view = getImageInfo();
-//
-//            //text field for the player to enter their name
-//            TextField nameEntry = new TextField();
-//            nameEntry.setId("nameEntry");
-//
-//            //when the player presses "ENTER" key after entering their name they
-//            //will be directed towards the boardPage
-//            nameEntry.setOnKeyPressed(event -> {
-//                if(event.getCode() == KeyCode.ENTER) {
-//                    update(new GameController(new Player(nameEntry.getText())));
-//                }
-//            });
-//
-//            //button for the player to press to enter their name
-//            Button entry = new Button("Enter");
-//            entry.setId("entry");
-//
-//            entry.setOnMouseClicked(event -> update(new GameController()));
-//
-//            //creating a scene to put the arrange the title, name entry field and button
-//            VBox centerScene = new VBox(title, nameEntry, entry);
-//            centerScene.setSpacing(10);
-//            centerScene.setAlignment(Pos.TOP_CENTER);
-//
-//            //new boarder pane
-//            BorderPane pane = new BorderPane(centerScene,
-//                                            view,null,
-//                                    null,null);
-//            pane.setId("intermediatePage");
-//            pane.setPrefWidth(800);
-//            pane.setPrefHeight(450);
-        }
-
-        if (eventType instanceof MultiplayerController) {
-
-            MultiplayerController multiplayer = (MultiplayerController) eventType;
-            EventManager.register(multiplayer, this);
-
-            //loads the fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../multiplayerPage.fxml"));
-
-            //setting the controller
-            loader.setController(multiplayer);
-            try {
-                multiplayerScene = new Scene(loader.load());
-                multiplayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-                mainStage.setScene(multiplayerScene);
-            } catch (IOException e) {
-                Logger.log(e);
-            }
-        }
-
-        //if the event type is a GameController
-        //keeping track of commit
-        if (eventType instanceof GameController) {
-            GameController game = (GameController) eventType;
-            boardUI = new BoardUI();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
-            loader.setController(new BoardPageController(boardUI, game));
-            try {
-                boardScene = new Scene(loader.load());
-                boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-                mainStage.setScene(boardScene);
-            } catch (IOException e) {
-                Logger.log(e);
-            }
-            EventManager.register(boardUI, game.getPlayer1());
-            EventManager.register(boardUI, game.getPlayer2());
-            EventManager.register(game, boardUI);
-
-//            Label score = new Label("{running score}");
-//            score.setId("score");
-//
-//            GameController game = (GameController) eventType;
-//            this.boardUI = new BoardUI();
-//            ImageView view = new ImageView(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-//            view.setPreserveRatio(true);
-//            view.setFitWidth(200);
-//            view.setFitHeight(100);
-//
-//            view.setOnMouseClicked(event -> {
-//                mainStage.setScene(mainScene);
-//                mainStage.show();
-//            });
-//
-//            view.setOnMouseEntered(event -> {
-//                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png")));
-//            });
-//
-//            view.setOnMouseExited(event -> {
-//                view.setImage(new Image(getClass().getResourceAsStream("../images/common/back_arrow.png")));
-//            });
-//
-//            VBox centerScene = new VBox(score, this.boardUI);
-//            centerScene.setSpacing(10);
-//            centerScene.setAlignment(Pos.TOP_CENTER);
-//            BorderPane pane = new BorderPane(
-//                    centerScene,
-//                    new HBox(view),
-//                    new Label(game.getPlayer2().getPlayerName()),
-//                    null,
-//                    new Label(game.getPlayer1().getPlayerName())
-//            );
-//            pane.setId("boardPage");
-//            pane.setPrefWidth(800);
-//            pane.setPrefHeight(450);
-//
-////            EventManager.register(boardUI, this);
-//            boardScene = new Scene(pane);
-//            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
-//            mainStage.setScene(boardScene);
-//            EventManager.register(boardUI, game.getPlayer1());
-//            EventManager.register(boardUI, game.getPlayer2());
-//            EventManager.register(game, boardUI);
-
-        }
+        if (eventType instanceof AboutUsController) // checking if event type is an AboutUsController
+            createAboutPage((AboutUsController) eventType);
+        else if (eventType instanceof SinglePlayerController)   // checking if event type is an SinglePlayerController
+            createSinglePlayerPage((SinglePlayerController) eventType);
+        else if (eventType instanceof GameController)   // checking if event type is an GameController
+            createBoardPage((GameController) eventType);
     }
 }

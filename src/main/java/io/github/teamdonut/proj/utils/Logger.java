@@ -245,6 +245,12 @@ public final class Logger {
 //                stackTrace[stackLevel].getMethodName() + "()";
     }
 
+    /**
+     * Caps the number of log file in the log dir
+     * @param parentFolder  path to root folder
+     * @param extensionCouldBeNull
+     * @param limit
+     */
     private static void deleteOldFiles(Path parentFolder, String extensionCouldBeNull, int limit) {
         List<Path> files = getSortedFilesByDataCreated(parentFolder, extensionCouldBeNull, false);
 

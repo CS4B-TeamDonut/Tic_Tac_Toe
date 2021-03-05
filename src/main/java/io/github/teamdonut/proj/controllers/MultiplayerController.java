@@ -20,6 +20,12 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Intermediate screen where player 1 and player 2 select their desired
+ * name and token.
+ * @author Joey Campbell
+ * @version 0.1
+ */
 public class MultiplayerController implements Initializable, ISubject {
 
     @FXML
@@ -33,6 +39,12 @@ public class MultiplayerController implements Initializable, ISubject {
 
     @FXML
     public RestrictiveTextField nameEntryMP2;
+
+    // Using Utsav's RestrictiveTextField makes it so you cannot
+    //   access SceneBuilder. Incase you need to access sceneBuilder for
+    //   the multiplayerPage.fxml, uncomment the TextField Objects below
+    //   and commment the RestrictiveTextFields above. Adjust the fxml also
+    //   by switching the RestrictiveTextFields to TextFields.
 
 //    @FXML
 //    public TextField nameEntryMP1;
@@ -65,7 +77,8 @@ public class MultiplayerController implements Initializable, ISubject {
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
     private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
     private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
-    private static MultiplayerController instance;     //instance of the controller
+    //instance of the controller
+    private static MultiplayerController instance;
 
     /**
      * This method will return the instance of the controller
@@ -86,10 +99,19 @@ public class MultiplayerController implements Initializable, ISubject {
         instance = this;
     }
 
+    /**
+     * Initializes a MultiplayerController object after its root element has been
+     * completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param resources The resources used to localize the root object, or {@code null} if
+     * @author Joey Campbell
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        // Allows the toggling between both player's X/O toggles
         ToggleGroup tokenGroup1 = new ToggleGroup();
         ToggleGroup tokenGroup2 = new ToggleGroup();
 
@@ -104,17 +126,30 @@ public class MultiplayerController implements Initializable, ISubject {
         tokenP1 = 'X';
         tokenP2 = 'O';
 
+        // Uses the RestrictiveTextField to limit names to 5 characters
         nameEntryMP1.setMaxLength(5);
         nameEntryMP2.setMaxLength(5);
 
     }
 
+    /**
+     * Allows the user to click enter instead of start once their names are
+     * entered into the text fields
+     * @param keyEvent The key being pressed
+     * @author Utsav Parajuli
+     */
     public void onNameEntered(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             startGame();
         }
     }
 
+    /**
+     * Toggles the P2 radio buttons when a P1 radio button is clicked
+     * i.e. it ensures that players have different tokens
+     * @param actionEvent The mouse click on the radio button
+     * @author Joey Campbell
+     */
     public void onToggleClick1 (MouseEvent actionEvent) {
         if (tokenXP1.isSelected()) {
             tokenOP2.setSelected(true);
@@ -128,6 +163,13 @@ public class MultiplayerController implements Initializable, ISubject {
         }
     }
 
+
+    /**
+     * Toggles the P1 radio buttons when a P2 radio button is clicked
+     * i.e. it ensures that players have different tokens
+     * @param actionEvent The mouse click on the radio button
+     * @author Joey Campbell
+     */
     public void onToggleClick2 (MouseEvent actionEvent) {
         if (tokenXP2.isSelected()) {
             tokenOP1.setSelected(true);
@@ -141,14 +183,25 @@ public class MultiplayerController implements Initializable, ISubject {
         }
     }
 
+    /**
+     * This method will start the game when the start button is clicked
+     *
+     * @param actionEvent : mouse click
+     * @author Utsav Parajuli
+     * @author Joey Campbell
+     */
     public void onStartButtonClick(MouseEvent actionEvent) {
         startGame();
     }
 
+    /**
+     * Sets each player's name/token and instantiates a game object with
+     * the two players
+     * @author Joey Campbell
+     */
     private void startGame() {
         String player1Name;
         String player2Name;
-
 
         if (nameEntryMP1.getText().isEmpty()) {
             player1Name = "P1";
@@ -163,7 +216,7 @@ public class MultiplayerController implements Initializable, ISubject {
         else {
             player2Name = "P2: " + nameEntryMP2.getText();
         }
-        System.out.println(tokenP1 + "  " + tokenP2);
+
         GameController game = new GameController(
                 new Player(player1Name, tokenP1),
                 new Player(player2Name, tokenP2));

@@ -28,8 +28,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      * @author Kord Boniadi
      */
     public static class UserSelectionData {
-        private final int x;
-        private final int y;
+        private final int x;    // columns
+        private final int y;    // rows
 
         /**
          * Constructor
@@ -41,8 +41,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
 
         /**
          * Constructor
-         * @param x value
-         * @param y value
+         * @param x columns
+         * @param y rows
          * @author Kord Boniadi
          */
         public UserSelectionData(int x, int y) {
@@ -51,14 +51,14 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         }
 
         /**
-         * @return x coordinate
+         * @return x coordinate (column)
          */
         public int getX() {
             return this.x;
         }
 
         /**
-         * @return y coordinate
+         * @return y coordinate (row)
          */
         public int getY() {
             return this.y;
@@ -247,7 +247,6 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
             alert.showAndWait();
 
             EventManager.notify(this, new BoardUI.Finished());
-//            EventManager.removeAllObserver(this);
         }
     }
 }

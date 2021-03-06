@@ -18,14 +18,14 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
      * The class BoardMoveInfo contains the data that should be updated in the game class using IObserver.
      */
      class BoardMoveInfo {
-        private final int  x;     //row in board
-        private final int  y;     //column in board
+        private final int  x;     // column in board
+        private final int  y;     // row in board
 
         /**
          * This constructor will initialize the BoardModeInfo class with the x, y, and c which are row-position
          * in board, column-position in board, and token to be placed in board respectively.
-         * @param x : row number
-         * @param y : column number
+         * @param x : column number
+         * @param y : row number
          * @param c : token
          */
         BoardMoveInfo(int x, int y) {
@@ -34,16 +34,16 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
         }
 
         /**
-         * This method will return the x-position/row chose by the NPC
-         * @return x
+         * This method will return the x-position/column chose by the NPC
+         * @return x (column)
          */
         public int getX() {
             return x;
         }
 
         /**
-         * This method will return the y-position/column chose by the NPC
-         * @return y
+         * This method will return the y-position/row chose by the NPC
+         * @return y (row)
          */
         public int getY() {
             return y;

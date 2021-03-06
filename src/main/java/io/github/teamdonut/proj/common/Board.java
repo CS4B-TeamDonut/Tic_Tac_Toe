@@ -8,10 +8,10 @@ import java.util.Objects;
  * state of a tic tac toe match.
  */
 public class Board {
-    public final int BOARD_WIDTH = 3;
-    public final int BOARD_HEIGHT = 3;
+    public final int BOARD_ROWS = 3;
+    public final int BOARD_COLUMNS = 3;
     public final char EMPTY_VALUE = ' ';
-    private final char[][] board = new char[BOARD_WIDTH][BOARD_HEIGHT];
+    private final char[][] board = new char[BOARD_ROWS][BOARD_COLUMNS];
 
     /**
      * Constructs a Board object by setting all values of char [][]board to EMPTY_VALUE.
@@ -34,10 +34,10 @@ public class Board {
      * @param c the token for the array ['X', 'O']
      */
     public void updateToken(int x, int y, char c) {
-        if ((x > BOARD_WIDTH || y > BOARD_HEIGHT) || ( x < 0 || y < 0))
+        if ((y > BOARD_ROWS || x > BOARD_COLUMNS) || ( x < 0 || y < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
-                    "valid bounds are (%d, %d]", x, y, 0, BOARD_HEIGHT));
-        board[x][y] = c;
+                    "valid bounds are (%d, %d]", x, y, 0, BOARD_COLUMNS));
+        board[y][x] = c;
     }
 
     /**
@@ -47,10 +47,10 @@ public class Board {
      * @return The token ['X', 'O', ' '] of a specific position in char[][] board.
      */
     public char getToken(int x, int y) {
-        if ((x > BOARD_WIDTH || y > BOARD_HEIGHT) || ( x < 0 || y < 0))
+        if ((y > BOARD_ROWS || x > BOARD_COLUMNS) || ( x < 0 || y < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
-                    "valid bounds are (%d, %d]", x, y, 0, BOARD_HEIGHT));
-        return board[x][y];
+                    "valid bounds are (%d, %d]", x, y, 0, BOARD_COLUMNS));
+        return board[y][x];
     }
 
     /**
@@ -88,8 +88,8 @@ public class Board {
         if (this == o) return true;
         if (!(o instanceof Board)) return false;
         Board board1 = (Board) o;
-        return Objects.equals(BOARD_WIDTH, board1.BOARD_WIDTH) &&
-                Objects.equals(BOARD_HEIGHT, board1.BOARD_HEIGHT) &&
+        return Objects.equals(BOARD_ROWS, board1.BOARD_ROWS) &&
+                Objects.equals(BOARD_COLUMNS, board1.BOARD_COLUMNS) &&
                 Objects.equals(EMPTY_VALUE, board1.EMPTY_VALUE) &&
                 // Uses deepEquals to check nested arrays
                 Arrays.deepEquals(getUnderlyingBoard(), board1.getUnderlyingBoard());
@@ -101,7 +101,7 @@ public class Board {
      */
     @Override
     public int hashCode() {
-        int result = Objects.hash(BOARD_WIDTH, BOARD_HEIGHT, EMPTY_VALUE);
+        int result = Objects.hash(BOARD_ROWS, BOARD_COLUMNS, EMPTY_VALUE);
         result = 31 * result + Arrays.hashCode(getUnderlyingBoard());
         return result;
     }

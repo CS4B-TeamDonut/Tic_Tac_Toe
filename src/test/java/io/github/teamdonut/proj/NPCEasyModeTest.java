@@ -22,8 +22,8 @@ public class NPCEasyModeTest {
         Board board = new Board();
 
         //filling up the board
-        for (int i = 0; i < board.BOARD_WIDTH; i++) {
-            for (int j = 0; j < board.BOARD_HEIGHT; j++) {
+        for (int i = 0; i < board.BOARD_ROWS; i++) {
+            for (int j = 0; j < board.BOARD_COLUMNS; j++) {
                 board.updateToken(i, j, 'X');
             }
         }

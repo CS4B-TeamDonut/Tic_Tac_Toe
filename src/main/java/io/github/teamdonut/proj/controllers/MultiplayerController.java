@@ -219,7 +219,6 @@ public class MultiplayerController implements Initializable, ISubject {
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);
         window.setResizable(false);
-//        window.show();
     }
 
     /**

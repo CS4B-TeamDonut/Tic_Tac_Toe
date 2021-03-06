@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Kord Boniadi
  */
 public final class EventManager {
-    private static HashMap<ISubject, Set<IObserver>> eventMap = new HashMap<>();
+    private static final HashMap<ISubject, Set<IObserver>> eventMap = new HashMap<>();
 
     private EventManager() {
         /*
@@ -92,6 +92,6 @@ public final class EventManager {
     }
 
     public static void cleanup() {
-        eventMap = new HashMap<>();
+        eventMap.clear();
     }
 }

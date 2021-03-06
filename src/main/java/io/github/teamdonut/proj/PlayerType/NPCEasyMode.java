@@ -37,8 +37,8 @@ public class NPCEasyMode implements IPlayerType {
     public void makeMove(Board board, char c) {
         DataValidation.ensureObjectNotNull("Board", board);
 
-        int x;      //row
-        int y;      //col
+        int x;      //column
+        int y;      //row
         char[][] boardAr = board.getUnderlyingBoard();    //tic tac toe board
 
         //initialization for random class
@@ -52,7 +52,7 @@ public class NPCEasyMode implements IPlayerType {
             y = num.nextInt(3);
 
             //checks if the board is not empty
-            if (boardAr[x][y] != ' ') {
+            if (boardAr[y][x] != ' ') {
                 Logger.log("That spot is taken already - try again!");
             } else {
                 valid = true;

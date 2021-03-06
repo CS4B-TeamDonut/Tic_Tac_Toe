@@ -5,7 +5,6 @@ import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
-import io.github.teamdonut.proj.utils.Logger;
 
 import java.util.Objects;
 import java.util.Random;
@@ -152,15 +151,6 @@ public class GameController implements ISubject, IObserver {
         return player2;
     }
 
-//    /**
-//     * Creates the necessary linkage between ISubject and IObserver
-//     * @author Kord Boniadi
-//     */
-//    public void initialize() {
-//        EventManager.register(player1, this);
-//        EventManager.register(player2, this);
-//    }
-
     public void startGame() {
         Random rand = new Random();
         swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
@@ -177,7 +167,7 @@ public class GameController implements ISubject, IObserver {
     public char hasWon(Board board) {
         char[][] boardArr = board.getUnderlyingBoard();
 
-        for (int i = 0; i < board.BOARD_WIDTH; i++) {
+        for (int i = 0; i < board.BOARD_ROWS; i++) {
             if (boardArr[i][0] == 'X' && boardArr[i][1] == 'X' && boardArr[i][2] == 'X') {
                 return 'X';
             }
@@ -244,16 +234,10 @@ public class GameController implements ISubject, IObserver {
 
                 EventManager.notify(this, new DrawInfo(this.board));
 
-                if (!gameOver) {
+                if (!gameOver)
                     swap.makeMove(this.board);
-                } else {
+                else
                     EventManager.notify(this, new GameController.Results(whoWon(board, player1, player2)));
-//                    EventManager.removeAllObserver(player1);
-//                    EventManager.removeAllObserver(player2);
-//                    EventManager.removeAllObserver(player1.getPlayerType());
-//                    EventManager.removeAllObserver(player2.getPlayerType());
-//                    EventManager.removeAllObserver(this);
-                }
             }
         }
     }

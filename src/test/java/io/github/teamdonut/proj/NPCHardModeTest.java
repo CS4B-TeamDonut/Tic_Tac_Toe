@@ -117,35 +117,4 @@ public class NPCHardModeTest
         assertEquals(2, moveRow);
         assertEquals(2, moveCol);
     }
-
-
-    /**
-     * Test the isFullBoard method that checks if the board
-     * is completely full - every cell has
-     * a token that is not the character ' '
-     * @author Grant Goldsworth
-     * @see NPCHardMode#isFullBoard(Board)
-     */
-    @Test
-    public void fullBoardTest() {
-        Board board = new Board();
-
-        // fill board with tokens
-        for (int i = 0; i < 3; i ++)
-            for (int j = 0; j < 3; j ++)
-                board.updateToken(i, j, i % 2 == 0 ? 'X' : 'O');
-
-        // assert that method returns that it is a full board
-        assertTrue(NPCHardMode.isFullBoard(board));
-
-        // create non-full board
-        board = new Board();
-        board.updateToken(0, 2, 'X');
-
-        // assert that method returns that it is not a full board
-        assertFalse(NPCHardMode.isFullBoard(board));
-
-    }
-
-
 }

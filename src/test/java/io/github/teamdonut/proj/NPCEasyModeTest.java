@@ -34,27 +34,4 @@ public class NPCEasyModeTest {
 
         easyMode.makeMove(board, 'O');
     }
-
-    /**
-     * Testing when the board is full and not full
-     */
-    @Test
-    public void fullBoardTest() {
-        Board board = new Board();
-
-        // fill board with tokens
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                board.updateToken(i, j, i % 2 == 0 ? 'X' : 'O');
-
-        // assert that method returns that it is a full board
-        assertTrue(NPCEasyMode.isFullBoard(board));
-
-        // create non-full board
-        board = new Board();
-        board.updateToken(0, 2, 'X');
-
-        // assert that method returns that it is not a full board
-        assertFalse(NPCEasyMode.isFullBoard(board));
-    }
 }

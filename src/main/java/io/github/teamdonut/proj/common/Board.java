@@ -54,6 +54,24 @@ public class Board {
     }
 
     /**
+     * Checks to see if the board is full or not (all cells have a token that
+     * is not the character ' ').
+     * @return true if all cells have a value besides ' ', false otherwise
+     * @author Grant Goldsworth
+     */
+    public boolean isBoardFull() {
+        for (char[] row : board) {
+            for (char col : row) {
+                // does cell have a valid token? If not, board isn't empty
+                if (col == EMPTY_VALUE)
+                    return false;
+            }
+        }
+        // all board cells have a token
+        return true;
+    }
+
+    /**
      * Sets all values within char[][] board to EMPTY_VALUE.
      */
     public void clearBoard() {

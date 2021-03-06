@@ -5,6 +5,7 @@ import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.DataValidation;
+import io.github.teamdonut.proj.utils.Logger;
 
 import java.util.Random;
 
@@ -46,42 +47,21 @@ public class NPCEasyMode implements IPlayerType {
         boolean valid = false;
 
         //loops until the NPC finds an empty spot
-        do{
+        do {
             x = num.nextInt(3);
             y = num.nextInt(3);
 
             //checks if the board is not empty
             if (boardAr[x][y] != ' ') {
-                System.out.println("That spot is taken already - try again!\n");
-            }
-            else {
+                Logger.log("That spot is taken already - try again!");
+            } else {
                 valid = true;
             }
 
-        }while(!valid);
+        } while(!valid);
 
         //notify method called for the event manager
         EventManager.notify(this, new IPlayerType.BoardMoveInfo(x, y));
-    }
-
-    /**
-     * Checks to see if the board is full or not (all cells have a token that
-     * is not the character ' ').
-     * @param board the board to test
-     * @return true if all cells have a value besides ' ', false otherwise
-     * @author Grant Goldsworth
-     */
-    public static boolean isFullBoard(Board board) {
-        for (char[] row : board.getUnderlyingBoard()) {
-            for (char col : row) {
-                // does cell have a valid token? If not, board isn't empty
-                if (col == ' ')
-                    return false;
-            }
-        }
-
-        // all board cells have a token
-        return true;
     }
 
     /**

@@ -173,9 +173,10 @@ public class SinglePlayerController implements Initializable, ISubject {
 
         GameController game = new GameController(
                 new Player(userName, userToken, new Human()),
-                new Player(cpuLevel, cpuToken, new NPCHardMode()));
+                new Player(cpuLevel, cpuToken, new NPCEasyMode()));
 
         EventManager.notify(this, game);
+        EventManager.removeAllObserver(this);
     }
 
     /**
@@ -191,7 +192,7 @@ public class SinglePlayerController implements Initializable, ISubject {
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);
         window.setResizable(false);
-        window.show();
+//        window.show();
     }
 
     /**

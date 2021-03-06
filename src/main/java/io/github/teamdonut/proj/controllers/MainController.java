@@ -70,21 +70,6 @@ public class MainController implements Initializable, ISubject {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        EventManager.removeAllObserver(this);
-//        I (Grant) am temporarily omitting this to remove the label text from the launch screen
-//        String javaVersion = System.getProperty("java.version");
-//        String javafxVersion = System.getProperty("javafx.version");
-//        label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
-
-        // create single player button graphic
-        // obtain input
-//        ImageView singleplayerView = new ImageView(new Image(getClass().getResourceAsStream("images/theme_1/singleplayer_button.png")));
-//        singleplayerView.setPreserveRatio(true);
-//        singleplayerView.setFitHeight(120);
-//        singleplayerView.setFitWidth(40);
-//        singlePlayerButton.setGraphic(singleplayerView);
-//        singlePlayerButton.setPrefSize(120, 40);
-
     }
 
     /**
@@ -95,14 +80,6 @@ public class MainController implements Initializable, ISubject {
         EventSounds.getInstance().playButtonSound2();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);
-        //        Parent root = FXMLLoader.load(getClass().getResource("boardPage.fxml"));
-        //        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        //        Stage window = (Stage) gameButton.getScene().getWindow();
-        //        Scene scene = new Scene(root);
-        //        scene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
-        //        window.setScene(scene);
-        //        window.setResizable(false);
-        //        window.show();
     }
 
     /**

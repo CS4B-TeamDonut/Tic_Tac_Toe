@@ -203,6 +203,7 @@ public class MultiplayerController implements Initializable, ISubject {
                 new Player(player2Name, tokenP2));
 
         EventManager.notify(this, game);
+        EventManager.removeAllObserver(this);
     }
 
     /**
@@ -218,7 +219,7 @@ public class MultiplayerController implements Initializable, ISubject {
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);
         window.setResizable(false);
-        window.show();
+//        window.show();
     }
 
     /**

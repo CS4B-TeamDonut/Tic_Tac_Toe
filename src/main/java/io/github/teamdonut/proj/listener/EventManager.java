@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Kord Boniadi
  */
 public final class EventManager {
-    private static final HashMap<ISubject, Set<IObserver>> eventMap = new HashMap<>();
+    private static HashMap<ISubject, Set<IObserver>> eventMap = new HashMap<>();
 
     private EventManager() {
         /*
@@ -89,5 +89,9 @@ public final class EventManager {
     public static boolean hasObservers(ISubject subj) {
         DataValidation.ensureObjectNotNull("ISubject", subj);
         return eventMap.get(subj) != null;
+    }
+
+    public static void cleanup() {
+        eventMap = new HashMap<>();
     }
 }

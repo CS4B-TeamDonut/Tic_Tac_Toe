@@ -88,7 +88,7 @@ public class NPCHardMode implements IPlayerType
             return boardState;
 
         // the board is full - draw
-        if(isFullBoard(board))
+        if(board.isBoardFull())
             return 0;
 
         // maximizer's move
@@ -197,25 +197,5 @@ public class NPCHardMode implements IPlayerType
 
         // final case: no win/loss, return 0
         return 0;
-    }
-
-    /**
-     * Checks to see if the board is full or not (all cells have a token that
-     * is not the character ' ').
-     * @param board the board to test
-     * @return true if all cells have a value besides ' ', false otherwise
-     * @author Grant Goldsworth
-     */
-    public static boolean isFullBoard(Board board) {
-        for (char[] row : board.getUnderlyingBoard()) {
-            for (char col : row) {
-                // does cell have a valid token? If not, board isn't empty
-                if (col == board.EMPTY_VALUE)
-                    return false;
-            }
-        }
-
-        // all board cells have a token
-        return true;
     }
 }

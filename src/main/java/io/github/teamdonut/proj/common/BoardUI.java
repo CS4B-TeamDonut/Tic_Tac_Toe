@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -101,6 +102,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
                     '}';
         }
     }
+
+    public static class Finished{}
 
     private final int GRID_SIZE = 3;
     private Image xImage;
@@ -229,6 +232,22 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
             GameController.DrawInfo data = (GameController.DrawInfo) eventType;
 
             drawBoard(data.getUpdatedBoard());
+        } else if (eventType instanceof GameController.Results) {
+            String result;
+            GameController.Results temp = (GameController.Results) eventType;
+
+            result = (temp.getWinner() != null) ? "Winner!!\nPlayer: " + temp.getWinner().getPlayerName() + "\nToken: " +
+                    temp.getWinner().getPlayerToken() : "It's a Draw";
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game Results");
+            alert.setHeaderText(null);
+            alert.setContentText(result);
+            alert.setResizable(true);
+            alert.showAndWait();
+
+            EventManager.notify(this, new BoardUI.Finished());
+//            EventManager.removeAllObserver(this);
         }
     }
 }

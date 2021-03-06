@@ -21,10 +21,9 @@ public class AppController implements IObserver {
     private final Stage mainStage;
     public BoardUI boardUI;
     public Scene mainScene;
-    public Scene boardScene;
-    public Scene singlePlayerScene;
-    public Scene multiplayerScene;
-    public Scene aboutUsScene;
+//    public Scene boardScene;
+//    public Scene singlePlayerScene;
+//    public Scene multiplayerScene;
 
     /**
      * Constructor
@@ -66,7 +65,7 @@ public class AppController implements IObserver {
         //setting the main stage to the about us page scene
         loader.setController(obj);
         try {
-            aboutUsScene = new Scene(loader.load());
+            Scene aboutUsScene = new Scene(loader.load());
             aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(aboutUsScene);
         } catch (IOException e) {
@@ -83,7 +82,7 @@ public class AppController implements IObserver {
         //setting the controller
         loader.setController(obj);
         try {
-            singlePlayerScene = new Scene(loader.load());
+            Scene singlePlayerScene = new Scene(loader.load());
             singlePlayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(singlePlayerScene);
         } catch (IOException e) {
@@ -100,7 +99,7 @@ public class AppController implements IObserver {
         //setting the controller
         loader.setController(obj);
         try {
-            multiplayerScene = new Scene(loader.load());
+            Scene multiplayerScene = new Scene(loader.load());
             multiplayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(multiplayerScene);
         } catch (IOException e) {
@@ -113,7 +112,7 @@ public class AppController implements IObserver {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
         loader.setController(new BoardPageController(boardUI, obj));
         try {
-            boardScene = new Scene(loader.load());
+            Scene boardScene = new Scene(loader.load());
             boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
             mainStage.setScene(boardScene);
         } catch (IOException e) {
@@ -128,12 +127,17 @@ public class AppController implements IObserver {
             EventManager.register(boardUI, (Human) obj.getPlayer2().getPlayerType());
         }
 
-
-
         EventManager.register(boardUI, obj.getPlayer1());
         EventManager.register(boardUI, obj.getPlayer2());
+        EventManager.register(boardUI, this);
         EventManager.register(obj, boardUI);
         obj.startGame();
+    }
+
+    public void creatMenuPage() {
+        EventManager.cleanup();
+        mainStage.setScene(mainScene);
+        EventManager.register(MainController.getInstance(), this);
     }
 
     /**
@@ -145,13 +149,15 @@ public class AppController implements IObserver {
     @Override
     public void update(Object eventType) {
 
-        if (eventType instanceof AboutUsController)             // checking if event type is an AboutUsController
+        if (eventType instanceof AboutUsController)             // checking for About page creation
             createAboutPage((AboutUsController) eventType);
-        else if (eventType instanceof SinglePlayerController)   // checking if event type is an SinglePlayerController
+        else if (eventType instanceof SinglePlayerController)   // checking for Single player page creation
             createSinglePlayerPage((SinglePlayerController) eventType);
-        else if (eventType instanceof MultiplayerController)    // checking if event type is an MultiplayerController
+        else if (eventType instanceof MultiplayerController)    // checking for Multi player page creation
             createMultiPlayerPage((MultiplayerController) eventType);
-        else if (eventType instanceof GameController)           // checking if event type is an GameController
+        else if (eventType instanceof GameController)           // checking for Board page creation
             createBoardPage((GameController) eventType);
+        else if (eventType instanceof BoardUI.Finished)         // checking for Menu page creation
+            creatMenuPage();
     }
 }

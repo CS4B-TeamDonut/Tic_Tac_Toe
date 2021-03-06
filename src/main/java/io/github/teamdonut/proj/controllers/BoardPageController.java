@@ -80,6 +80,10 @@ public class BoardPageController implements Initializable {
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
         EventSounds.getInstance().playButtonSound1();
+        EventManager.removeAllObserver(game);
+        EventManager.removeAllObserver(game.getPlayer1());
+        EventManager.removeAllObserver(game.getPlayer2());
+        EventManager.removeAllObserver(board);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);

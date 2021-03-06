@@ -77,7 +77,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);
     }
@@ -106,7 +106,7 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonClick(/*MouseEvent mouseEvent*/) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         MultiplayerController multiplayer = new MultiplayerController();
         EventManager.notify(this, multiplayer);
     }
@@ -135,7 +135,7 @@ public class MainController implements Initializable, ISubject {
      * @author Utsav Parajuli
      */
     public void onAboutButtonClicked(/*MouseEvent mouseEvent*/) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         AboutUsController aboutUs = new AboutUsController();
         EventManager.notify(this, aboutUs);
     }

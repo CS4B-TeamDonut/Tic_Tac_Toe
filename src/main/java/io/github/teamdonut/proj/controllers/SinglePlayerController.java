@@ -187,7 +187,7 @@ public class SinglePlayerController implements Initializable, ISubject {
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
         EventManager.removeAllObserver(this);
-        EventSounds.getInstance().playButtonSound1();
+        EventSounds.getInstance().playButtonSound4();
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);

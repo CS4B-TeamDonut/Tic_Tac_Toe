@@ -19,8 +19,8 @@ import java.io.IOException;
  */
 public class AppController implements IObserver {
     private final Stage mainStage;
-    public BoardUI boardUI;
     public Scene mainScene;
+//    public BoardUI boardUI;
 //    public Scene boardScene;
 //    public Scene singlePlayerScene;
 //    public Scene multiplayerScene;
@@ -41,7 +41,7 @@ public class AppController implements IObserver {
      * @author Kord Boniadi
      */
     public void startApp() throws IOException {
-//        MusicPlayer.getInstance();
+        MusicPlayer.getInstance();
         Parent root = FXMLLoader.load(getClass().getResource("../startPage.fxml"));
 
         Scene start = new Scene(root);
@@ -56,6 +56,12 @@ public class AppController implements IObserver {
         Logger.log("program started..");
     }
 
+    /**
+     * AboutPage factory method
+     * @param obj instance of Controller with initial params
+     * @author Kord Boniadi
+     * @author utsavparajuli
+     */
     public void createAboutPage(AboutUsController obj) {
         EventManager.register(obj, this);
 
@@ -73,6 +79,12 @@ public class AppController implements IObserver {
         }
     }
 
+    /**
+     * SinglePlayerPage factory method
+     * @param obj instance of Controller with initial params
+     * @author Kord Bonaidi
+     * @author utsavparajuli
+     */
     public void createSinglePlayerPage(SinglePlayerController obj) {
         EventManager.register(obj, this);
 
@@ -90,6 +102,12 @@ public class AppController implements IObserver {
         }
     }
 
+    /**
+     * MultiPlayerPage factory method
+     * @param obj instance of Controller with initial params
+     * @author Kord Boniadi
+     * @author Joey Campbell
+     */
     public void createMultiPlayerPage(MultiplayerController obj) {
         EventManager.register(obj, this);
 
@@ -107,8 +125,13 @@ public class AppController implements IObserver {
         }
     }
 
+    /**
+     * BoardPage factory method
+     * @param obj instance of GameController with initial params
+     * @author Kord Boniadi
+     */
     public void createBoardPage(GameController obj) {
-        boardUI = new BoardUI();
+        BoardUI boardUI = new BoardUI();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
         loader.setController(new BoardPageController(boardUI, obj));
         try {
@@ -134,6 +157,10 @@ public class AppController implements IObserver {
         obj.startGame();
     }
 
+    /**
+     * MenuPage factory method
+     * @author Kord Boniadi
+     */
     public void creatMenuPage() {
         EventManager.cleanup();
         mainStage.setScene(mainScene);
@@ -148,7 +175,6 @@ public class AppController implements IObserver {
      */
     @Override
     public void update(Object eventType) {
-
         if (eventType instanceof AboutUsController)             // checking for About page creation
             createAboutPage((AboutUsController) eventType);
         else if (eventType instanceof SinglePlayerController)   // checking for Single player page creation

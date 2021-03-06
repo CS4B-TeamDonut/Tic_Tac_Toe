@@ -171,7 +171,7 @@ public class MultiplayerController implements Initializable, ISubject {
      * @author Joey Campbell
      */
     public void onStartButtonClick(MouseEvent actionEvent) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         startGame();
     }
 

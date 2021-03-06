@@ -61,7 +61,7 @@ public class StartController implements Initializable {
      */
     public void onKeyPressed(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode().equals(KeyCode.Z)) {
-            EventSounds.getInstance().playButtonSound2();
+            EventSounds.getInstance().playButtonSound4();
             Stage window = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
 

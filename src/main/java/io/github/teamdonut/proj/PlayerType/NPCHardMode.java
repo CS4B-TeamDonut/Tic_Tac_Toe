@@ -16,6 +16,9 @@ public class NPCHardMode implements IPlayerType
     public static final char MAXIMIZER = 'X';
     public static final char MINIMIZER = 'O';
 
+    private static final int WIN_VAL = 10;
+    private static final int BEST_VAL = 100;
+
     //constructor
     public NPCHardMode() {
     }
@@ -84,7 +87,7 @@ public class NPCHardMode implements IPlayerType
 
         // base cases
         // maximizer win        minimizer win
-        if (boardState == 10 || boardState == -10)
+        if (boardState == WIN_VAL || boardState == -WIN_VAL)
             return boardState;
 
         // the board is full - draw
@@ -93,7 +96,7 @@ public class NPCHardMode implements IPlayerType
 
         // maximizer's move
         if(isMaximizer) {
-            int bestValue = -100;
+            int bestValue = -BEST_VAL;
             // for each child move, analyze possible routes and the state
             // this means traversing all cells in the board and analyzing
             for(int row = 0; row < 3; row ++) {
@@ -117,7 +120,7 @@ public class NPCHardMode implements IPlayerType
 
         // minimizer's move
         else {
-            int bestValue = 100;
+            int bestValue = BEST_VAL;
             // for each child move, analyze possible routes and the state
             // this means traversing all cells in the board and analyzing
             for(int row = 0; row < 3; row ++) {
@@ -157,9 +160,9 @@ public class NPCHardMode implements IPlayerType
             {
                 // row is all one token - what token is it?
                 if (board.getToken(row, 0) == 'X')
-                    return 10;
+                    return WIN_VAL;
                 else
-                    return -10;
+                    return -WIN_VAL;
             }
 
         }
@@ -171,9 +174,9 @@ public class NPCHardMode implements IPlayerType
             {
                 // col is all one token - what token is it?
                 if (board.getToken(0, col) == 'X')
-                    return 10;
+                    return WIN_VAL;
                 else
-                    return -10;
+                    return -WIN_VAL;
             }
 
         }
@@ -182,17 +185,17 @@ public class NPCHardMode implements IPlayerType
         // diagonal 1
         if (board.getToken(0,0) == board.getToken(1,1) && board.getToken(0,0) == board.getToken(2,2)) {
             if (board.getToken(0,0) == 'X')
-                return 10;
+                return WIN_VAL;
             else
-                return -10;
+                return -WIN_VAL;
         }
 
         // diagonal 2
         if (board.getToken(0,2) == board.getToken(1,1) && board.getToken(0,2) == board.getToken(2,0)) {
             if (board.getToken(0,2) == 'X')
-                return 10;
+                return WIN_VAL;
             else
-                return -10;
+                return -WIN_VAL;
         }
 
         // final case: no win/loss, return 0

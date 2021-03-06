@@ -18,20 +18,20 @@ public final class EventSounds {
     private EventSounds() {}
 
     public void playButtonSound1() {
-        try {
-            clip = new AudioClip(getClass().getResource(buttonSound1).toString());
-            clip.play();
-        } catch (Exception e) {
-            Logger.log(e);
-        }
+//        try {
+//            clip = new AudioClip(getClass().getResource(buttonSound1).toString());
+//            clip.play();
+//        } catch (Exception e) {
+//            Logger.log(e);
+//        }
     }
 
     public void playButtonSound2() {
-        try {
-            clip = new AudioClip(getClass().getResource(buttonSound2).toString());
-            clip.play();
-        } catch (Exception e) {
-            Logger.log(e);
-        }
+//        try {
+//            clip = new AudioClip(getClass().getResource(buttonSound2).toString());
+//            clip.play();
+//        } catch (Exception e) {
+//            Logger.log(e);
+//        }
     }
 }

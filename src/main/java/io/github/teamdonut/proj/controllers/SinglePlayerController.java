@@ -1,5 +1,8 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.PlayerType.Human;
+import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
+import io.github.teamdonut.proj.PlayerType.NPCHardMode;
 import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
@@ -169,8 +172,8 @@ public class SinglePlayerController implements Initializable, ISubject {
         }
 
         GameController game = new GameController(
-                new Player(userName, userToken),
-                new Player(cpuLevel, cpuToken));
+                new Player(userName, userToken, new Human()),
+                new Player(cpuLevel, cpuToken, new NPCEasyMode()));
 
         EventManager.notify(this, game);
     }

@@ -62,7 +62,7 @@ public class NPCHardMode implements IPlayerType
 
         // TODO verify that this is how its supposed to be done
         //  verified
-        EventManager.notify(this, new IPlayerType.BoardMoveInfo(moveRow, moveCol, c));
+        EventManager.notify(this, new IPlayerType.BoardMoveInfo(moveRow, moveCol));
     }
 
 

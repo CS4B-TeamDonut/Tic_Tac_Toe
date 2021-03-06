@@ -5,6 +5,7 @@ import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
+import io.github.teamdonut.proj.utils.Logger;
 
 import java.util.Random;
 
@@ -74,10 +75,7 @@ public class GameController implements ISubject, IObserver {
      * @author Utsav Parajuli
      */
     public GameController(Player player1, Player player2) {
-        this(
-                new Player(player1.getPlayerName(), player1.getPlayerToken()),
-                new Player(player2.getPlayerName(), player2.getPlayerToken()),
-                new Board());
+        this(player1, player2, new Board());
     }
     /**
      * Constructor
@@ -137,6 +135,8 @@ public class GameController implements ISubject, IObserver {
         EventManager.register(player1, this);
         EventManager.register(player2, this);
 
+        swap.makeMove(this.board);
+        EventManager.notify(this, new DrawInfo(this.board));
     }
     /**
      * New info is received through this method. Object decoding is needed
@@ -153,6 +153,8 @@ public class GameController implements ISubject, IObserver {
                 board.updateToken(info.getX(), info.getY(), info.getPlayerInstance().getPlayerToken());
                 EventManager.notify(this, new DrawInfo(this.board));
                 swap = (swap == player1) ? player2 : player1;
+
+                swap.makeMove(this.board);
             }
         }
     }

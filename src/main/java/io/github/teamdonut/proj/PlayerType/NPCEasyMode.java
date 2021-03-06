@@ -2,6 +2,8 @@ package io.github.teamdonut.proj.PlayerType;
 
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.EventManager;
+import io.github.teamdonut.proj.listener.IObserver;
+import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.DataValidation;
 
 import java.util.Random;
@@ -13,8 +15,7 @@ import java.util.Random;
  * This class will implement the NPC interface as an easy difficulty. The logic in making the move for the NPC
  * is based on just finding an empty spot.
  */
-public class NPCEasyMode implements IPlayerType
-{
+public class NPCEasyMode implements IPlayerType {
 
     /**
      * Constructor for the NPCEasyMode class. Does not initialize anything. Overrides the compiler generated
@@ -60,7 +61,7 @@ public class NPCEasyMode implements IPlayerType
         }while(!valid);
 
         //notify method called for the event manager
-        EventManager.notify(this, new IPlayerType.BoardMoveInfo(x, y, c));
+        EventManager.notify(this, new IPlayerType.BoardMoveInfo(x, y));
     }
 
     /**

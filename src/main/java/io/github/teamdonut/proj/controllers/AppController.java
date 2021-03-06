@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.music.MusicPlayer;
+import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.common.BoardUI;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
@@ -41,7 +42,7 @@ public class AppController implements IObserver {
      * @author Kord Boniadi
      */
     public void startApp() throws IOException {
-        MusicPlayer.getInstance();
+//        MusicPlayer.getInstance();
         Parent root = FXMLLoader.load(getClass().getResource("../startPage.fxml"));
 
         Scene start = new Scene(root);
@@ -118,6 +119,16 @@ public class AppController implements IObserver {
         } catch (IOException e) {
             Logger.log(e);
         }
+
+        if (obj.getPlayer1().getPlayerType() instanceof Human) {
+            EventManager.register(boardUI, (Human) obj.getPlayer1().getPlayerType());
+        }
+
+        if (obj.getPlayer2().getPlayerType() instanceof Human) {
+            EventManager.register(boardUI, (Human) obj.getPlayer2().getPlayerType());
+        }
+
+
 
         EventManager.register(boardUI, obj.getPlayer1());
         EventManager.register(boardUI, obj.getPlayer2());

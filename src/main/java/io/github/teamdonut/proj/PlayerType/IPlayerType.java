@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj.PlayerType;
 
 import io.github.teamdonut.proj.common.Board;
+import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
 import java.util.Objects;
 
@@ -19,7 +20,6 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
      class BoardMoveInfo {
         private final int  x;     //row in board
         private final int  y;     //column in board
-        private final char c;     //token to be placed
 
         /**
          * This constructor will initialize the BoardModeInfo class with the x, y, and c which are row-position
@@ -28,10 +28,9 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
          * @param y : column number
          * @param c : token
          */
-        BoardMoveInfo(int x, int y, char c) {
+        BoardMoveInfo(int x, int y) {
             this.x = x;
             this.y = y;
-            this.c = c;
         }
 
         /**
@@ -51,14 +50,6 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
         }
 
         /**
-         * This method will return the token to be placed in the board
-         * @return c
-         */
-        public char getC() {
-            return c;
-        }
-
-        /**
          * This method will override the equals method of the object and will check if two instances
          * of the BoardMoveInfo classes are equal
          * @param o : an object
@@ -71,8 +62,7 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
             BoardMoveInfo that = (BoardMoveInfo) o;
 
             return  getX() == that.getX() &&
-                    getY() == that.getY() &&
-                    getC() == that.getC();
+                    getY() == that.getY();
         }
 
         /**
@@ -81,7 +71,7 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
          */
         @Override
         public int hashCode() {
-            return Objects.hash(getX(), getY(), getC());
+            return Objects.hash(getX(), getY());
         }
 
         /**
@@ -93,7 +83,6 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
             return "BoardMoveInfo{" +
                     "x=" + x +
                     ", y=" + y +
-                    ", c=" + c +
                     '}';
         }
     }

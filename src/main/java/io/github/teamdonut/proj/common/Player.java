@@ -85,7 +85,7 @@ public class Player implements ISubject, IObserver {
     public Player(String playerName, char playerToken, IPlayerType playerType) {
         this.playerName = playerName;
         this.playerToken = playerToken;
-        this.playerType = playerType;
+        setPlayerType(playerType);
     }
     /**
      * Gets the player's name.
@@ -98,6 +98,10 @@ public class Player implements ISubject, IObserver {
      * @return A char holding the player's token
      */
     public char getPlayerToken() { return playerToken; }
+
+    public IPlayerType getPlayerType() {
+        return playerType;
+    }
 
     /**
      * Sets the player's name.
@@ -120,6 +124,13 @@ public class Player implements ISubject, IObserver {
         if (this.playerType != null) {
             EventManager.register(this.playerType, this);
         }
+    }
+
+    public void makeMove(Board board) {
+        if (playerType instanceof Human) {
+            System.out.println("this is a human");
+        }
+        playerType.makeMove(board, playerToken);
     }
     /**
      * Checks the equality of two Player objects.
@@ -163,10 +174,10 @@ public class Player implements ISubject, IObserver {
      */
     @Override
     public void update(Object eventType) {
-        if (eventType instanceof BoardUI.UserSelectionData) {
-            BoardUI.UserSelectionData temp = (BoardUI.UserSelectionData) eventType;
+        if (eventType instanceof IPlayerType.BoardMoveInfo) {
+            IPlayerType.BoardMoveInfo temp = (IPlayerType.BoardMoveInfo) eventType;
 
-            EventManager.notify(this, new MoveInfo(this, temp.getX(), temp.getY()));
+            EventManager.notify(this, new Player.MoveInfo(this, temp.getX(), temp.getY()));
         }
     }
 }

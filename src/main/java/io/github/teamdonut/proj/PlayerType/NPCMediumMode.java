@@ -1,4 +1,4 @@
-package io.github.teamdonut.proj.NPC;
+package io.github.teamdonut.proj.PlayerType;
 
 import io.github.teamdonut.proj.common.Board;
 

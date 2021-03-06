@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj;
 
-import io.github.teamdonut.proj.NPC.NPCEasyMode;
+import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
 import io.github.teamdonut.proj.common.Board;
 import org.junit.jupiter.api.Test;
 

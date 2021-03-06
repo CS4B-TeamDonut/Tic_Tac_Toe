@@ -1,7 +1,7 @@
 package io.github.teamdonut.proj.common;
 
-import io.github.teamdonut.proj.NPC.Human;
-import io.github.teamdonut.proj.NPC.IPlayerType;
+import io.github.teamdonut.proj.PlayerType.Human;
+import io.github.teamdonut.proj.PlayerType.IPlayerType;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
@@ -112,7 +112,14 @@ public class Player implements ISubject, IObserver {
     public void setPlayerToken(char playerToken) { this.playerToken = playerToken; }
 
     public void setPlayerType(IPlayerType playerType) {
+        if (this.playerType != null)
+            EventManager.unregister(this.playerType, this);
 
+        this.playerType = playerType;
+
+        if (this.playerType != null) {
+            EventManager.register(this.playerType, this);
+        }
     }
     /**
      * Checks the equality of two Player objects.

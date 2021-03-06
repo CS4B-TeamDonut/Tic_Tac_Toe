@@ -1,6 +1,6 @@
 package io.github.teamdonut.proj;
 
-import io.github.teamdonut.proj.NPC.NPCHardMode;
+import io.github.teamdonut.proj.PlayerType.NPCHardMode;
 import io.github.teamdonut.proj.common.Board;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

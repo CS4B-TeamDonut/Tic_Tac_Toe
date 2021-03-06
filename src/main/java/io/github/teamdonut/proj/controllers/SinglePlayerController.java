@@ -173,7 +173,7 @@ public class SinglePlayerController implements Initializable, ISubject {
 
         GameController game = new GameController(
                 new Player(userName, userToken, new Human()),
-                new Player(cpuLevel, cpuToken, new NPCEasyMode()));
+                new Player(cpuLevel, cpuToken, new NPCHardMode()));
 
         EventManager.notify(this, game);
     }

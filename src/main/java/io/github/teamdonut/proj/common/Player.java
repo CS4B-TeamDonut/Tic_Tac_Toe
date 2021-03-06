@@ -127,9 +127,6 @@ public class Player implements ISubject, IObserver {
     }
 
     public void makeMove(Board board) {
-        if (playerType instanceof Human) {
-            System.out.println("this is a human");
-        }
         playerType.makeMove(board, playerToken);
     }
     /**

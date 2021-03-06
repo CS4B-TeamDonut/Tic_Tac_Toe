@@ -1,15 +1,15 @@
 package io.github.teamdonut.proj.utils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.*;
+import java.util.stream.Collectors;
 
 /**
  * Wrapper classes for more readable/cleaner system-wide error message logging. Uses:
@@ -104,7 +104,12 @@ public final class Logger {
 
             appLogger = java.util.logging.Logger.getLogger(appName);
 
-            Files.createDirectories(Path.of(System.getProperty("user.dir") + "/" + output_dir));
+            deleteOldFiles(
+                    Files.createDirectories(Path.of(System.getProperty("user.dir") + "/" + output_dir)),
+                    ".log",
+                    8
+            );
+//            Files.createDirectories(Path.of(System.getProperty("user.dir") + "/" + output_dir));
             Handler handler = new FileHandler(output_dir.concat(outputFile), true);
             handler.setFormatter(new SimpleFormatter());
             appLogger.addHandler(handler);
@@ -238,5 +243,66 @@ public final class Logger {
 //        return source[source.length - 1] + ":" +
 //                stackTrace[stackLevel].getLineNumber() + " " +
 //                stackTrace[stackLevel].getMethodName() + "()";
+    }
+
+    /**
+     * Caps the number of log file in the log dir
+     * @param parentFolder path to root folder
+     * @param extensionCouldBeNull your choice of added an extension to delete
+     * @param limit number of files permitted in the parent dir
+     * @author Kord Boniadi
+     */
+    private static void deleteOldFiles(Path parentFolder, String extensionCouldBeNull, int limit) {
+        List<Path> files = getSortedFilesByDataCreated(parentFolder, extensionCouldBeNull, false);
+
+        if (files.size() <= limit)
+            return;
+
+        files.subList(0, limit).clear();
+
+        files.forEach(f -> {
+            try {
+                Files.delete(f);
+            } catch (IOException e) {
+                Logger.log(e);
+            }
+        });
+    }
+
+    /**
+     *
+     * @param parentFolder path to root folder
+     * @param targetExtensionCouldBeNull your choice of added an extension to delete
+     * @param ascendingOrder ascending or descending order boolean
+     * @return  List of filtered/ordered files
+     * @author Kord Boniadi
+     */
+    private static List<Path> getSortedFilesByDataCreated(Path parentFolder, String targetExtensionCouldBeNull, boolean ascendingOrder) {
+        try {
+            Comparator<Path> pathComparator = Comparator.comparingLong(f -> getFileCreationEpoch((f).toFile()));
+
+            return Files.list(parentFolder)
+                    .filter(Files::isRegularFile)
+                    .filter(f -> targetExtensionCouldBeNull == null || f.getFileName().toString().endsWith(targetExtensionCouldBeNull))
+                    .sorted(ascendingOrder ? pathComparator : pathComparator.reversed())
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Gets the time the file was created and returns it in milli
+     * @param file specific file to analyze
+     * @return time created in milli
+     * @author Kord Boniadi
+     */
+    public static long getFileCreationEpoch(File file) {
+        try {
+            BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            return attr.creationTime().toInstant().toEpochMilli();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -10,7 +10,8 @@ import io.github.teamdonut.proj.utils.DataValidation;
  * will always win or tie the other player.
  * @author Grant Goldsworth
  */
-public class NPCHardMode implements NPC {
+public class NPCHardMode implements IPlayerType
+{
 
     public static final char MAXIMIZER = 'X';
     public static final char MINIMIZER = 'O';
@@ -61,7 +62,7 @@ public class NPCHardMode implements NPC {
 
         // TODO verify that this is how its supposed to be done
         //  verified
-        EventManager.notify(this, new NPC.BoardMoveInfo(moveRow, moveCol, c));
+        EventManager.notify(this, new IPlayerType.BoardMoveInfo(moveRow, moveCol, c));
     }
 
 

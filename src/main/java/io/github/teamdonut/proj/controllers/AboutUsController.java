@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.Logger;
 import io.github.teamdonut.sounds.EventSounds;
@@ -92,22 +93,6 @@ public class AboutUsController implements Initializable, ISubject {
             } catch (Exception e) {
                 Logger.log(e);
             }
-//            if (System.getProperty("os_name").toLowerCase(Locale.ROOT).contains("nix") ||
-//                    System.getProperty("os_name").toLowerCase(Locale.ROOT).contains("nux") ||
-//                    System.getProperty("os_name").toLowerCase(Locale.ROOT).contains("aix")) {
-//                if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
-//                    Runtime.getRuntime().exec(new String[] { "xdg-open", new URI("https://github.com/kboniadi/Tic_Tac_Toe") });
-//                } else {
-//                    Logger.log("xdg-open not supported!");
-//                }
-//            }
-//            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-//                try {
-//                    Desktop.getDesktop().browse(new URI("https://github.com/kboniadi/Tic_Tac_Toe"));
-//                } catch (IOException | URISyntaxException e) {
-//                    Logger.log(e);
-//                }
-//            }
         });
         contributors.setText( "Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar");
         copyright.setText("Copyright \u00a9 2021 Donut");
@@ -123,6 +108,7 @@ public class AboutUsController implements Initializable, ISubject {
      * @author Kord Boniadi
      */
     public void onBackButtonClick(MouseEvent actionEvent) {
+        EventManager.removeAllObserver(this);
         EventSounds.getInstance().playButtonSound1();
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Donut Tic Tac Toe");

@@ -1,5 +1,6 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.sounds.EventSounds;
 import io.github.teamdonut.proj.common.BoardUI;
 import javafx.fxml.FXML;

@@ -70,6 +70,7 @@ public class MainController implements Initializable, ISubject {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+//        EventManager.removeAllObserver(this);
 //        I (Grant) am temporarily omitting this to remove the label text from the launch screen
 //        String javaVersion = System.getProperty("java.version");
 //        String javafxVersion = System.getProperty("javafx.version");
@@ -91,8 +92,6 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonClick(/*MouseEvent mouseEvent*/) {
-//        GameController game = new GameController();
-//        EventManager.notify(this, game);
         EventSounds.getInstance().playButtonSound2();
         SinglePlayerController name = new SinglePlayerController();
         EventManager.notify(this, name);

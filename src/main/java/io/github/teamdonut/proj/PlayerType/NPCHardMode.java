@@ -41,20 +41,14 @@ public class NPCHardMode implements IPlayerType
         int moveCol = 0;      // moveCol coordinate of move to make
         int bestValue = -100; // starting best value of the AI move
 
-        // TODO: REMOVE DEBUGGING STUFF
-        // OUTPUT BOARD CONTENTS BEFORE MAKING MOVE
-        System.out.println("Outputting board from NPCHardMode.makeMove()");
-        System.out.println(board.toString());
 
         // for each cell
         for (int row = 0; row < 3; row ++) {
-            System.out.println("Inside NPCHardMode.makeMove(): loop 1");
             for (int col = 0; col < 3; col ++) {
-                System.out.println("Inside NPCHardMode.makeMove(): loop 2");
                 // if the cell is empty
-                if(board.getToken(row, col) == board.EMPTY_VALUE) {
+                if(board.getToken(col, row) == board.EMPTY_VALUE) {
                     // simulate the player's move here (or maximizer's move)
-                    board.updateToken(row, col, NPCHardMode.MAXIMIZER);
+                    board.updateToken(col, row, NPCHardMode.MAXIMIZER);
 
                     // run minimax on this spot and record result
                     int miniMaxResult = NPCHardMode.miniMax(board, 0, false);
@@ -73,11 +67,6 @@ public class NPCHardMode implements IPlayerType
                 }
             }
         } // end for each cell in board
-
-
-        // DEBUGGING CODE
-        System.out.println("NPCHardMode.makeMove(): notfy event manager");
-        System.out.println("\tBoard Move: c:" + moveCol + "  r:" + moveRow);
         
         EventManager.notify(this, new IPlayerType.BoardMoveInfo(moveCol, moveRow));
     }

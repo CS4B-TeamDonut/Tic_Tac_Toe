@@ -6,6 +6,7 @@ import java.util.Objects;
 /**
  * Board is a data-only class that holds a 2-dimensional array representing the current
  * state of a tic tac toe match.
+ * @author Grant Goldsworth
  */
 public class Board {
     public final int BOARD_ROWS = 3;
@@ -29,28 +30,34 @@ public class Board {
     /**
      * After checking to make sure the passed in position is within the board,
      * the method updates a token of char[][] board.
-     * @param x the x-value for the token in the array [0, 1, 2]
-     * @param y the y-value for the token in the array [0, 1, 2]
+     * <p>NOTE: This method uses x for column and y for row as per compatibility with
+     * JFX's grid pane management.</p>
+     * @param col the x-value for the token in the array [0, 1, 2]
+     * @param row the y-value for the token in the array [0, 1, 2]
      * @param c the token for the array ['X', 'O']
      */
-    public void updateToken(int x, int y, char c) {
-        if ((y > BOARD_ROWS || x > BOARD_COLUMNS) || ( x < 0 || y < 0))
+    public void updateToken(int col, int row, char c) {
+        if ((col > BOARD_COLUMNS || row > BOARD_ROWS) || ( col < 0 || row < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
-                    "valid bounds are (%d, %d]", x, y, 0, BOARD_COLUMNS));
-        board[y][x] = c;
+                    "valid bounds are (%d, %d]", col, row, 0, BOARD_ROWS));
+        // grant flipped these
+        board[row][col] = c;
     }
 
     /**
      * Returns the token of a specific position in char[][] board.
-     * @param x the x-value for the token in the array [0, 1, 2]
-     * @param y the y-value for the token in the array [0, 1, 2]
+     * <p>NOTE: This method uses x for column and y for row as per compatibility with
+     * JFX's grid pane management.</p>
+     * @param col the x-value for the token in the array [0, 1, 2]
+     * @param row the y-value for the token in the array [0, 1, 2]
      * @return The token ['X', 'O', ' '] of a specific position in char[][] board.
      */
-    public char getToken(int x, int y) {
-        if ((y > BOARD_ROWS || x > BOARD_COLUMNS) || ( x < 0 || y < 0))
+
+    public char getToken(int col, int row) {
+        if ((col > BOARD_COLUMNS || row > BOARD_ROWS) || ( col < 0 || row < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
-                    "valid bounds are (%d, %d]", x, y, 0, BOARD_COLUMNS));
-        return board[y][x];
+                    "valid bounds are (%d, %d]", col, row, 0, BOARD_ROWS));
+        return board[row][col];
     }
 
     /**

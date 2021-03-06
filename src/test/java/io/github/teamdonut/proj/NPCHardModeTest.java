@@ -89,15 +89,15 @@ public class NPCHardModeTest
         for (int row = 0; row < 3; row ++) {
             for (int col = 0; col < 3; col ++) {
                // if the cell is empty
-               if(board.getToken(row, col) == board.EMPTY_VALUE) {
+               if(board.getToken(col, row) == board.EMPTY_VALUE) {
                    // simulate the player's move here (or maximizer's move)
-                   board.updateToken(row, col, NPCHardMode.MAXIMIZER);
+                   board.updateToken(col, row, NPCHardMode.MAXIMIZER);
 
                    // run minimax on this spot and record result
                    int miniMaxResult = NPCHardMode.miniMax(board, 0, false);
 
                    // undo the move for this iteration
-                   board.updateToken(row, col, board.EMPTY_VALUE);
+                   board.updateToken(col, row, board.EMPTY_VALUE);
 
                    // if the current move's value from minimax is better than the bestValue, update
                    // the best value and record location

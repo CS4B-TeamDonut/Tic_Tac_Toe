@@ -3,7 +3,6 @@ package io.github.teamdonut.proj.PlayerType;
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.utils.DataValidation;
-import io.github.teamdonut.proj.utils.Logger;
 import java.util.Random;
 
 /**
@@ -50,9 +49,11 @@ public class NPCEasyMode implements IPlayerType {
             y = num.nextInt(3);
 
             //checks if the board is not empty
-            if (boardAr[y][x] != ' ') {
-                Logger.log("That spot is taken already - try again!");
-            } else {
+            if (boardAr[y][x] != board.EMPTY_VALUE) {
+                // TODO Remove debugging code
+                System.out.println("That spot is taken already - try again!\n");
+            }
+            else {
                 valid = true;
             }
 

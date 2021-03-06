@@ -13,7 +13,8 @@ import java.util.Random;
  * This class will implement the NPC interface as an easy difficulty. The logic in making the move for the NPC
  * is based on just finding an empty spot.
  */
-public class NPCEasyMode implements NPC {
+public class NPCEasyMode implements IPlayerType
+{
 
     /**
      * Constructor for the NPCEasyMode class. Does not initialize anything. Overrides the compiler generated
@@ -59,7 +60,7 @@ public class NPCEasyMode implements NPC {
         }while(!valid);
 
         //notify method called for the event manager
-        EventManager.notify(this, new NPC.BoardMoveInfo(x, y, c));
+        EventManager.notify(this, new IPlayerType.BoardMoveInfo(x, y, c));
     }
 
     /**

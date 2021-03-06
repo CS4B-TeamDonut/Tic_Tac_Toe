@@ -122,6 +122,7 @@ public class AppController implements IObserver {
         EventManager.register(boardUI, obj.getPlayer1());
         EventManager.register(boardUI, obj.getPlayer2());
         EventManager.register(obj, boardUI);
+        obj.startGame();
     }
 
     /**

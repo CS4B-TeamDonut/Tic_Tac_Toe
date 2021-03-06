@@ -1,7 +1,7 @@
 package io.github.teamdonut.proj.common;
 
 import io.github.teamdonut.proj.NPC.Human;
-import io.github.teamdonut.proj.NPC.NPC;
+import io.github.teamdonut.proj.NPC.IPlayerType;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
@@ -58,7 +58,7 @@ public class Player implements ISubject, IObserver {
 
     private String playerName;
     private char playerToken;
-    NPC playerType;
+    IPlayerType playerType;
 
     /**
      * Constructs a Player object with no arguments.
@@ -82,7 +82,7 @@ public class Player implements ISubject, IObserver {
         this(playerName, playerToken, new Human());
     }
 
-    public Player(String playerName, char playerToken, NPC playerType) {
+    public Player(String playerName, char playerToken, IPlayerType playerType) {
         this.playerName = playerName;
         this.playerToken = playerToken;
         this.playerType = playerType;
@@ -111,7 +111,7 @@ public class Player implements ISubject, IObserver {
      */
     public void setPlayerToken(char playerToken) { this.playerToken = playerToken; }
 
-    public void setPlayerType(NPC playerType) {
+    public void setPlayerType(IPlayerType playerType) {
 
     }
     /**

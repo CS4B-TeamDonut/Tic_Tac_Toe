@@ -6,11 +6,12 @@ import java.util.Objects;
 
 /**
  * @author utsavparajuli
+ * @author Grant Goldsworth
  * @version 2.0
  * NPC represents the non computer player which will have several levels of difficulty. The interface has a
  * method to make a move. It will also extend the ISubject interface which is used as a design pattern
  */
-public interface NPC extends ISubject {  //need to implement IObserver and ISubject
+public interface IPlayerType extends ISubject {  //need to implement IObserver and ISubject
 
     /**
      * The class BoardMoveInfo contains the data that should be updated in the game class using IObserver.

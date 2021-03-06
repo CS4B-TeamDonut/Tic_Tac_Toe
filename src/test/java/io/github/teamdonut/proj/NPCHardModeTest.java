@@ -117,4 +117,5 @@ public class NPCHardModeTest
         assertEquals(2, moveRow);
         assertEquals(2, moveCol);
     }
+
 }

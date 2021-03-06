@@ -48,7 +48,9 @@ public class NPCHardMode implements IPlayerType
 
         // for each cell
         for (int row = 0; row < 3; row ++) {
+            System.out.println("Inside NPCHardMode.makeMove(): loop 1");
             for (int col = 0; col < 3; col ++) {
+                System.out.println("Inside NPCHardMode.makeMove(): loop 2");
                 // if the cell is empty
                 if(board.getToken(row, col) == board.EMPTY_VALUE) {
                     // simulate the player's move here (or maximizer's move)
@@ -72,6 +74,11 @@ public class NPCHardMode implements IPlayerType
             }
         } // end for each cell in board
 
+
+        // DEBUGGING CODE
+        System.out.println("NPCHardMode.makeMove(): notfy event manager");
+        System.out.println("\tBoard Move: c:" + moveCol + "  r:" + moveRow);
+        
         EventManager.notify(this, new IPlayerType.BoardMoveInfo(moveCol, moveRow));
     }
 

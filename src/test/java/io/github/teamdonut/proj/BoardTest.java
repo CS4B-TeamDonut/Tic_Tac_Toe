@@ -54,5 +54,4 @@ public class BoardTest {
         // assert that method returns that it is not a full board
         assertFalse(board.isBoardFull());
     }
-
 }

@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj.PlayerType;
 
 import io.github.teamdonut.proj.common.Board;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
 import java.util.Objects;
@@ -93,5 +94,5 @@ public interface IPlayerType extends ISubject {  //need to implement IObserver a
      * @param board : the tic tac toe board
      * @param c : the token
      */
-    void makeMove(Board board, char c);
+    void makeMove(Board board, Token c);
 }

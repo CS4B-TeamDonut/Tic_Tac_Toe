@@ -2,6 +2,7 @@ package io.github.teamdonut.proj.PlayerType;
 
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.common.BoardUI;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 
@@ -15,7 +16,7 @@ public class Human implements IPlayerType, IObserver {
      * @param c     : the token
      */
     @Override
-    public void makeMove(Board board, char c) {
+    public void makeMove(Board board, Token c) {
         // something should go here
         // get move from player
         // notify event manager

@@ -212,9 +212,9 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
                 int y = GridPane.getRowIndex(n);
 
                 switch (currState.getToken(x, y)) {
-                case 'X' -> image.setImage(xImage);
-                case 'O' -> image.setImage(oImage);
-                case ' ' -> image.setImage(emptyImage);
+                case X -> image.setImage(xImage);
+                case O -> image.setImage(oImage);
+                case BLANK -> image.setImage(emptyImage);
                 default -> throw new RuntimeException("Board contained an invalid value");
                 }
             }

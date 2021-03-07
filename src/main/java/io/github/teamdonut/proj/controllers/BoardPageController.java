@@ -1,18 +1,21 @@
 package io.github.teamdonut.proj.controllers;
 
+import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
+import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.sounds.EventSounds;
 import io.github.teamdonut.proj.common.BoardUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -22,10 +25,7 @@ import java.util.ResourceBundle;
  * This class handles the game board page UI
  * @author Kord Boniadi
  */
-public class BoardPageController implements Initializable {
-
-    @FXML
-    private Label scoreLabel;
+public class BoardPageController implements Initializable, IObserver {
 
     @FXML
     private Label playerNameLeft;
@@ -53,6 +53,7 @@ public class BoardPageController implements Initializable {
     public BoardPageController(BoardUI board, GameController game) {
         this.board = board;
         this.game = game;
+        EventManager.register(game, this);
     }
 
     /**
@@ -65,9 +66,11 @@ public class BoardPageController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        scoreLabel.setText("score");
         playerNameLeft.setText(game.getPlayer1().getPlayerName());
         playerNameRight.setText(game.getPlayer2().getPlayerName());
+        playerNameLeft.setPrefWidth(150);
+        playerNameRight.setPrefWidth(150);
+
         ((VBox) boardPage.getCenter()).getChildren().add(board);
         BorderPane.setAlignment(playerNameLeft, Pos.TOP_CENTER);
         BorderPane.setAlignment(playerNameRight, Pos.TOP_CENTER);
@@ -107,4 +110,34 @@ public class BoardPageController implements Initializable {
         backButton.setImage(backButtonIdle);
     }
 
+    /**
+     * New info is received through this method. Object decoding is needed
+     *
+     * @param eventType General Object type
+     * @author Kord Boniadi
+     */
+    @Override
+    public void update(Object eventType) {
+        if (eventType instanceof Player) {
+            if (((Player) eventType).getPlayerToken() == game.getPlayer1().getPlayerToken()) {
+                playerNameLeft.setBorder(new Border(new BorderStroke(
+                        Color.GOLD,
+                        BorderStrokeStyle.SOLID,
+                        null,
+                        BorderStroke.THIN,
+                        Insets.EMPTY
+                )));
+                playerNameRight.setBorder(null);
+            } else if (((Player) eventType).getPlayerToken() == game.getPlayer2().getPlayerToken()) {
+                playerNameRight.setBorder(new Border(new BorderStroke(
+                        Color.GOLD,
+                        BorderStrokeStyle.SOLID,
+                        null,
+                        BorderStroke.THIN,
+                        Insets.EMPTY
+                )));
+                playerNameLeft.setBorder(null);
+            }
+        }
+    }
 }

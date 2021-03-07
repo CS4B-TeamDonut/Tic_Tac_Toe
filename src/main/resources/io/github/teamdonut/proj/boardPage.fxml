@@ -13,9 +13,7 @@
       </HBox>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Label fx:id="scoreLabel" text="Label" />
-      </VBox>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </center>
    <left>
       <Label fx:id="playerNameLeft" alignment="TOP_CENTER" text="Label" BorderPane.alignment="CENTER" />

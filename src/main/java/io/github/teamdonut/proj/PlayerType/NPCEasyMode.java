@@ -1,6 +1,9 @@
 package io.github.teamdonut.proj.PlayerType;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.common.Board;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.utils.DataValidation;
 import java.util.Random;
@@ -31,12 +34,12 @@ public class NPCEasyMode implements IPlayerType {
      * @param c : the token
      */
     @Override
-    public void makeMove(Board board, char c) {
+    public void makeMove(Board board, Token c) {
         DataValidation.ensureObjectNotNull("Board", board);
 
         int x;      // column
         int y;      // row
-        char[][] boardAr = board.getUnderlyingBoard();    //tic tac toe board
+        Token[][] boardAr = board.getUnderlyingBoard();    //tic tac toe board
 
         //initialization for random class
         Random num = new Random();
@@ -49,7 +52,7 @@ public class NPCEasyMode implements IPlayerType {
             y = num.nextInt(3);
 
             //checks if the board is not empty
-            if (boardAr[y][x] != board.EMPTY_VALUE) {
+            if (boardAr[y][x] != BLANK) {
                 // TODO Remove debugging code
                 System.out.println("That spot is taken already - try again!\n");
             }

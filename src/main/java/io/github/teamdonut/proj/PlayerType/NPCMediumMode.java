@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj.PlayerType;
 
 import io.github.teamdonut.proj.common.Board;
+import io.github.teamdonut.proj.common.Token;
 
 public class NPCMediumMode implements IPlayerType
 {
@@ -10,7 +11,7 @@ public class NPCMediumMode implements IPlayerType
     }
 
     @Override
-    public void makeMove(Board board, char c) {
+    public void makeMove(Board board, Token c) {
 
     }
 }

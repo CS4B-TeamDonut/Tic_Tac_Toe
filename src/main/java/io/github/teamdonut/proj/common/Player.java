@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj.common;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.PlayerType.IPlayerType;
 import io.github.teamdonut.proj.listener.EventManager;
@@ -57,7 +59,7 @@ public class Player implements ISubject, IObserver {
     }
 
     private String playerName;
-    private char playerToken;
+    private Token playerToken;
 
     // IPlayerType instance - handles how this "Player" makes/calculates moves
     // basically the brain
@@ -73,7 +75,7 @@ public class Player implements ISubject, IObserver {
      * @param playerName The name of the player
      */
     public Player(String playerName) {
-        this(playerName, 'X', new Human());
+        this(playerName, X, new Human());
     }
 
     /**
@@ -81,11 +83,11 @@ public class Player implements ISubject, IObserver {
      * @param playerName The name of the player
      * @param playerToken The token of the player ['X', 'O']
      */
-    public Player(String playerName, char playerToken) {
+    public Player(String playerName, Token playerToken) {
         this(playerName, playerToken, new Human());
     }
 
-    public Player(String playerName, char playerToken, IPlayerType playerType) {
+    public Player(String playerName, Token playerToken, IPlayerType playerType) {
         this.playerName = playerName;
         this.playerToken = playerToken;
         setPlayerType(playerType);
@@ -100,7 +102,7 @@ public class Player implements ISubject, IObserver {
      * Gets the player's token.
      * @return A char holding the player's token
      */
-    public char getPlayerToken() { return playerToken; }
+    public Token getPlayerToken() { return playerToken; }
 
     public IPlayerType getPlayerType() {
         return playerType;
@@ -116,7 +118,7 @@ public class Player implements ISubject, IObserver {
      * Sets the player's token.
      * @param playerToken A char holding the player's token.
      */
-    public void setPlayerToken(char playerToken) { this.playerToken = playerToken; }
+    public void setPlayerToken(Token playerToken) { this.playerToken = playerToken; }
 
     public void setPlayerType(IPlayerType playerType) {
         if (this.playerType != null)

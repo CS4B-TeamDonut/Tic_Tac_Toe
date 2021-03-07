@@ -14,11 +14,6 @@
     -fx-background-position: center center;
 }
 
-#scoreLabel {
-    -fx-text-fill: lightsteelblue;
-    -fx-font-size: 20px;
-}
-
 #title {
     -fx-text-fill: khaki;
     -fx-font-family: Chalkduster;

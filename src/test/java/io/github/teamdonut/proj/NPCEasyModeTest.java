@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
 import io.github.teamdonut.proj.common.Board;
 import org.junit.jupiter.api.Test;
@@ -24,14 +26,14 @@ public class NPCEasyModeTest {
         //filling up the board
         for (int i = 0; i < board.BOARD_ROWS; i++) {
             for (int j = 0; j < board.BOARD_COLUMNS; j++) {
-                board.updateToken(i, j, 'X');
+                board.updateToken(i, j, X);
             }
         }
 
-        board.updateToken(2, 2, ' ');
+        board.updateToken(2, 2, BLANK);
 
         NPCEasyMode easyMode = new NPCEasyMode();
 
-        easyMode.makeMove(board, 'O');
+        easyMode.makeMove(board, O);
     }
 }

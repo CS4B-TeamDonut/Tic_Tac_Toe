@@ -1,10 +1,13 @@
 package io.github.teamdonut.proj.controllers;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.PlayerType.IPlayerType;
 import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
 import io.github.teamdonut.proj.PlayerType.NPCHardMode;
 import io.github.teamdonut.proj.common.Player;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.RestrictiveTextField;
@@ -135,7 +138,7 @@ public class SinglePlayerController implements Initializable, ISubject {
      * @param actionEvent : mouse click
      */
     public void onStartButtonClick(MouseEvent actionEvent) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         startGame();
     }
 
@@ -146,8 +149,8 @@ public class SinglePlayerController implements Initializable, ISubject {
      * @author : Utsav Parajuli
      */
     private void startGame() {
-        char userToken;
-        char cpuToken;
+        Token userToken;
+        Token cpuToken;
         String cpuLevel;
         String userName;
         IPlayerType artificialBrain;
@@ -160,11 +163,11 @@ public class SinglePlayerController implements Initializable, ISubject {
         }
 
         if (tokenO.isSelected()) {
-            userToken = 'O';
-            cpuToken = 'X';
+            userToken = O;
+            cpuToken = X;
         } else {
-            userToken = 'X';
-            cpuToken = 'O';
+            userToken = X;
+            cpuToken = O;
         }
 
         if (easyMode.isSelected()) {
@@ -172,7 +175,7 @@ public class SinglePlayerController implements Initializable, ISubject {
             artificialBrain = new NPCEasyMode();
         } else {
             cpuLevel = "Pro";
-            artificialBrain = new NPCHardMode();
+            artificialBrain = new NPCHardMode(cpuToken, userToken);
         }
 
         // TODO make an actual selection

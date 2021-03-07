@@ -3,8 +3,12 @@ package io.github.teamdonut.proj.controllers;
 import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
+import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.sounds.EventSounds;
 import io.github.teamdonut.proj.common.BoardUI;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -13,10 +17,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +31,9 @@ import java.util.ResourceBundle;
  * This class handles the game board page UI
  * @author Kord Boniadi
  */
-public class BoardPageController implements Initializable, IObserver {
+public class BoardPageController implements Initializable, IObserver, ISubject {
+
+    public static class Finished{}
 
     @FXML
     private Label playerNameLeft;
@@ -37,7 +45,19 @@ public class BoardPageController implements Initializable, IObserver {
     private ImageView backButton;
 
     @FXML
-    private BorderPane boardPage;
+    private BorderPane borderPane;
+
+    @FXML
+    private StackPane stackPane;
+
+    @FXML
+    private Pane overlayPane;
+
+    @FXML
+    private Label winnerLabel;
+
+    @FXML
+    private Label exitPrompt;
 
     private final BoardUI board;
     private final GameController game;
@@ -71,9 +91,20 @@ public class BoardPageController implements Initializable, IObserver {
         playerNameLeft.setPrefWidth(150);
         playerNameRight.setPrefWidth(150);
 
-        ((VBox) boardPage.getCenter()).getChildren().add(board);
+        ((VBox) borderPane.getCenter()).getChildren().add(board);
         BorderPane.setAlignment(playerNameLeft, Pos.TOP_CENTER);
         BorderPane.setAlignment(playerNameRight, Pos.TOP_CENTER);
+
+        borderPane.setOnKeyReleased(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                System.out.println("keyPressed");
+                EventSounds.getInstance().playButtonSound4();
+                EventManager.notify(this, new BoardPageController.Finished());
+            }
+        });
+
+        overlayPane.setStyle("-fx-background-color: rgba(0, 100, 100, 0.5); -fx-background-radius: 10;");
+        overlayPane.setVisible(false);
     }
 
     /**
@@ -138,6 +169,23 @@ public class BoardPageController implements Initializable, IObserver {
                 )));
                 playerNameLeft.setBorder(null);
             }
+        } else if (eventType instanceof GameController.Results) {
+            GameController.Results temp = (GameController.Results) eventType;
+
+            exitPrompt.setText("Press enter to return to the main menu...");
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(1.1), evt -> exitPrompt.setVisible(false)),
+                    new KeyFrame(Duration.seconds(0.5), evt -> exitPrompt.setVisible(true))
+            );
+            timeline.setCycleCount(Animation.INDEFINITE);
+            timeline.play();
+
+            String result = (temp.getWinner() != null) ? temp.getWinner().getPlayerName() + "(" +
+                    temp.getWinner().getPlayerToken() + ")" +  " won!!!" : "It's a Draw";
+
+            winnerLabel.setText(result);
+            borderPane.requestFocus();
+            overlayPane.setVisible(true);
         }
     }
 }

@@ -106,7 +106,7 @@ public final class Logger {
 
             deleteOldFiles(
                     Files.createDirectories(Path.of(System.getProperty("user.dir") + "/" + output_dir)),
-                    ".log",
+                    null,
                     8
             );
 //            Files.createDirectories(Path.of(System.getProperty("user.dir") + "/" + output_dir));

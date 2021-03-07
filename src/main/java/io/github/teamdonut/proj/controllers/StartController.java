@@ -46,8 +46,8 @@ public class StartController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         startKey.setText("Press (Z) to begin");
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1.1), evt -> startKey.setVisible(false)),
-                new KeyFrame(Duration.seconds(0.5), evt -> startKey.setVisible(true))
+                new KeyFrame(Duration.seconds(0.6), evt -> startKey.setVisible(false)),
+                new KeyFrame(Duration.seconds(1.2), evt -> startKey.setVisible(true))
         );
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
@@ -59,9 +59,9 @@ public class StartController implements Initializable {
      * @throws IOException  fxml detection exception
      * @author Kord Boniadi
      */
-    public void onKeyPressed(KeyEvent keyEvent) throws IOException {
+    public void onKeyReleased(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode().equals(KeyCode.Z)) {
-            EventSounds.getInstance().playButtonSound2();
+            EventSounds.getInstance().playButtonSound4();
             Stage window = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../menuPage.fxml"));
 

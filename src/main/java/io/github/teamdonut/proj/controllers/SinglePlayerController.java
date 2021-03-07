@@ -1,6 +1,13 @@
 package io.github.teamdonut.proj.controllers;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
+import io.github.teamdonut.proj.PlayerType.Human;
+import io.github.teamdonut.proj.PlayerType.IPlayerType;
+import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
+import io.github.teamdonut.proj.PlayerType.NPCHardMode;
 import io.github.teamdonut.proj.common.Player;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.RestrictiveTextField;
@@ -131,21 +138,22 @@ public class SinglePlayerController implements Initializable, ISubject {
      * @param actionEvent : mouse click
      */
     public void onStartButtonClick(MouseEvent actionEvent) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         startGame();
     }
 
     /**
      * Helper method that will check the options entered by the user and assign the correct token to both the
-     * player and NPC. Will also check the difficulty level. Then will instantiate a game object and notify the observers
+     * player and PlayerType. Will also check the difficulty level. Then will instantiate a game object and notify the observers
      *
      * @author : Utsav Parajuli
      */
     private void startGame() {
-        char userToken;
-        char cpuToken;
+        Token userToken;
+        Token cpuToken;
         String cpuLevel;
         String userName;
+        IPlayerType artificialBrain;
 
         if (nameEntry.getText().isEmpty()) {
             userName = "Guest";
@@ -155,24 +163,28 @@ public class SinglePlayerController implements Initializable, ISubject {
         }
 
         if (tokenO.isSelected()) {
-            userToken = 'O';
-            cpuToken = 'X';
+            userToken = O;
+            cpuToken = X;
         } else {
-            userToken = 'X';
-            cpuToken = 'O';
+            userToken = X;
+            cpuToken = O;
         }
 
         if (easyMode.isSelected()) {
             cpuLevel = "Rook";
+            artificialBrain = new NPCEasyMode();
         } else {
             cpuLevel = "Pro";
+            artificialBrain = new NPCHardMode(cpuToken, userToken);
         }
 
+        // TODO make an actual selection
         GameController game = new GameController(
-                new Player(userName, userToken),
-                new Player(cpuLevel, cpuToken));
+                new Player(userName + " (" + userToken + ")", userToken, new Human()),
+                new Player(cpuLevel + " (" + cpuToken + ")", cpuToken, artificialBrain));
 
         EventManager.notify(this, game);
+        EventManager.removeAllObserver(this);
     }
 
     /**
@@ -188,7 +200,6 @@ public class SinglePlayerController implements Initializable, ISubject {
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);
         window.setResizable(false);
-        window.show();
     }
 
     /**

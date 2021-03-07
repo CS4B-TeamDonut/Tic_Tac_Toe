@@ -90,4 +90,8 @@ public final class EventManager {
         DataValidation.ensureObjectNotNull("ISubject", subj);
         return eventMap.get(subj) != null;
     }
+
+    public static void cleanup() {
+        eventMap.clear();
+    }
 }

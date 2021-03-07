@@ -1,11 +1,16 @@
 package io.github.teamdonut.proj.controllers;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
+import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.common.Player;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.IObserver;
 import io.github.teamdonut.proj.listener.ISubject;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -33,6 +38,41 @@ public class GameController implements ISubject, IObserver {
 
     }
 
+    public static class Results {
+        private final Player winner;
+
+        public Results() {
+            this(null);
+        }
+        public Results(Player winner) {
+            this.winner = winner;
+        }
+
+        public Player getWinner() {
+            return winner;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Results)) return false;
+            Results results = (Results) o;
+            return Objects.equals(getWinner(), results.getWinner());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getWinner());
+        }
+
+        @Override
+        public String toString() {
+            return "Results{" +
+                    "winner=" + winner +
+                    '}';
+        }
+    }
+
     private final Board board;
     private final Player player1;
     private final Player player2;
@@ -45,8 +85,8 @@ public class GameController implements ISubject, IObserver {
      */
     public GameController() {
         this(
-                new Player("JohnnyP1", 'X'),
-                new Player("Computer", 'O'),
+                new Player("Player1", X),
+                new Player("Player2", O),
                 new Board()
         );
     }
@@ -58,8 +98,8 @@ public class GameController implements ISubject, IObserver {
      */
     public GameController(Player player1) {
         this(
-                new Player(player1.getPlayerName(), 'X'),
-                new Player("Computer", 'O'),
+                player1,
+                new Player("Player2", O),
                 new Board()
         );
     }
@@ -74,10 +114,9 @@ public class GameController implements ISubject, IObserver {
      * @author Utsav Parajuli
      */
     public GameController(Player player1, Player player2) {
-        this(
-                new Player(player1.getPlayerName(), player1.getPlayerToken()),
-                new Player(player2.getPlayerName(), player2.getPlayerToken()),
-                new Board());
+        this(player1, player2, new Board());
+        Random rand = new Random();
+        swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
     }
     /**
      * Constructor
@@ -91,10 +130,6 @@ public class GameController implements ISubject, IObserver {
         this.board = board;
         this.player1 = player1;
         this.player2 = player2;
-//        Random rand = new Random();
-//        swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
-//        EventManager.register(player1, this);
-//        EventManager.register(player2, this);
     }
 
     /**
@@ -122,22 +157,78 @@ public class GameController implements ISubject, IObserver {
         return player2;
     }
 
-//    /**
-//     * Creates the necessary linkage between ISubject and IObserver
-//     * @author Kord Boniadi
-//     */
-//    public void initialize() {
-//        EventManager.register(player1, this);
-//        EventManager.register(player2, this);
-//    }
+    /**
+     * @return next player
+     * @author Kord Boniadi
+     */
+    public Player nextPlayer() {
+        return swap;
+    }
 
     public void startGame() {
-        Random rand = new Random();
-        swap = (rand.nextInt(2) == 0) ? this.player1 : this.player2;
         EventManager.register(player1, this);
         EventManager.register(player2, this);
 
+        if (player2.getPlayerType() instanceof Human)
+            EventManager.notify(this, swap);
+        swap.makeMove(this.board);
     }
+
+    public boolean gameOver() {
+        return board.isBoardFull() || hasWon(board) == X || hasWon(board) == O;
+    }
+
+    public Token hasWon(Board board) {
+        Token[][] boardArr = board.getUnderlyingBoard();
+
+        for (int i = 0; i < board.BOARD_ROWS; i++) {
+            if (boardArr[i][0] == X && boardArr[i][1] == X && boardArr[i][2] == X) {
+                return X;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (boardArr[i][0] == O && boardArr[i][1] == O && boardArr[i][2] == O) {
+                return O;
+            }
+        }
+
+        for (int j = 0; j < 3; j++) {
+            if (boardArr[0][j] == X && boardArr[1][j] == X && boardArr[2][j] == X) {
+                return X;
+            }
+        }
+
+        for (int j = 0; j < 3; j++) {
+            if (boardArr[0][j] == O && boardArr[1][j] == O && boardArr[2][j] == O) {
+                return O;
+            }
+        }
+
+        if (boardArr[0][0] == X && boardArr[1][1] == X && boardArr[2][2] == X) {
+            return X;
+        }
+
+        if (boardArr[0][0] == O && boardArr[1][1] == O && boardArr[2][2] == O) {
+            return O;
+        }
+
+        if (boardArr[0][2] == X && boardArr[1][1] == X && boardArr[2][0] == X) {
+            return X;
+        }
+
+        if (boardArr[0][2] == O && boardArr[1][1] == O && boardArr[2][0] == O) {
+            return O;
+        }
+        return BLANK;
+    }
+
+    public Player whoWon(Board board, Player player1, Player player2) {
+        if (hasWon(board) == player1.getPlayerToken())
+            return player1;
+        return (hasWon(board) == player2.getPlayerToken()) ? player2 : null;
+    }
+
     /**
      * New info is received through this method. Object decoding is needed
      *
@@ -148,11 +239,22 @@ public class GameController implements ISubject, IObserver {
     public void update(Object eventType) {
         if (eventType instanceof Player.MoveInfo) {
             Player.MoveInfo info = (Player.MoveInfo) eventType;
-
-            if (swap == info.getPlayerInstance() && board.getToken(info.getX(), info.getY()) == board.EMPTY_VALUE) {
+            boolean gameOver;
+            if (swap == info.getPlayerInstance() && board.getToken(info.getX(), info.getY()) == BLANK) {
                 board.updateToken(info.getX(), info.getY(), info.getPlayerInstance().getPlayerToken());
+                gameOver = gameOver();
+
+                swap = (gameOver) ? null : (swap == player1) ? player2 : player1;
+
                 EventManager.notify(this, new DrawInfo(this.board));
-                swap = (swap == player1) ? player2 : player1;
+
+                if (!gameOver) {
+                    if (player2.getPlayerType() instanceof Human)
+                        EventManager.notify(this, swap);
+                    swap.makeMove(this.board);
+                } else {
+                    EventManager.notify(this, new GameController.Results(whoWon(board, player1, player2)));
+                }
             }
         }
     }

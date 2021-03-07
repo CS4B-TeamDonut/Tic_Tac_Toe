@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj.common;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.PlayerType.IPlayerType;
 import io.github.teamdonut.proj.listener.EventManager;
@@ -57,8 +59,11 @@ public class Player implements ISubject, IObserver {
     }
 
     private String playerName;
-    private char playerToken;
-    IPlayerType playerType;
+    private Token playerToken;
+
+    // IPlayerType instance - handles how this "Player" makes/calculates moves
+    // basically the brain
+    private IPlayerType playerType;
 
     /**
      * Constructs a Player object with no arguments.
@@ -70,7 +75,7 @@ public class Player implements ISubject, IObserver {
      * @param playerName The name of the player
      */
     public Player(String playerName) {
-        this(playerName, 'X', new Human());
+        this(playerName, X, new Human());
     }
 
     /**
@@ -78,14 +83,14 @@ public class Player implements ISubject, IObserver {
      * @param playerName The name of the player
      * @param playerToken The token of the player ['X', 'O']
      */
-    public Player(String playerName, char playerToken) {
+    public Player(String playerName, Token playerToken) {
         this(playerName, playerToken, new Human());
     }
 
-    public Player(String playerName, char playerToken, IPlayerType playerType) {
+    public Player(String playerName, Token playerToken, IPlayerType playerType) {
         this.playerName = playerName;
         this.playerToken = playerToken;
-        this.playerType = playerType;
+        setPlayerType(playerType);
     }
     /**
      * Gets the player's name.
@@ -97,7 +102,11 @@ public class Player implements ISubject, IObserver {
      * Gets the player's token.
      * @return A char holding the player's token
      */
-    public char getPlayerToken() { return playerToken; }
+    public Token getPlayerToken() { return playerToken; }
+
+    public IPlayerType getPlayerType() {
+        return playerType;
+    }
 
     /**
      * Sets the player's name.
@@ -109,7 +118,7 @@ public class Player implements ISubject, IObserver {
      * Sets the player's token.
      * @param playerToken A char holding the player's token.
      */
-    public void setPlayerToken(char playerToken) { this.playerToken = playerToken; }
+    public void setPlayerToken(Token playerToken) { this.playerToken = playerToken; }
 
     public void setPlayerType(IPlayerType playerType) {
         if (this.playerType != null)
@@ -120,6 +129,10 @@ public class Player implements ISubject, IObserver {
         if (this.playerType != null) {
             EventManager.register(this.playerType, this);
         }
+    }
+
+    public void makeMove(Board board) {
+        playerType.makeMove(board, playerToken);
     }
     /**
      * Checks the equality of two Player objects.
@@ -163,10 +176,10 @@ public class Player implements ISubject, IObserver {
      */
     @Override
     public void update(Object eventType) {
-        if (eventType instanceof BoardUI.UserSelectionData) {
-            BoardUI.UserSelectionData temp = (BoardUI.UserSelectionData) eventType;
+        if (eventType instanceof IPlayerType.BoardMoveInfo) {
+            IPlayerType.BoardMoveInfo temp = (IPlayerType.BoardMoveInfo) eventType;
 
-            EventManager.notify(this, new MoveInfo(this, temp.getX(), temp.getY()));
+            EventManager.notify(this, new Player.MoveInfo(this, temp.getX(), temp.getY()));
         }
     }
 }

@@ -1,63 +1,87 @@
 package io.github.teamdonut.proj.common;
 
+import static io.github.teamdonut.proj.common.Token.*;
 import java.util.Arrays;
 import java.util.Objects;
 
 /**
  * Board is a data-only class that holds a 2-dimensional array representing the current
  * state of a tic tac toe match.
+ * @author Grant Goldsworth
  */
 public class Board {
-    public final int BOARD_WIDTH = 3;
-    public final int BOARD_HEIGHT = 3;
-    public final char EMPTY_VALUE = ' ';
-    private final char[][] board = new char[BOARD_WIDTH][BOARD_HEIGHT];
+    public final int BOARD_ROWS = 3;
+    public final int BOARD_COLUMNS = 3;
+    private final Token[][] board = new Token[BOARD_ROWS][BOARD_COLUMNS];
 
     /**
-     * Constructs a Board object by setting all values of char [][]board to EMPTY_VALUE.
+     * Constructs a Board object by setting all values of Token[][] board to BLANK.
      */
     public Board() {
-        Arrays.stream(board).forEach(str -> Arrays.fill(str, EMPTY_VALUE));
+        Arrays.stream(board).forEach(str -> Arrays.fill(str, BLANK));
     }
 
     /**
-     * Gets the current char[][] board of a Board object.
-     * @return the char[][] board of a Board object
+     * Gets the current Token[][] board of a Board object.
+     * @return the Token[][] board of a Board object
      */
-    public char[][] getUnderlyingBoard() { return board; }
+    public Token[][] getUnderlyingBoard() { return board; }
 
     /**
      * After checking to make sure the passed in position is within the board,
-     * the method updates a token of char[][] board.
-     * @param x the x-value for the token in the array [0, 1, 2]
-     * @param y the y-value for the token in the array [0, 1, 2]
-     * @param c the token for the array ['X', 'O']
+     * the method updates a token of Token[][] board.
+     * <p>NOTE: This method uses x for column and y for row as per compatibility with
+     * JFX's grid pane management.</p>
+     * @param col the x-value for the token in the array [0, 1, 2]
+     * @param row the y-value for the token in the array [0, 1, 2]
+     * @param c the token for the array [X, O]
      */
-    public void updateToken(int x, int y, char c) {
-        if ((x > BOARD_WIDTH || y > BOARD_HEIGHT) || ( x < 0 || y < 0))
+    public void updateToken(int col, int row, Token c) {
+        if ((col > BOARD_COLUMNS || row > BOARD_ROWS) || ( col < 0 || row < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
-                    "valid bounds are (%d, %d]", x, y, 0, BOARD_HEIGHT));
-        board[x][y] = c;
+                    "valid bounds are (%d, %d]", col, row, 0, BOARD_ROWS));
+        // grant flipped these
+        board[row][col] = c;
     }
 
     /**
-     * Returns the token of a specific position in char[][] board.
-     * @param x the x-value for the token in the array [0, 1, 2]
-     * @param y the y-value for the token in the array [0, 1, 2]
-     * @return The token ['X', 'O', ' '] of a specific position in char[][] board.
+     * Returns the token of a specific position in Token[][] board.
+     * <p>NOTE: This method uses x for column and y for row as per compatibility with
+     * JFX's grid pane management.</p>
+     * @param col the x-value for the token in the array [0, 1, 2]
+     * @param row the y-value for the token in the array [0, 1, 2]
+     * @return The token [X, O, BLANK] of a specific position in Token[][] board.
      */
-    public char getToken(int x, int y) {
-        if ((x > BOARD_WIDTH || y > BOARD_HEIGHT) || ( x < 0 || y < 0))
+    public Token getToken(int col, int row) {
+        if ((col > BOARD_COLUMNS || row > BOARD_ROWS) || ( col < 0 || row < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
-                    "valid bounds are (%d, %d]", x, y, 0, BOARD_HEIGHT));
-        return board[x][y];
+                    "valid bounds are (%d, %d]", col, row, 0, BOARD_ROWS));
+        return board[row][col];
     }
 
     /**
-     * Sets all values within char[][] board to EMPTY_VALUE.
+     * Checks to see if the board is full or not (all cells have a token that
+     * is not the character ' ').
+     * @return true if all cells have a value besides BLANK, false otherwise
+     * @author Grant Goldsworth
+     */
+    public boolean isBoardFull() {
+        for (Token[] row : board) {
+            for (Token col : row) {
+                // does cell have a valid token? If not, board isn't empty
+                if (col == BLANK)
+                    return false;
+            }
+        }
+        // all board cells have a token
+        return true;
+    }
+
+    /**
+     * Sets all values within Token[][] board to BLANK.
      */
     public void clearBoard() {
-        for (char[] row: board) Arrays.fill(row, EMPTY_VALUE);
+        for (Token[] row: board) Arrays.fill(row, BLANK);
     }
 
     /**
@@ -70,9 +94,8 @@ public class Board {
         if (this == o) return true;
         if (!(o instanceof Board)) return false;
         Board board1 = (Board) o;
-        return Objects.equals(BOARD_WIDTH, board1.BOARD_WIDTH) &&
-                Objects.equals(BOARD_HEIGHT, board1.BOARD_HEIGHT) &&
-                Objects.equals(EMPTY_VALUE, board1.EMPTY_VALUE) &&
+        return Objects.equals(BOARD_ROWS, board1.BOARD_ROWS) &&
+                Objects.equals(BOARD_COLUMNS, board1.BOARD_COLUMNS) &&
                 // Uses deepEquals to check nested arrays
                 Arrays.deepEquals(getUnderlyingBoard(), board1.getUnderlyingBoard());
     }
@@ -83,7 +106,7 @@ public class Board {
      */
     @Override
     public int hashCode() {
-        int result = Objects.hash(BOARD_WIDTH, BOARD_HEIGHT, EMPTY_VALUE);
+        int result = Objects.hash(BOARD_ROWS, BOARD_COLUMNS);
         result = 31 * result + Arrays.hashCode(getUnderlyingBoard());
         return result;
     }
@@ -98,9 +121,9 @@ public class Board {
         char delim = '|';
         StringBuilder buf = new StringBuilder();
         int i = 0;
-        for (var a : board) {
-            for (var b : a) {
-                buf.append(b);
+        for (Token[] row : board) {
+            for (var col : row) {
+                buf.append(col);
                 if (i < 2)
                     buf.append(delim);
                 i++;

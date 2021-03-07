@@ -27,8 +27,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      * @author Kord Boniadi
      */
     public static class UserSelectionData {
-        private final int x;
-        private final int y;
+        private final int x;    // columns
+        private final int y;    // rows
 
         /**
          * Constructor
@@ -40,8 +40,8 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
 
         /**
          * Constructor
-         * @param x value
-         * @param y value
+         * @param x columns
+         * @param y rows
          * @author Kord Boniadi
          */
         public UserSelectionData(int x, int y) {
@@ -50,14 +50,14 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
         }
 
         /**
-         * @return x coordinate
+         * @return x coordinate (column)
          */
         public int getX() {
             return this.x;
         }
 
         /**
-         * @return y coordinate
+         * @return y coordinate (row)
          */
         public int getY() {
             return this.y;
@@ -209,9 +209,9 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
                 int y = GridPane.getRowIndex(n);
 
                 switch (currState.getToken(x, y)) {
-                case 'X' -> image.setImage(xImage);
-                case 'O' -> image.setImage(oImage);
-                case ' ' -> image.setImage(emptyImage);
+                case X -> image.setImage(xImage);
+                case O -> image.setImage(oImage);
+                case BLANK -> image.setImage(emptyImage);
                 default -> throw new RuntimeException("Board contained an invalid value");
                 }
             }
@@ -225,10 +225,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
      */
     @Override
     public void update(Object eventType) {
-        if (eventType instanceof GameController.DrawInfo) {
-            GameController.DrawInfo data = (GameController.DrawInfo) eventType;
-
-            drawBoard(data.getUpdatedBoard());
-        }
+        if (eventType instanceof GameController.DrawInfo)
+            drawBoard(((GameController.DrawInfo) eventType).getUpdatedBoard());
     }
 }

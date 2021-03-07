@@ -1,6 +1,9 @@
 package io.github.teamdonut.proj.controllers;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.common.Player;
+import io.github.teamdonut.proj.common.Token;
 import io.github.teamdonut.proj.listener.EventManager;
 import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.proj.utils.RestrictiveTextField;
@@ -71,8 +74,8 @@ public class MultiplayerController implements Initializable, ISubject {
     @FXML
     public RadioButton tokenOP2;
 
-    private char tokenP1;
-    private char tokenP2;
+    private Token tokenP1;
+    private Token tokenP2;
 
     private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
     private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
@@ -103,8 +106,8 @@ public class MultiplayerController implements Initializable, ISubject {
         tokenOP2.setToggleGroup(tokenGroup2);
         tokenOP2.setSelected(true);
 
-        tokenP1 = 'X';
-        tokenP2 = 'O';
+        tokenP1 = X;
+        tokenP2 = O;
 
         // Uses the RestrictiveTextField to limit names to 5 characters
         nameEntryMP1.setMaxLength(5);
@@ -133,13 +136,13 @@ public class MultiplayerController implements Initializable, ISubject {
     public void onToggleClick1 (MouseEvent actionEvent) {
         if (tokenXP1.isSelected()) {
             tokenOP2.setSelected(true);
-            tokenP1 = 'X';
-            tokenP2 = 'O';
+            tokenP1 = X;
+            tokenP2 = O;
         }
         else {
             tokenXP2.setSelected(true);
-            tokenP1 = 'O';
-            tokenP2 = 'X';
+            tokenP1 = O;
+            tokenP2 = X;
         }
     }
 
@@ -153,13 +156,13 @@ public class MultiplayerController implements Initializable, ISubject {
     public void onToggleClick2 (MouseEvent actionEvent) {
         if (tokenXP2.isSelected()) {
             tokenOP1.setSelected(true);
-            tokenP2 = 'X';
-            tokenP1 = 'O';
+            tokenP2 = X;
+            tokenP1 = O;
         }
         else {
             tokenXP1.setSelected(true);
-            tokenP2 = 'O';
-            tokenP1 = 'X';
+            tokenP2 = O;
+            tokenP1 = X;
         }
     }
 
@@ -171,7 +174,7 @@ public class MultiplayerController implements Initializable, ISubject {
      * @author Joey Campbell
      */
     public void onStartButtonClick(MouseEvent actionEvent) {
-        EventSounds.getInstance().playButtonSound2();
+        EventSounds.getInstance().playButtonSound4();
         startGame();
     }
 
@@ -188,21 +191,22 @@ public class MultiplayerController implements Initializable, ISubject {
             player1Name = "P1";
         }
         else {
-            player1Name = "P1: " + nameEntryMP1.getText();
+            player1Name = nameEntryMP1.getText();
         }
 
         if (nameEntryMP2.getText().isEmpty()) {
             player2Name = "P2";
         }
         else {
-            player2Name = "P2: " + nameEntryMP2.getText();
+            player2Name = nameEntryMP2.getText();
         }
 
         GameController game = new GameController(
-                new Player(player1Name, tokenP1),
-                new Player(player2Name, tokenP2));
+                new Player(player1Name + " (" + tokenP1 + ")", tokenP1),
+                new Player(player2Name + " (" + tokenP2 + ")", tokenP2));
 
         EventManager.notify(this, game);
+        EventManager.removeAllObserver(this);
     }
 
     /**
@@ -218,7 +222,6 @@ public class MultiplayerController implements Initializable, ISubject {
         window.setTitle("Donut Tic Tac Toe");
         window.setScene(((AppController) window.getUserData()).mainScene);
         window.setResizable(false);
-        window.show();
     }
 
     /**

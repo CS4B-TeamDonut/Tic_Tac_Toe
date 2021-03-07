@@ -1,5 +1,7 @@
 package io.github.teamdonut.proj;
 
+import static io.github.teamdonut.proj.common.Token.*;
+
 import io.github.teamdonut.proj.PlayerType.NPCHardMode;
 import io.github.teamdonut.proj.common.Board;
 import org.junit.jupiter.api.Test;
@@ -17,56 +19,57 @@ public class NPCHardModeTest
      * The evaluate method is designed to return 10/0/-10
      * based on a max/draw/min win.
      * @author Grant Goldsworth
-     * @see NPCHardMode#evaluate(Board) 
+     * @see NPCHardMode#evaluate(Board, int)
      */
     @Test
     public void evaluateBoardTest() {
         Board board = new Board();
+        NPCHardMode test = new NPCHardMode(X, O);
 
         // test row win
-        board.updateToken(0, 0, 'X');
-        board.updateToken(0, 1, 'X');
-        board.updateToken(0, 2, 'X');
+        board.updateToken(0, 0, X);
+        board.updateToken(0, 1, X);
+        board.updateToken(0, 2, X);
 
         // assert that it is a maximizer (X) win on a horizontal row
-        assertEquals(10, NPCHardMode.evaluate(board));
+        assertEquals(10, test.evaluate(board, 0));
 
 
         // test column win
         board = new Board();
-        board.updateToken(0, 1, 'O');
-        board.updateToken(1, 1, 'O');
-        board.updateToken(2, 1, 'O');
+        board.updateToken(0, 1, O);
+        board.updateToken(1, 1, O);
+        board.updateToken(2, 1, O);
 
         // assert that it is a minimizer (X) win on a horizontal row
-        assertEquals(-10, NPCHardMode.evaluate(board));
+        assertEquals(-10, test.evaluate(board, 0));
 
 
         // test diagonal
         board = new Board();
-        board.updateToken(0,0,'X');
-        board.updateToken(1,1,'X');
-        board.updateToken(2,2,'X');
+        board.updateToken(0,0,X);
+        board.updateToken(1,1,X);
+        board.updateToken(2,2,X);
 
         // assert that it is a maximizer (X) win on diagonal
-        assertEquals(10, NPCHardMode.evaluate(board));
+        assertEquals(10, test.evaluate(board, 0));
 
 
         // test other diagonal
         board = new Board();
-        board.updateToken(0,2,'O');
-        board.updateToken(1,1,'O');
-        board.updateToken(0,2,'O');
+        board.updateToken(0,2,O);
+        board.updateToken(1,1,O);
+        board.updateToken(2,0,O);
 
         // assert that it is a minimizer (X) win on diagonal
-        assertEquals(-10, NPCHardMode.evaluate(board));
+        assertEquals(-10, test.evaluate(board, 0));
 
     }
 
     /**
      * Test the minimax algorithm with a few different scenarios. 
      * @author Grant Goldsworth
-     * @see NPCHardMode#miniMax(Board, int, boolean) 
+     * @see NPCHardMode#miniMax(Board, int, int, int, boolean)
      */
     @Test
     public void miniMaxAlgoTest() {
@@ -77,27 +80,26 @@ public class NPCHardModeTest
 
         // give a scenario
         Board board = new Board();
-        board.updateToken(0, 0, 'X');
-        board.updateToken(0, 1, 'O');
-        board.updateToken(0, 2, 'X');
-        board.updateToken(1, 0, 'O');
-        board.updateToken(1, 1, 'O');
-        board.updateToken(1, 2, 'X');
+        NPCHardMode test = new NPCHardMode(X, O);
+        board.updateToken(0, 0, X);
+        board.updateToken(2, 0, O);
+        board.updateToken(0, 1, X);
+        board.updateToken(1, 0, O);
 
         // create a simple driver to run minimax on this scenario
         // for each cell
         for (int row = 0; row < 3; row ++) {
             for (int col = 0; col < 3; col ++) {
                // if the cell is empty
-               if(board.getToken(row, col) == board.EMPTY_VALUE) {
+               if(board.getToken(col, row) == BLANK) {
                    // simulate the player's move here (or maximizer's move)
-                   board.updateToken(row, col, NPCHardMode.MAXIMIZER);
+                   board.updateToken(col, row, X);
 
                    // run minimax on this spot and record result
-                   int miniMaxResult = NPCHardMode.miniMax(board, 0, false);
+                   int miniMaxResult = test.miniMax(board, 6, Integer.MIN_VALUE, Integer.MAX_VALUE,false);
 
                    // undo the move for this iteration
-                   board.updateToken(row, col, board.EMPTY_VALUE);
+                   board.updateToken(col, row, BLANK);
 
                    // if the current move's value from minimax is better than the bestValue, update
                    // the best value and record location
@@ -113,39 +115,9 @@ public class NPCHardModeTest
 
 
         // ensure that it returns correct numerical choice
-        assertEquals(10, bestValue);
+        assertEquals(16, bestValue);
         assertEquals(2, moveRow);
-        assertEquals(2, moveCol);
+        assertEquals(0, moveCol);
     }
-
-
-    /**
-     * Test the isFullBoard method that checks if the board
-     * is completely full - every cell has
-     * a token that is not the character ' '
-     * @author Grant Goldsworth
-     * @see NPCHardMode#isFullBoard(Board)
-     */
-    @Test
-    public void fullBoardTest() {
-        Board board = new Board();
-
-        // fill board with tokens
-        for (int i = 0; i < 3; i ++)
-            for (int j = 0; j < 3; j ++)
-                board.updateToken(i, j, i % 2 == 0 ? 'X' : 'O');
-
-        // assert that method returns that it is a full board
-        assertTrue(NPCHardMode.isFullBoard(board));
-
-        // create non-full board
-        board = new Board();
-        board.updateToken(0, 2, 'X');
-
-        // assert that method returns that it is not a full board
-        assertFalse(NPCHardMode.isFullBoard(board));
-
-    }
-
 
 }

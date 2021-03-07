@@ -7,7 +7,7 @@
     -fx-font-size: 40px;
 }
 
-#mainMenuPane, #startPage {
+#mainMenuPane {
     -fx-background-image: url("/io/github/teamdonut/proj/images/theme_2/title_2.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;

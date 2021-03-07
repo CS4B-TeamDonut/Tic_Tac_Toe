@@ -1,12 +1,11 @@
 package io.github.teamdonut.proj;
 
-import static io.github.teamdonut.proj.common.Token.*;
-
-import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.common.Token;
 import org.junit.jupiter.api.Test;
 
+import static io.github.teamdonut.proj.common.Token.O;
+import static io.github.teamdonut.proj.common.Token.X;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTest {

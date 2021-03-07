@@ -59,7 +59,7 @@ public class NPCHardModeTest
         board = new Board();
         board.updateToken(0,2,O);
         board.updateToken(1,1,O);
-        board.updateToken(0,2,O);
+        board.updateToken(2,0,O);
 
         // assert that it is a minimizer (X) win on diagonal
         assertEquals(-10, test.evaluate(board));

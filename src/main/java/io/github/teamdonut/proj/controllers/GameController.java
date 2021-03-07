@@ -1,6 +1,8 @@
 package io.github.teamdonut.proj.controllers;
 
 import static io.github.teamdonut.proj.common.Token.*;
+
+import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.common.Board;
 import io.github.teamdonut.proj.common.Player;
 import io.github.teamdonut.proj.common.Token;
@@ -167,7 +169,8 @@ public class GameController implements ISubject, IObserver {
         EventManager.register(player1, this);
         EventManager.register(player2, this);
 
-        EventManager.notify(this, swap);
+        if (player2.getPlayerType() instanceof Human)
+            EventManager.notify(this, swap);
         swap.makeMove(this.board);
     }
 
@@ -246,7 +249,8 @@ public class GameController implements ISubject, IObserver {
                 EventManager.notify(this, new DrawInfo(this.board));
 
                 if (!gameOver) {
-                    EventManager.notify(this, swap);
+                    if (player2.getPlayerType() instanceof Human)
+                        EventManager.notify(this, swap);
                     swap.makeMove(this.board);
                 } else {
                     EventManager.notify(this, new GameController.Results(whoWon(board, player1, player2)));

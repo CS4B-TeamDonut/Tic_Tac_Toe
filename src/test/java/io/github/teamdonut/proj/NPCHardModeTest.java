@@ -19,7 +19,7 @@ public class NPCHardModeTest
      * The evaluate method is designed to return 10/0/-10
      * based on a max/draw/min win.
      * @author Grant Goldsworth
-     * @see NPCHardMode#evaluate(Board) 
+     * @see NPCHardMode#evaluate(Board, int)
      */
     @Test
     public void evaluateBoardTest() {
@@ -32,7 +32,7 @@ public class NPCHardModeTest
         board.updateToken(0, 2, X);
 
         // assert that it is a maximizer (X) win on a horizontal row
-        assertEquals(10, test.evaluate(board));
+        assertEquals(10, test.evaluate(board, 0));
 
 
         // test column win
@@ -42,7 +42,7 @@ public class NPCHardModeTest
         board.updateToken(2, 1, O);
 
         // assert that it is a minimizer (X) win on a horizontal row
-        assertEquals(-10, test.evaluate(board));
+        assertEquals(-10, test.evaluate(board, 0));
 
 
         // test diagonal
@@ -52,7 +52,7 @@ public class NPCHardModeTest
         board.updateToken(2,2,X);
 
         // assert that it is a maximizer (X) win on diagonal
-        assertEquals(10, test.evaluate(board));
+        assertEquals(10, test.evaluate(board, 0));
 
 
         // test other diagonal
@@ -62,14 +62,14 @@ public class NPCHardModeTest
         board.updateToken(2,0,O);
 
         // assert that it is a minimizer (X) win on diagonal
-        assertEquals(-10, test.evaluate(board));
+        assertEquals(-10, test.evaluate(board, 0));
 
     }
 
     /**
      * Test the minimax algorithm with a few different scenarios. 
      * @author Grant Goldsworth
-     * @see NPCHardMode#miniMax(Board, int, boolean) 
+     * @see NPCHardMode#miniMax(Board, int, int, int, boolean)
      */
     @Test
     public void miniMaxAlgoTest() {
@@ -82,11 +82,9 @@ public class NPCHardModeTest
         Board board = new Board();
         NPCHardMode test = new NPCHardMode(X, O);
         board.updateToken(0, 0, X);
-        board.updateToken(0, 1, O);
-        board.updateToken(0, 2, X);
+        board.updateToken(2, 0, O);
+        board.updateToken(0, 1, X);
         board.updateToken(1, 0, O);
-        board.updateToken(1, 1, O);
-        board.updateToken(1, 2, X);
 
         // create a simple driver to run minimax on this scenario
         // for each cell
@@ -98,7 +96,7 @@ public class NPCHardModeTest
                    board.updateToken(col, row, X);
 
                    // run minimax on this spot and record result
-                   int miniMaxResult = test.miniMax(board, 0, false);
+                   int miniMaxResult = test.miniMax(board, 6, Integer.MIN_VALUE, Integer.MAX_VALUE,false);
 
                    // undo the move for this iteration
                    board.updateToken(col, row, BLANK);
@@ -117,9 +115,9 @@ public class NPCHardModeTest
 
 
         // ensure that it returns correct numerical choice
-        assertEquals(10, bestValue);
+        assertEquals(16, bestValue);
         assertEquals(2, moveRow);
-        assertEquals(2, moveCol);
+        assertEquals(0, moveCol);
     }
 
 }

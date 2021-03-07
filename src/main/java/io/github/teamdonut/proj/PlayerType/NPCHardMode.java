@@ -14,7 +14,7 @@ import io.github.teamdonut.proj.utils.DataValidation;
  * @author Grant Goldsworth
  */
 public class NPCHardMode implements IPlayerType {
-
+    private static final int MAX_DEPTH = 6;    // needed to avoid long compute times
     private static Token MAXIMIZER = BLANK;
     private static Token MINIMIZER = BLANK;
 
@@ -38,9 +38,9 @@ public class NPCHardMode implements IPlayerType {
     @Override
     public void makeMove(Board board, Token c) {
         DataValidation.ensureObjectNotNull("Board", board);
-        int moveRow = -1;      // moveRow coordinate of move to make
-        int moveCol = -1;      // moveCol coordinate of move to make
-        int bestValue = -100; // starting best value of the AI move
+        int moveRow = -1;           // moveRow coordinate of move to make
+        int moveCol = -1;           // moveCol coordinate of move to make
+        int bestValue = -BEST_VAL;  // starting best value of the AI move
 
         // for each cell
         for (int row = 0; row < 3; row ++) {
@@ -51,7 +51,7 @@ public class NPCHardMode implements IPlayerType {
                     board.updateToken(col, row, c);
 
                     // run minimax on this spot and record result
-                    int miniMaxResult = miniMax(board, 0, false);
+                    int miniMaxResult = miniMax(board, MAX_DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE,false);
 
                     // undo the move for this iteration
                     board.updateToken(col, row, BLANK);
@@ -81,20 +81,13 @@ public class NPCHardMode implements IPlayerType {
      * @return value chosen at current node by AI
      * @author Grant Goldsworth
      */
-    public int miniMax(Board board, int depth, boolean isMaximizer) {
-
-        // TODO implement alpha-beta pruning
+    public int miniMax(Board board, int depth, int alpha, int beta, boolean isMaximizer) {
         // evaluate the current board to find out if there is a win/loss
-        int boardState = evaluate(board);
+        int boardState = evaluate(board, depth);
 
         // base cases
-        // maximizer win        minimizer win
-        if (boardState == WIN_VAL || boardState == -WIN_VAL)
+        if (Math.abs(boardState) > 0 || depth == 0 || board.isBoardFull())
             return boardState;
-
-        // the board is full - draw
-        if (board.isBoardFull())
-            return 0;
 
         // maximizer's move
         int bestValue;
@@ -110,10 +103,15 @@ public class NPCHardMode implements IPlayerType {
                         board.updateToken(col, row, MAXIMIZER);
 
                         // with hypothetical move made, analyze game state with recursive call
-                        bestValue = Math.max(bestValue, miniMax(board, depth + 1, false));
+                        bestValue = Math.max(bestValue, miniMax(board, depth - 1, alpha, beta, false));
 
                         // undo the move
                         board.updateToken(col, row, BLANK);
+
+                        // pruning branches that are the not relevant
+                        alpha = Math.max(alpha, bestValue);
+                        if (alpha >= beta)
+                            return bestValue;
                     }
                 }
             } // end for each child
@@ -130,10 +128,15 @@ public class NPCHardMode implements IPlayerType {
                         board.updateToken(col, row, MINIMIZER);
 
                         // with hypothetical move made, analyze game state with recursive call
-                        bestValue = Math.min(bestValue, miniMax(board, depth + 1, true));
+                        bestValue = Math.min(bestValue, miniMax(board, depth - 1, alpha, beta, true));
 
                         // undo the move
                         board.updateToken(col, row, BLANK);
+
+                        // pruning branches that are the not relevant
+                        beta = Math.min(beta, bestValue);
+                        if (alpha >= beta)
+                            return bestValue;
                     }
                 }
             } // end for each child
@@ -150,16 +153,16 @@ public class NPCHardMode implements IPlayerType {
      * @return 10 if max win, 0 if draw/none, -10 if min win
      * @author Grant Goldsworth
      */
-    public int evaluate(Board board) {
+    public int evaluate(Board board, int depth) {
         // check columns for X or O victory
         // check that contents are equal in row, then return +/- 10 based on what character is
         for (int col = 0; col < 3; col++) {
             if (board.getToken(col, 0) == board.getToken(col, 1) && board.getToken(col, 0) == board.getToken(col, 2)) {
                 // row is all one token - what token is it?
                 if (board.getToken(col, 0) == MAXIMIZER)
-                    return WIN_VAL;
+                    return WIN_VAL + depth;
                 else if (board.getToken(col, 0) == MINIMIZER)
-                    return -WIN_VAL;
+                    return -WIN_VAL - depth;
             }
 
         }
@@ -169,9 +172,9 @@ public class NPCHardMode implements IPlayerType {
             if (board.getToken(0, row) == board.getToken(1, row) && board.getToken(0, row) == board.getToken(2, row)) {
                 // row is all one token - what token is it?
                 if (board.getToken(0, row) == MAXIMIZER)
-                    return WIN_VAL;
+                    return WIN_VAL + depth;
                 else if (board.getToken(0, row) == MINIMIZER)
-                    return -WIN_VAL;
+                    return -WIN_VAL - depth;
             }
 
         }
@@ -180,17 +183,17 @@ public class NPCHardMode implements IPlayerType {
         // diagonal 1
         if (board.getToken(0,0) == board.getToken(1,1) && board.getToken(0,0) == board.getToken(2,2)) {
             if (board.getToken(0,0) == MAXIMIZER)
-                return WIN_VAL;
+                return WIN_VAL + depth;
             else if (board.getToken(0, 0) == MINIMIZER)
-                return -WIN_VAL;
+                return -WIN_VAL - depth;
         }
 
         // diagonal 2
         if (board.getToken(0,2) == board.getToken(1,1) && board.getToken(0,2) == board.getToken(2,0)) {
             if (board.getToken(0,2) == MAXIMIZER)
-                return WIN_VAL;
+                return WIN_VAL + depth;
             else if (board.getToken(0, 2) == MINIMIZER)
-                return -WIN_VAL;
+                return -WIN_VAL - depth;
         }
 
         // final case: no win/loss, return 0

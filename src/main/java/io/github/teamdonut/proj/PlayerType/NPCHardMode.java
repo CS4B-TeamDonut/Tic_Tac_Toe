@@ -13,8 +13,7 @@ import io.github.teamdonut.proj.utils.DataValidation;
  * will always win or tie the other player.
  * @author Grant Goldsworth
  */
-public class NPCHardMode implements IPlayerType
-{
+public class NPCHardMode implements IPlayerType {
 
     private static Token MAXIMIZER = BLANK;
     private static Token MINIMIZER = BLANK;

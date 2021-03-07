@@ -229,9 +229,7 @@ public class BoardUI extends GridPane implements ISubject, IObserver {
     @Override
     public void update(Object eventType) {
         if (eventType instanceof GameController.DrawInfo) {
-            GameController.DrawInfo data = (GameController.DrawInfo) eventType;
-
-            drawBoard(data.getUpdatedBoard());
+            drawBoard(((GameController.DrawInfo) eventType).getUpdatedBoard());
         } else if (eventType instanceof GameController.Results) {
             String result;
             GameController.Results temp = (GameController.Results) eventType;

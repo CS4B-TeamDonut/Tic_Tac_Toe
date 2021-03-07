@@ -52,7 +52,6 @@ public class Board {
      * @param row the y-value for the token in the array [0, 1, 2]
      * @return The token ['X', 'O', ' '] of a specific position in char[][] board.
      */
-
     public char getToken(int col, int row) {
         if ((col > BOARD_COLUMNS || row > BOARD_ROWS) || ( col < 0 || row < 0))
             throw new IllegalArgumentException(String.format("invalid xy position --> (%d, %d):" +
@@ -123,9 +122,9 @@ public class Board {
         char delim = '|';
         StringBuilder buf = new StringBuilder();
         int i = 0;
-        for (var a : board) {
-            for (var b : a) {
-                buf.append(b);
+        for (char[] row : board) {
+            for (var col : row) {
+                buf.append(col);
                 if (i < 2)
                     buf.append(delim);
                 i++;

@@ -34,8 +34,8 @@ public class NPCEasyMode implements IPlayerType {
     public void makeMove(Board board, char c) {
         DataValidation.ensureObjectNotNull("Board", board);
 
-        int x;      //column
-        int y;      //row
+        int x;      // column
+        int y;      // row
         char[][] boardAr = board.getUnderlyingBoard();    //tic tac toe board
 
         //initialization for random class
@@ -57,7 +57,7 @@ public class NPCEasyMode implements IPlayerType {
                 valid = true;
             }
 
-        } while(!valid);
+        } while (!valid);
 
         //notify method called for the event manager
         EventManager.notify(this, new IPlayerType.BoardMoveInfo(x, y));

@@ -230,6 +230,8 @@ public class GameController implements ISubject, IObserver {
                 board.updateToken(info.getX(), info.getY(), info.getPlayerInstance().getPlayerToken());
                 gameOver = gameOver();
 
+                System.out.println("y: " + info.getY() + " x: " + info.getX());
+                System.out.println(this.board);
                 swap = (gameOver) ? null : (swap == player1) ? player2 : player1;
 
                 EventManager.notify(this, new DrawInfo(this.board));

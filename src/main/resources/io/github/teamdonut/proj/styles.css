@@ -14,6 +14,13 @@
     -fx-background-position: center center;
 }
 
+#startPage {
+    -fx-background-image: url("/io/github/teamdonut/proj/images/theme_2/splash_1.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
 #title {
     -fx-text-fill: khaki;
     -fx-font-family: Chalkduster;

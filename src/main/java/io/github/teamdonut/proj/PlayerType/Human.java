@@ -18,8 +18,7 @@ public class Human implements IPlayerType, IObserver {
     @Override
     public void makeMove(Board board, Token c) {
         // something should go here
-        // get move from player
-        // notify event manager
+        // notify event manager maybe??
     }
 
     /**

@@ -51,14 +51,16 @@ public class NPCEasyMode implements IPlayerType {
             x = num.nextInt(3);
             y = num.nextInt(3);
 
-            //checks if the board is not empty
-            if (boardAr[y][x] != BLANK) {
-                // TODO Remove debugging code
-                System.out.println("That spot is taken already - try again!\n");
-            }
-            else {
+            if (boardAr[y][x] == BLANK)
                 valid = true;
-            }
+            //checks if the board is not empty
+//            if (boardAr[y][x] != BLANK) {
+//                // TODO Remove debugging code
+//                System.out.println("That spot is taken already - try again!\n");
+//            }
+//            else {
+//                valid = true;
+//            }
 
         } while (!valid);
 

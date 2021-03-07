@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane fx:id="startPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#onKeyPressed" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teamdonut.proj.controllers.StartController">
-   <center>
+   <bottom>
       <Label fx:id="startKey" text="Label" BorderPane.alignment="CENTER">
          <padding>
-            <Insets top="30.0" />
+            <Insets bottom="70.0" />
          </padding></Label>
-   </center>
+   </bottom>
 </BorderPane>

@@ -103,7 +103,7 @@ public class BoardPageController implements Initializable, IObserver, ISubject {
             }
         });
 
-        overlayPane.setStyle("-fx-background-color: rgba(0, 100, 100, 0.5); -fx-background-radius: 10;");
+        overlayPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7);");
         overlayPane.setVisible(false);
     }
 
@@ -172,10 +172,10 @@ public class BoardPageController implements Initializable, IObserver, ISubject {
         } else if (eventType instanceof GameController.Results) {
             GameController.Results temp = (GameController.Results) eventType;
 
-            exitPrompt.setText("Press enter to return to the main menu...");
+            exitPrompt.setText("Press ENTER to return to main menu...");
             Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.seconds(1.1), evt -> exitPrompt.setVisible(false)),
-                    new KeyFrame(Duration.seconds(0.5), evt -> exitPrompt.setVisible(true))
+                    new KeyFrame(Duration.seconds(0.6), evt -> exitPrompt.setVisible(false)),
+                    new KeyFrame(Duration.seconds(1.2), evt -> exitPrompt.setVisible(true))
             );
             timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();

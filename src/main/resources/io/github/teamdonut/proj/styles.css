@@ -2,6 +2,11 @@
     -fx-text-fill: khaki;
     -fx-font-size: 30px;
 }
+
+#winnerLabel {
+    -fx-font-size: 64px;
+}
+
 #startKey {
     -fx-text-fill: white;
     -fx-font-size: 40px;

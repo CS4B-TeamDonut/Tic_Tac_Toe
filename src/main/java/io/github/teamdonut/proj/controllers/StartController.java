@@ -46,8 +46,8 @@ public class StartController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         startKey.setText("Press (Z) to begin");
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1.1), evt -> startKey.setVisible(false)),
-                new KeyFrame(Duration.seconds(0.5), evt -> startKey.setVisible(true))
+                new KeyFrame(Duration.seconds(0.6), evt -> startKey.setVisible(false)),
+                new KeyFrame(Duration.seconds(1.2), evt -> startKey.setVisible(true))
         );
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

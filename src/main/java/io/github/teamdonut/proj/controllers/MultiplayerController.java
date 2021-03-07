@@ -191,14 +191,14 @@ public class MultiplayerController implements Initializable, ISubject {
             player1Name = "P1";
         }
         else {
-            player1Name = "P1: " + nameEntryMP1.getText();
+            player1Name = nameEntryMP1.getText();
         }
 
         if (nameEntryMP2.getText().isEmpty()) {
             player2Name = "P2";
         }
         else {
-            player2Name = "P2: " + nameEntryMP2.getText();
+            player2Name = nameEntryMP2.getText();
         }
 
         GameController game = new GameController(

@@ -1,6 +1,7 @@
 package io.github.teamdonut.proj.controllers;
 
 import io.github.teamdonut.proj.PlayerType.Human;
+import io.github.teamdonut.proj.PlayerType.IPlayerType;
 import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
 import io.github.teamdonut.proj.PlayerType.NPCHardMode;
 import io.github.teamdonut.proj.common.Player;
@@ -149,6 +150,7 @@ public class SinglePlayerController implements Initializable, ISubject {
         char cpuToken;
         String cpuLevel;
         String userName;
+        IPlayerType artificialBrain;
 
         if (nameEntry.getText().isEmpty()) {
             userName = "Guest";
@@ -167,13 +169,16 @@ public class SinglePlayerController implements Initializable, ISubject {
 
         if (easyMode.isSelected()) {
             cpuLevel = "Rook";
+            artificialBrain = new NPCEasyMode();
         } else {
             cpuLevel = "Pro";
+            artificialBrain = new NPCHardMode();
         }
 
+        // TODO make an actual selection
         GameController game = new GameController(
                 new Player(userName, userToken, new Human()),
-                new Player(cpuLevel, cpuToken, new NPCHardMode()));
+                new Player(cpuLevel, cpuToken, artificialBrain));
 
         EventManager.notify(this, game);
         EventManager.removeAllObserver(this);

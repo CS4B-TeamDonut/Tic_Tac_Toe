@@ -41,6 +41,7 @@ public class NPCHardMode implements IPlayerType
         int moveCol = 0;      // moveCol coordinate of move to make
         int bestValue = -100; // starting best value of the AI move
 
+        System.out.println("inside hard mode");
 
         // for each cell
         for (int row = 0; row < 3; row ++) {

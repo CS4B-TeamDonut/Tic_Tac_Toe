@@ -202,8 +202,8 @@ public class MultiplayerController implements Initializable, ISubject {
         }
 
         GameController game = new GameController(
-                new Player(player1Name, tokenP1),
-                new Player(player2Name, tokenP2));
+                new Player(player1Name + " (" + tokenP1 + ")", tokenP1),
+                new Player(player2Name + " (" + tokenP2 + ")", tokenP2));
 
         EventManager.notify(this, game);
         EventManager.removeAllObserver(this);

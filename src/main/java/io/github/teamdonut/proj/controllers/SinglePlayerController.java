@@ -180,8 +180,8 @@ public class SinglePlayerController implements Initializable, ISubject {
 
         // TODO make an actual selection
         GameController game = new GameController(
-                new Player(userName, userToken, new Human()),
-                new Player(cpuLevel, cpuToken, artificialBrain));
+                new Player(userName + " (" + userToken + ")", userToken, new Human()),
+                new Player(cpuLevel + " (" + cpuToken + ")", cpuToken, artificialBrain));
 
         EventManager.notify(this, game);
         EventManager.removeAllObserver(this);

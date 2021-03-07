@@ -179,8 +179,8 @@ public class BoardPageController implements Initializable, IObserver, ISubject {
             timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
 
-            String result = (temp.getWinner() != null) ? temp.getWinner().getPlayerName() + "(" +
-                    temp.getWinner().getPlayerToken() + ")" +  " won!!!" : "It's a Draw";
+            String result = (temp.getWinner() != null) ? temp.getWinner().getPlayerName() +
+                    " won!!!" : "It's a Draw";
 
             winnerLabel.setText(result);
             borderPane.requestFocus();

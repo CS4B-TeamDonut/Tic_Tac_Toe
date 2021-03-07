@@ -97,7 +97,6 @@ public class BoardPageController implements Initializable, IObserver, ISubject {
 
         borderPane.setOnKeyReleased(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                System.out.println("keyPressed");
                 EventSounds.getInstance().playButtonSound4();
                 EventManager.notify(this, new BoardPageController.Finished());
             }

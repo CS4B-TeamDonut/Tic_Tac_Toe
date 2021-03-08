@@ -98,6 +98,13 @@ public class MultiplayerController implements Initializable, ISubject {
         ToggleGroup tokenGroup1 = new ToggleGroup();
         ToggleGroup tokenGroup2 = new ToggleGroup();
 
+        // Makes it so that the radio buttons cannot be
+        //   changed by arrow keys
+        tokenXP1.setFocusTraversable(false);
+        tokenOP1.setFocusTraversable(false);
+        tokenXP2.setFocusTraversable(false);
+        tokenOP2.setFocusTraversable(false);
+
         tokenXP1.setToggleGroup(tokenGroup1);
         tokenOP1.setToggleGroup(tokenGroup1);
         tokenXP1.setSelected(true);

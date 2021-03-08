@@ -6,6 +6,7 @@ import io.github.teamdonut.proj.utils.Logger;
 import io.github.teamdonut.sounds.EventSounds;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -96,9 +97,7 @@ public class AboutUsController implements Initializable, ISubject {
         });
         contributors.setText( "Kord Boniadi, Brandon Nguyen, Grant Goldsworth, Utsav Parajuli, Joey Campbell, Christopher Bassar");
         copyright.setText("Copyright \u00a9 2021 Donut");
-
-
-
+        copyright.setPadding(new Insets(0, 0, 20, 0));
     }
 
     /**

@@ -10,7 +10,7 @@ import io.github.teamdonut.proj.listener.ISubject;
 import java.util.Objects;
 
 /**
- * Player is a data-only class that holds the data pertaining to a player.
+ * Player is a data-only class that holds the data pertaining to a player (Name, Token, etc.)
  * @author Joey Campbell
  */
 public class Player implements ISubject, IObserver {

@@ -20,10 +20,6 @@ import java.io.IOException;
 public class AppController implements IObserver {
     private final Stage mainStage;
     public Scene mainScene;
-//    public BoardUI boardUI;
-//    public Scene boardScene;
-//    public Scene singlePlayerScene;
-//    public Scene multiplayerScene;
 
     /**
      * Constructor
@@ -60,7 +56,7 @@ public class AppController implements IObserver {
      * AboutPage factory method
      * @param obj instance of Controller with initial params
      * @author Kord Boniadi
-     * @author utsavparajuli
+     * @author Utsav Parajuli
      */
     public void createAboutPage(AboutUsController obj) {
         EventManager.register(obj, this);
@@ -83,7 +79,7 @@ public class AppController implements IObserver {
      * SinglePlayerPage factory method
      * @param obj instance of Controller with initial params
      * @author Kord Bonaidi
-     * @author utsavparajuli
+     * @author Utsav Parajuli
      */
     public void createSinglePlayerPage(SinglePlayerController obj) {
         EventManager.register(obj, this);

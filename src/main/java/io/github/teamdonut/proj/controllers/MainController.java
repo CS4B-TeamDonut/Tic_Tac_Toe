@@ -21,20 +21,14 @@ public class MainController implements Initializable, ISubject {
     @FXML
     public BorderPane mainMenuPane;
 
-//    @FXML
-//    private ImageView aboutButton;      //corner button
-
     @FXML
-    private ImageView aboutUsRect;      //rectangle button
+    private ImageView aboutUsRect;
 
     @FXML
     private ImageView singlePlayerButton;
 
     @FXML
     private ImageView multiPlayerButton;
-
-    @FXML
-    private Scene aboutUsScene;
 
     private final String theme = "theme_2";
 
@@ -139,24 +133,6 @@ public class MainController implements Initializable, ISubject {
         AboutUsController aboutUs = new AboutUsController();
         EventManager.notify(this, aboutUs);
     }
-
-//    /**
-//     * Handles mouse hover event on the about us image "button", changing
-//     * the button icon to the hovered icon status.
-//     * @author Utsav Parajuli
-//     */
-//    public void onAboutButtonEnter(/*MouseEvent mouseEvent*/) {
-//        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square_hover.png")));
-//    }
-//
-//    /**
-//     * Handles mouse hover exit event on the about us image "button", changing the
-//     * button icon to the normal status.
-//     * @author Utsav Parajuli
-//     */
-//    public void onAboutButtonExit(MouseEvent mouseEvent) {
-//        aboutButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_square.png")));
-//    }
 
     /**
      * Handles mouse hover event on the about us image "button", changing

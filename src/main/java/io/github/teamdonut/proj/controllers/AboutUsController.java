@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -26,7 +25,7 @@ import java.util.ResourceBundle;
  * Class that handles the About Us page UI
  *
  * @author Utsav Parajuli
- * @version 0.1
+ * @version 0.2
  */
 public class AboutUsController implements Initializable, ISubject {
 
@@ -35,9 +34,6 @@ public class AboutUsController implements Initializable, ISubject {
 
     @FXML
     private ImageView backButton;
-
-    @FXML
-    private BorderPane aboutUsPage;
 
     @FXML
     private Hyperlink githubLink;

@@ -20,7 +20,7 @@
                   <Image url="@images/common/back_arrow.png" />
                </image>
             </ImageView>
-            <Label fx:id="title" alignment="TOP_CENTER" text="Multiplayer Mode" />
+            <Label fx:id="multiplayerTitle" alignment="TOP_CENTER" text="Multiplayer Mode" />
          </children></HBox>
    </top>
    <center>

@@ -38,6 +38,9 @@ import java.util.ResourceBundle;
 public class SinglePlayerController implements Initializable, ISubject {
 
     @FXML
+    public Label singlePlayerTitle;
+
+    @FXML
     public Label title;
 
     @FXML
@@ -48,9 +51,6 @@ public class SinglePlayerController implements Initializable, ISubject {
 
     @FXML
     private ImageView backButton;
-
-    @FXML
-    private BorderPane intermediatePage;
 
     @FXML
     private Label difficultyLevelTitle;
@@ -87,15 +87,19 @@ public class SinglePlayerController implements Initializable, ISubject {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //title screen
+        singlePlayerTitle.setText("Single Player Mode");
+        singlePlayerTitle.setAlignment(Pos.TOP_CENTER);
+
         //setting the name entry title
         title.setText("Please Enter Your Name");
-        title.setAlignment(Pos.TOP_CENTER);
+        title.setAlignment(Pos.CENTER);
 
         //name entry box
         nameEntry.setAlignment(Pos.CENTER);
 
-        //TODO: Setting the number of characters the player can use as a name; Here I put
-        //      4 so when you go to enter you can't enter anymore after 4 characters
+        //max number of characters user can enter
         nameEntry.setMaxLength(5);
 
         //start button

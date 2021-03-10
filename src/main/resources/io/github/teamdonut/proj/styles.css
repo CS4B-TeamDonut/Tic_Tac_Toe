@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Chalkduster;
+    src: url('fonts/Chalkduster.ttf') format("ttf");
+}
+
 .label {
     -fx-text-fill: khaki;
     -fx-font-size: 30px;

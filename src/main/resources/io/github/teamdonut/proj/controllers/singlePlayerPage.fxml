@@ -10,21 +10,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<!--<?import io.github.teamdonut.proj.utils.RestrictiveTextField?>-->
+<?import io.github.teamdonut.proj.utils.RestrictiveTextField?>
 
+<?import io.github.teamdonut.proj.utils.RestrictiveTextField?>
 <BorderPane fx:id="singlePlayerPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <center>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
-         <HBox fx:id="midFirst" alignment="TOP_CENTER" prefHeight="70.0" prefWidth="200.0">
-            <children>
-                  <Label fx:id="title" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="33.0" text="Label" textAlignment="CENTER" />
-            </children>
-         </HBox>
-         <HBox fx:id="midSecond" alignment="CENTER" prefHeight="75.0" prefWidth="200.0">
-            <children>
-                  <TextField fx:id="nameEntry" alignment="TOP_CENTER" onKeyPressed="#onNameEntered" />
-            </children>
-         </HBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <Label fx:id="title" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="33.0" text="Label" textAlignment="CENTER" translateY="-30"/>
+            <RestrictiveTextField fx:id="nameEntry" alignment="BOTTOM_CENTER" onKeyPressed="#onNameEntered" />
          <HBox fx:id="midThird" alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
             <children>
                   <Label fx:id="difficultyLevelTitle" alignment="CENTER" text="Label" />
@@ -51,7 +44,7 @@
         </VBox>
     </center>
    <top>
-      <HBox fx:id="topHbox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_CENTER">
+      <HBox fx:id="topHbox" prefHeight="70.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
               <ImageView fx:id="backButton" fitHeight="89.0" fitWidth="97.0" onMouseClicked="#onBackButtonClick" onMouseEntered="#onBackButtonEnter" onMouseExited="#onBackButtonExit" preserveRatio="true">
                   <Image url="@../images/common/back_arrow.png" />

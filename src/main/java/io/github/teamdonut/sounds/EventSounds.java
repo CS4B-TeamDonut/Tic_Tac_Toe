@@ -13,7 +13,7 @@ public final class EventSounds {
     private final String buttonSound2 = "button_sound_2.mp3";
     private final String buttonSound3 = "button_sound_3.mp3";
     private final String buttonSound4 = "button_sound_4.mp3";
-    private final double BUTTON_VOL = 0.2; // 1 IS FULL
+    private final double BUTTON_VOL = 0.05; // 1 IS FULL
     private AudioClip clip;
 
     /**
@@ -38,7 +38,7 @@ public final class EventSounds {
     public void playButtonSound1() {
         try {
             clip = new AudioClip(getClass().getResource(buttonSound1).toString());
-            clip.setVolume(BUTTON_VOL);
+            clip.setVolume(BUTTON_VOL + .1);
             clip.play();
         } catch (Exception e) {
             Logger.log(e);

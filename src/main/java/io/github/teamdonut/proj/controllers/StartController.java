@@ -76,8 +76,6 @@ public class StartController implements Initializable {
             window.setTitle("Donut Tic Tac Toe");
             window.setScene(mainScene);
             window.setResizable(false);
-            window.show();
-
         }
     }
 }

@@ -10,22 +10,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import io.github.teamdonut.proj.utils.RestrictiveTextField?>
+<!--<?import io.github.teamdonut.proj.utils.RestrictiveTextField?>-->
 
 <BorderPane fx:id="singlePlayerPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <center>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <HBox fx:id="midFirst" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+         <HBox fx:id="midFirst" alignment="TOP_CENTER" prefHeight="70.0" prefWidth="200.0">
             <children>
                   <Label fx:id="title" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="33.0" text="Label" textAlignment="CENTER" />
             </children>
          </HBox>
-         <HBox fx:id="midSecond" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <HBox fx:id="midSecond" alignment="CENTER" prefHeight="75.0" prefWidth="200.0">
             <children>
-                  <RestrictiveTextField fx:id="nameEntry" alignment="TOP_CENTER" onKeyPressed="#onNameEntered" />
+                  <TextField fx:id="nameEntry" alignment="TOP_CENTER" onKeyPressed="#onNameEntered" />
             </children>
          </HBox>
-         <HBox fx:id="midThird" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <HBox fx:id="midThird" alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
             <children>
                   <Label fx:id="difficultyLevelTitle" alignment="CENTER" text="Label" />
                   <ToolBar fx:id="difficultyLevelBar" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="150.0" prefHeight="40.0" prefWidth="150.0">
@@ -34,7 +34,7 @@
                   </ToolBar>
             </children>
          </HBox>
-         <HBox fx:id="midFourth" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <HBox fx:id="midFourth" alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
             <children>
                   <Label fx:id="tokenSelectorTitle" alignment="CENTER" text="Label" />
                   <ToolBar fx:id="tokenBar" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="150.0" prefHeight="40.0" prefWidth="150.0">
@@ -43,6 +43,11 @@
                   </ToolBar>
             </children>
          </HBox>
+            <ImageView fx:id="startButton" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onStartButtonClick" onMouseEntered="#onStartButtonEnter" onMouseExited="#onStartButtonExit" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
+            <image>
+                <Image url="@../images/theme_2/start_button.png" />
+            </image>
+            </ImageView>
         </VBox>
     </center>
    <top>
@@ -55,11 +60,4 @@
          </children>
       </HBox>
    </top>
-   <bottom>
-      <ImageView fx:id="startButton" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onStartButtonClick" onMouseEntered="#onStartButtonEnter" onMouseExited="#onStartButtonExit" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
-         <image>
-            <Image url="@../images/theme_2/start_button.png" />
-         </image>
-      </ImageView>
-   </bottom>
 </BorderPane>

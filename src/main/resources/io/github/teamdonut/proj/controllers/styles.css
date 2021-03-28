@@ -34,7 +34,7 @@
     -fx-text-fill: #f0e68c;
     -fx-font-family: "Chalkduster";
     -fx-font-size: 20px;
-    /*-fx-alignment: center;*/
+    -fx-alignment: center;
     -fx-min-width: 600;
     -fx-min-height: 35;
 }
@@ -43,7 +43,7 @@
     -fx-text-fill: #f0e68c;
     -fx-font-family: "Chalkduster";
     -fx-font-size: 25px;
-    /*-fx-alignment: center;*/
+    -fx-alignment: center;
     -fx-min-width: 600;
     -fx-min-height: 35;
 }
@@ -71,7 +71,7 @@
     -fx-text-fill: white;
 }
 
-#nameEntry, #nameEntryMP1, #nameEntryMP2 {
+#nameEntry {
     -fx-background-color: black;
     -fx-text-fill: #75a2e1;
     -fx-alignment: center;
@@ -79,6 +79,18 @@
     -fx-max-height: 50;
     -fx-min-width: 80;
     -fx-max-width: 140;
+    -fx-font-size: 20px;
+    -fx-font-family: "Chalkduster";
+}
+
+#nameEntryMP1, #nameEntryMP2 {
+    -fx-background-color: black;
+    -fx-text-fill: #75a2e1;
+    -fx-alignment: center;
+    -fx-min-height: 50;
+    -fx-max-height: 50;
+    -fx-min-width: 60;
+    -fx-max-width: 200;
     -fx-font-size: 20px;
     -fx-font-family: "Chalkduster";
 }

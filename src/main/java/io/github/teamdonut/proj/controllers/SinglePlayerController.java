@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static io.github.teamdonut.proj.common.Token.O;
@@ -70,11 +71,27 @@ public class SinglePlayerController implements Initializable, ISubject {
     @FXML
     private RadioButton hardMode;
 
-    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
-    private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
+    private final Image backButtonIdle = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow.png")
+    ));
+    private final Image backButtonHover = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow_hover.png")
+    ));
 
-    private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
-    private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
+    private final Image startButtonIdle = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/theme_2/start_button.png")
+    ));
+    private final Image startButtonHover = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/theme_2/start_button_hover.png")
+    ));
 
     /**
      * Called to initialize a controller after its root element has been

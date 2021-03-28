@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -61,8 +62,16 @@ public class BoardPageController implements Initializable, IObserver, ISubject {
 
     private final BoardUI board;
     private final GameController game;
-    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
-    private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
+    private final Image backButtonIdle = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow.png")
+    ));
+    private final Image backButtonHover = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow_hover.png")
+    ));
 
     /**
      * Constructor

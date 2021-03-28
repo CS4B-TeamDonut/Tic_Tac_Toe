@@ -19,6 +19,7 @@ import org.apache.commons.lang3.SystemUtils;
 import java.awt.*;
 import java.net.URI;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -47,8 +48,16 @@ public class AboutUsController implements Initializable, ISubject {
     @FXML
     private Label info;
 
-    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
-    private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
+    private final Image backButtonIdle = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow.png")
+    ));
+    private final Image backButtonHover = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow_hover.png")
+    ));
 
     /**
      * Called to initialize a controller after its root element has been

@@ -5,12 +5,12 @@ import io.github.teamdonut.proj.listener.ISubject;
 import io.github.teamdonut.sounds.EventSounds;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -82,7 +82,11 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonHover(/*MouseEvent mouseEvent*/) {
-        singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/singleplayer_button_hover.png")));
+        singlePlayerButton.setImage(new Image(Objects.requireNonNull(
+                getClass().
+                getClassLoader().
+                getResourceAsStream("io/github/teamdonut/proj/images/" + theme + "/singleplayer_button_hover.png"))
+        ));
     }
 
     /**
@@ -91,7 +95,11 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onSinglePlayerButtonExit(/*MouseEvent mouseEvent*/) {
-        singlePlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/singleplayer_button.png")));
+        singlePlayerButton.setImage(new Image(Objects.requireNonNull(
+                getClass().
+                getClassLoader().
+                getResourceAsStream("io/github/teamdonut/proj/images/" + theme + "/singleplayer_button.png"))
+        ));
     }
 
     /**
@@ -111,7 +119,11 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonHover(/*MouseEvent mouseEvent*/) {
-        multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/multiplayer_button_hover.png")));
+        multiPlayerButton.setImage(new Image(Objects.requireNonNull(
+                getClass().
+                getClassLoader().
+                getResourceAsStream("io/github/teamdonut/proj/images/" + theme + "/multiplayer_button_hover.png"))
+        ));
     }
 
 
@@ -121,7 +133,11 @@ public class MainController implements Initializable, ISubject {
      * @author Grant Goldsworth
      */
     public void onMultiPlayerButtonExit(/*MouseEvent mouseEvent*/) {
-        multiPlayerButton.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/multiplayer_button.png")));
+        multiPlayerButton.setImage(new Image(Objects.requireNonNull(
+                getClass().
+                getClassLoader().
+                getResourceAsStream("io/github/teamdonut/proj/images/" + theme + "/multiplayer_button.png"))
+        ));
     }
 
     /**
@@ -140,7 +156,11 @@ public class MainController implements Initializable, ISubject {
      * @author Utsav Parajuli
      */
     public void onAboutRectEnter(/*MouseEvent mouseEvent*/) {
-        aboutUsRect.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button_hover.png")));
+        aboutUsRect.setImage(new Image(Objects.requireNonNull(
+                getClass().
+                getClassLoader().
+                getResourceAsStream("io/github/teamdonut/proj/images/" + theme + "/about_button_hover.png"))
+        ));
 
     }
 
@@ -150,7 +170,11 @@ public class MainController implements Initializable, ISubject {
      * @author Utsav Parajuli
      */
     public void onAboutRectExit(/*MouseEvent mouseEvent*/) {
-        aboutUsRect.setImage(new Image(getClass().getResourceAsStream("../images/" + theme + "/about_button.png")));
+        aboutUsRect.setImage(new Image(Objects.requireNonNull(
+                getClass().
+                getClassLoader().
+                getResourceAsStream("io/github/teamdonut/proj/images/" + theme + "/about_button.png"))
+        ));
 
     }
 }

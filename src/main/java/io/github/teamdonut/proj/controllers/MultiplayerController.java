@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -77,10 +78,26 @@ public class MultiplayerController implements Initializable, ISubject {
     private Token tokenP1;
     private Token tokenP2;
 
-    private final Image backButtonIdle = new Image(getClass().getResourceAsStream("../images/common/back_arrow.png"));
-    private final Image backButtonHover = new Image(getClass().getResourceAsStream("../images/common/back_arrow_hover.png"));
-    private final Image startButtonIdle = new Image(getClass().getResourceAsStream("../images/theme_2/start_button.png"));
-    private final Image startButtonHover = new Image(getClass().getResourceAsStream("../images/theme_2/start_button_hover.png"));
+    private final Image backButtonIdle = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow.png")
+    ));
+    private final Image backButtonHover = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/common/back_arrow_hover.png")
+    ));
+    private final Image startButtonIdle = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/theme_2/start_button.png")
+    ));
+    private final Image startButtonHover = new Image(Objects.requireNonNull(
+            getClass().
+            getClassLoader().
+            getResourceAsStream("io/github/teamdonut/proj/images/theme_2/start_button_hover.png")
+    ));
 
     /**
      * Initializes a MultiplayerController object after its root element has been

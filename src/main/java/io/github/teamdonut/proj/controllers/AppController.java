@@ -27,7 +27,8 @@ public class AppController implements IObserver {
      * @author Kord Boniadis
      */
     public AppController(Stage stage) {
-        Logger.init("io/github/teamdonut/proj/configs/logging.properties");
+//        Logger.init("io/github/teamdonut/proj/configs/logging.properties");
+        Logger.init("production");
         this.mainStage = stage;
     }
 
@@ -38,10 +39,10 @@ public class AppController implements IObserver {
      */
     public void startApp() throws IOException {
         MusicPlayer.getInstance();
-        Parent root = FXMLLoader.load(getClass().getResource("../startPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
 
         Scene start = new Scene(root);
-        start.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+        start.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
         mainStage.setUserData(this);
         root.requestFocus();
         // set the title of the stage
@@ -62,13 +63,13 @@ public class AppController implements IObserver {
         EventManager.register(obj, this);
 
         //loads fxml file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../aboutUs.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("aboutUs.fxml"));
 
         //setting the main stage to the about us page scene
         loader.setController(obj);
         try {
             Scene aboutUsScene = new Scene(loader.load());
-            aboutUsScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            aboutUsScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
             mainStage.setScene(aboutUsScene);
         } catch (IOException e) {
             Logger.log(e);
@@ -85,13 +86,13 @@ public class AppController implements IObserver {
         EventManager.register(obj, this);
 
         //loads the fxml file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../singlePlayerPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("singlePlayerPage.fxml"));
 
         //setting the controller
         loader.setController(obj);
         try {
             Scene singlePlayerScene = new Scene(loader.load());
-            singlePlayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            singlePlayerScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
             mainStage.setScene(singlePlayerScene);
         } catch (IOException e) {
             Logger.log(e);
@@ -108,13 +109,13 @@ public class AppController implements IObserver {
         EventManager.register(obj, this);
 
         //loads the fxml file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../multiplayerPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("multiplayerPage.fxml"));
 
         //setting the controller
         loader.setController(obj);
         try {
             Scene multiplayerScene = new Scene(loader.load());
-            multiplayerScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            multiplayerScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
             mainStage.setScene(multiplayerScene);
         } catch (IOException e) {
             Logger.log(e);
@@ -130,11 +131,11 @@ public class AppController implements IObserver {
         BoardUI boardUI = new BoardUI();
         BoardPageController controller = new BoardPageController(boardUI, obj);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../boardPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("boardPage.fxml"));
         loader.setController(controller);
         try {
             Scene boardScene = new Scene(loader.load());
-            boardScene.getStylesheets().add((getClass().getResource("../styles.css")).toExternalForm());
+            boardScene.getStylesheets().add((getClass().getResource("styles.css")).toExternalForm());
             mainStage.setScene(boardScene);
         } catch (IOException e) {
             Logger.log(e);

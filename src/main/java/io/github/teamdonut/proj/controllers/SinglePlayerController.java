@@ -1,7 +1,5 @@
 package io.github.teamdonut.proj.controllers;
 
-import static io.github.teamdonut.proj.common.Token.*;
-
 import io.github.teamdonut.proj.PlayerType.Human;
 import io.github.teamdonut.proj.PlayerType.IPlayerType;
 import io.github.teamdonut.proj.PlayerType.NPCEasyMode;
@@ -24,11 +22,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static io.github.teamdonut.proj.common.Token.O;
+import static io.github.teamdonut.proj.common.Token.X;
 
 /**
  * Intermediate Screen controller class where the player can enter their name

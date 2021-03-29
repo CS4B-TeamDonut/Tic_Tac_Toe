@@ -21,7 +21,7 @@
          <HBox fx:id="midThird" alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
             <children>
                   <Label fx:id="difficultyLevelTitle" alignment="CENTER" text="Label" />
-                  <ToolBar fx:id="difficultyLevelBar" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="150.0" prefHeight="40.0" prefWidth="150.0">
+                  <ToolBar fx:id="difficultyLevelBar" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="150.0">
                       <RadioButton fx:id="easyMode" mnemonicParsing="false" text="RadioButton" />
                       <RadioButton fx:id="hardMode" mnemonicParsing="false" text="RadioButton" translateX="20.0" />
                   </ToolBar>
@@ -30,7 +30,7 @@
          <HBox fx:id="midFourth" alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
             <children>
                   <Label fx:id="tokenSelectorTitle" alignment="CENTER" text="Label" />
-                  <ToolBar fx:id="tokenBar" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="150.0" prefHeight="40.0" prefWidth="150.0">
+                  <ToolBar fx:id="tokenBar" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="150.0">
                       <RadioButton fx:id="tokenX" mnemonicParsing="false" text="RadioButton" />
                       <RadioButton fx:id="tokenO" mnemonicParsing="false" text="RadioButton" translateX="45.0" />
                   </ToolBar>

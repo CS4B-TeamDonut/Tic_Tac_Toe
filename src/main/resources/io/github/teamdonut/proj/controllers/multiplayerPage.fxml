@@ -42,7 +42,7 @@
                   <RadioButton fx:id="tokenOP2" mnemonicParsing="false" onMouseClicked="#onToggleClick2" text="O" translateX="20.0" />
                </children>
             </HBox>
-            <ImageView fx:id="startButton" fitHeight="98.0" fitWidth="218.0" onMouseClicked="#onStartButtonClick" onMouseEntered="#onStartButtonEnter" onMouseExited="#onStartButtonExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="startButton" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onStartButtonClick" onMouseEntered="#onStartButtonEnter" onMouseExited="#onStartButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/theme_2/start_button.png" />
                </image></ImageView>
